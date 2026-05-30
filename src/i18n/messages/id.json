@@ -1,0 +1,29 @@
+{
+  "common": {
+    "appName": "Newproject",
+    "appTagline": "Skeleton",
+    "signIn": "Masuk",
+    "signOut": "Keluar",
+    "email": "Email",
+    "password": "Kata Sandi",
+    "welcome": "Selamat datang kembali",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "delete": "Hapus",
+    "edit": "Ubah",
+    "create": "Buat",
+    "search": "Cari",
+    "loading": "Memuat",
+    "error": "Terjadi kesalahan"
+  },
+  "nav": {
+    "dashboard": "Dasbor",
+    "settings": "Pengaturan"
+  },
+  "signin": {
+    "title": "Masuk ke Newproject",
+    "subtitle": "Masuk ke ruang kerja Anda",
+    "submit": "Masuk",
+    "invalid": "Email atau kata sandi salah"
+  }
+}

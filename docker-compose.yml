@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: newproject
+      POSTGRES_PASSWORD: newproject
+      POSTGRES_DB: newproject
+    ports:
+      - "5435:5432"
+    volumes:
+      - newproject-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U newproject -d newproject"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "3004:3000"
+    environment:
+      # Host `db` is the postgres service above; the web service talks to it
+      # over the docker network (container-side port stays 5432).
+      DATABASE_URL: postgresql://newproject:newproject@db:5432/newproject?schema=public
+      DATABASE_SSL: "false"
+      AUTH_SECRET: ${AUTH_SECRET:-dev-secret-change-me}
+      AUTH_URL: http://localhost:3004
+      AUTH_TRUST_HOST: "true"
+      UPLOAD_DIR: /app/uploads
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      NODE_ENV: development
+      NEXT_TELEMETRY_DISABLED: "1"
+    volumes:
+      # Mount source for hot reload, but preserve container-side node_modules
+      # and .next so they don't get clobbered by the host bind mount.
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+
+volumes:
+  newproject-db:
