@@ -1,0 +1,33 @@
+{
+  "common": {
+    "appName": "Kronos",
+    "appTagline": "Intelijen perdagangan",
+    "signIn": "Masuk",
+    "signOut": "Keluar",
+    "email": "Email",
+    "password": "Kata Sandi",
+    "welcome": "Selamat datang kembali",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "delete": "Hapus",
+    "edit": "Ubah",
+    "create": "Buat",
+    "search": "Cari",
+    "loading": "Memuat",
+    "error": "Terjadi kesalahan"
+  },
+  "nav": {
+    "dashboard": "Dasbor",
+    "settings": "Pengaturan",
+    "instruments": "Instrumen",
+    "signals": "Sinyal",
+    "backtests": "Uji Balik",
+    "portfolio": "Portofolio"
+  },
+  "signin": {
+    "title": "Masuk ke Kronos",
+    "subtitle": "Masuk ke ruang kerja Anda",
+    "submit": "Masuk",
+    "invalid": "Email atau kata sandi salah"
+  }
+}

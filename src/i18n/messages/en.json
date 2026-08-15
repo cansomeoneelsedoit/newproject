@@ -1,0 +1,33 @@
+{
+  "common": {
+    "appName": "Kronos",
+    "appTagline": "Trading intelligence",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "welcome": "Welcome back",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "loading": "Loading",
+    "error": "Something went wrong"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "instruments": "Instruments",
+    "signals": "Signals",
+    "backtests": "Backtests",
+    "portfolio": "Portfolio"
+  },
+  "signin": {
+    "title": "Sign in to Kronos",
+    "subtitle": "Sign in to your workspace",
+    "submit": "Sign in",
+    "invalid": "Invalid email or password"
+  }
+}
