@@ -78,7 +78,7 @@ export function CreateUserDialog() {
             </div>
             <div className="space-y-2">
               <Label>Email</Label>
-              <Input type="email" {...form.register("email")} placeholder="firstname@kronos.local" />
+              <Input type="email" {...form.register("email")} placeholder="firstname@newproject.local" />
             </div>
             <div className="grid grid-cols-2 gap-3">
               <div className="space-y-2">

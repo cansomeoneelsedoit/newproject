@@ -31,6 +31,7 @@ export default async function UsersAdminPage() {
       email: true,
       role: true,
       createdAt: true,
+      staff: { select: { id: true, name: true } },
     },
   });
 
@@ -59,7 +60,7 @@ export default async function UsersAdminPage() {
                 <TableHead>Name</TableHead>
                 <TableHead>Email</TableHead>
                 <TableHead>Role</TableHead>
-                <TableHead>Added</TableHead>
+                <TableHead>Linked staff</TableHead>
                 <TableHead className="w-44 text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -78,7 +79,7 @@ export default async function UsersAdminPage() {
                     )}
                   </TableCell>
                   <TableCell className="text-muted-foreground">
-                    {u.createdAt.toLocaleDateString()}
+                    {u.staff ? u.staff.name : "—"}
                   </TableCell>
                   <TableCell className="text-right">
                     <UserTableActions
@@ -97,7 +98,7 @@ export default async function UsersAdminPage() {
         <CardContent className="space-y-1 p-4 text-xs text-muted-foreground">
           <p>
             <strong className="text-foreground">Default password</strong> for newly-provisioned
-            logins is <code>Jasper1.0!</code>. Use the <strong>Reset password</strong>
+            staff logins is <code>Jasper1.0!</code>. Use the <strong>Reset password</strong>
             action above to give an existing user a new password. Tell the user to sign in,
             then change it themselves later (no in-app change-password screen yet — flag if you
             want one built).

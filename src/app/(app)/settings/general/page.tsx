@@ -12,7 +12,7 @@ export default async function GeneralSettingsPage() {
       <CardContent>
         <GeneralSettingsForm
           initial={{
-            appName: setting?.appName ?? "Kronos",
+            appName: setting?.appName ?? "Newproject",
             defaultLocale: (setting?.defaultLocale as "en" | "id") ?? "en",
           }}
         />

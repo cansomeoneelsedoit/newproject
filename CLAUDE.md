@@ -1,35 +1,13 @@
-# Kronos — context for future Claude sessions
+# newproject — context for future Claude sessions
 
 ## What this is
 
-**Kronos**, an apiary & colony management app: apiaries (bee yards) hold hives
-(colonies), colonies get inspections, inspections drive a health score, and
-hives produce harvests.
-
-It is built on a generic multi-tenant skeleton forked from a cultivation-OS
-stack — that skeleton still provides auth, multi-org, audit, health, admin/users
-and settings, and the beekeeping domain sits on top of it.
+A generic multi-tenant application **skeleton**, forked from a cultivation-OS stack
+and stripped to a baseline. It ships auth, multi-org, audit, health, admin/users,
+and a minimal settings page — and nothing domain-specific. Build features on top.
 
 - Local: app on <http://localhost:3004>, Postgres on `localhost:5435`
-- Dev sign-in: `dev@kronos.local` / `devpassword`
-
-## The domain
-
-- `Apiary` → `Hive` → (`Inspection`, `Harvest`). All four are tenant tables.
-- **Domain rules live in `src/lib/kronos.ts`** and are deliberately pure (no
-  Prisma, no React) so they unit-test directly — see `src/lib/kronos.test.ts`.
-  - `colonyHealth()` scores a colony 0–100 from one inspection and returns
-    human-readable flags. Queen status is weighted hardest, then varroa, then
-    population and stores.
-  - `varroaVerdict()` classifies mites/100 bees: `<1` OK, `1–3` MONITOR,
-    `≥3` TREAT (the economic threshold). An unmeasured colony is `UNKNOWN`,
-    never assumed clean.
-  - `inspectionDue()` — 14-day cadence; dead/sold/swarmed colonies are never
-    "due", so they don't clutter reminders.
-  - `queenAge()` — recommends requeening in the queen's third season.
-- Read side: `src/server/kronos.ts`. Write side: `src/server/kronos-actions.ts`.
-- Pages: `/` (dashboard), `/apiaries`, `/apiaries/[id]`, `/hives`,
-  `/hives/[id]`, `/harvests`.
+- Dev sign-in: `dev@newproject.local` / `devpassword`
 
 ## Stack
 
@@ -54,17 +32,8 @@ and settings, and the beekeeping domain sits on top of it.
   `activeOrgId` cookie.
 - **Auto-scoping via Prisma `$extends`** in `src/lib/prisma.ts`: reads `activeOrgId`
   from the request cookie and injects `where:{organizationId}` on reads/updates and
-  `data:{organizationId}` on creates for every model in `ORG_SCOPED_MODELS`
-  (`AuditAction`, `Apiary`, `Hive`, `Inspection`, `Harvest` — add new tenant models here).
-- **The cookie is a backstop, not the authority.** `activeOrgId` is set with
-  `httpOnly:false` and the extension only checks that the org *exists*, not that
-  the caller is a *member* of it. So an explicit `organizationId` supplied by the
-  caller **wins** over the cookie, on reads as well as creates. Always resolve the
-  org through `requireActiveOrgId()` (which verifies membership) and pass it
-  explicitly — `src/server/kronos.ts` does this on every query. Relying on the
-  cookie alone would let a user retarget it at another tenant's data.
-- **Use `findFirst`, not `findUnique`, on org-scoped models.** `findUnique` only
-  accepts unique filters and rejects the injected `organizationId` column.
+  `data:{organizationId}` on creates for every model in `ORG_SCOPED_MODELS` (currently
+  just `AuditAction` — add your tenant models here as you build them).
 - `organizationId` is `String?` in the Prisma schema (so creates typecheck without it)
   — when you add tenant tables, make it `NOT NULL` in the DB via migration so a missing
   scope fails safely rather than writing an orphan row.

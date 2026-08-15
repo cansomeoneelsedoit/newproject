@@ -97,10 +97,6 @@ model Organization {
 
   memberships  OrganizationMembership[]
   auditActions AuditAction[]
-  apiaries     Apiary[]
-  hives        Hive[]
-  inspections  Inspection[]
-  harvests     Harvest[]
 
   @@map("organizations")
 }
@@ -125,155 +121,10 @@ model OrganizationMembership {
 
 model Setting {
   id            String @id @default("singleton") // single-row table
-  appName       String @default("Kronos") @map("app_name")
+  appName       String @default("Newproject") @map("app_name")
   defaultLocale String @default("en") @map("default_locale")
 
   @@map("settings")
-}
-
-// ============================================================================
-// Kronos — apiary & colony management
-// ============================================================================
-//
-// Every model here is tenant data and is listed in ORG_SCOPED_MODELS in
-// src/lib/prisma.ts, so the client extension filters reads and stamps creates
-// with the active org automatically.
-//
-// `organizationId` is deliberately `String?` here (see CLAUDE.md): the column
-// is NOT NULL in the database via the migration, but leaving it optional in the
-// Prisma schema lets call sites `create()` without naming it and still
-// typecheck, while a missing scope fails loudly at the DB instead of silently
-// writing an orphan row.
-//
-// Because the extension injects `organizationId` into `where`, always reach for
-// `findFirst` rather than `findUnique` on these models — `findUnique` only
-// accepts unique filters and will reject the injected column.
-
-enum HiveStatus {
-  ACTIVE
-  QUEENLESS
-  SWARMED
-  DEAD
-  SOLD
-}
-
-enum HiveType {
-  LANGSTROTH
-  NATIONAL
-  WARRE
-  TOP_BAR
-  NUC
-}
-
-enum Temperament {
-  CALM
-  NORMAL
-  DEFENSIVE
-  AGGRESSIVE
-}
-
-enum BroodPattern {
-  SOLID
-  SPOTTY
-  NONE
-}
-
-/// A bee yard — a physical site holding one or more colonies.
-model Apiary {
-  id             String   @id @default(cuid())
-  organizationId String?  @map("organization_id")
-  name           String
-  location       String?
-  latitude       Float?
-  longitude      Float?
-  notes          String?
-  createdAt      DateTime @default(now()) @map("created_at")
-  updatedAt      DateTime @updatedAt @map("updated_at")
-
-  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  hives        Hive[]
-
-  @@unique([organizationId, name])
-  @@index([organizationId])
-  @@map("apiaries")
-}
-
-/// A single colony living in a hive body at an apiary.
-model Hive {
-  id             String     @id @default(cuid())
-  organizationId String?    @map("organization_id")
-  apiaryId       String     @map("apiary_id")
-  name           String
-  type           HiveType   @default(LANGSTROTH)
-  status         HiveStatus @default(ACTIVE)
-  /// Year the reigning queen was raised — drives requeening prompts.
-  queenYear      Int?       @map("queen_year")
-  queenSource    String?    @map("queen_source")
-  installedAt    DateTime   @default(now()) @map("installed_at")
-  notes          String?
-  createdAt      DateTime   @default(now()) @map("created_at")
-  updatedAt      DateTime   @updatedAt @map("updated_at")
-
-  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  apiary       Apiary        @relation(fields: [apiaryId], references: [id], onDelete: Cascade)
-  inspections  Inspection[]
-  harvests     Harvest[]
-
-  @@unique([organizationId, name])
-  @@index([organizationId])
-  @@index([apiaryId])
-  @@map("hives")
-}
-
-/// One visit to one colony. The observations here feed the health score in
-/// src/lib/kronos.ts.
-model Inspection {
-  id             String       @id @default(cuid())
-  organizationId String?      @map("organization_id")
-  hiveId         String       @map("hive_id")
-  inspectedAt    DateTime     @default(now()) @map("inspected_at")
-  inspectorId    String?      @map("inspector_id")
-  temperament    Temperament  @default(NORMAL)
-  broodPattern   BroodPattern @default(SOLID) @map("brood_pattern")
-  queenSeen      Boolean      @default(false) @map("queen_seen")
-  eggsSeen       Boolean      @default(false) @map("eggs_seen")
-  queenCells     Int          @default(0) @map("queen_cells")
-  framesOfBees   Int          @default(0) @map("frames_of_bees")
-  framesOfBrood  Int          @default(0) @map("frames_of_brood")
-  /// Estimated stores in the box, kilograms.
-  storesKg       Float        @default(0) @map("stores_kg")
-  /// Varroa mites per 100 bees from an alcohol wash or sugar roll.
-  varroaPer100   Float?       @map("varroa_per_100")
-  treatment      String?
-  notes          String?
-  createdAt      DateTime     @default(now()) @map("created_at")
-
-  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  hive         Hive          @relation(fields: [hiveId], references: [id], onDelete: Cascade)
-
-  @@index([organizationId])
-  @@index([hiveId, inspectedAt])
-  @@map("inspections")
-}
-
-/// A honey (and wax) pull off a single colony.
-model Harvest {
-  id             String   @id @default(cuid())
-  organizationId String?  @map("organization_id")
-  hiveId         String   @map("hive_id")
-  harvestedAt    DateTime @default(now()) @map("harvested_at")
-  honeyKg        Float    @default(0) @map("honey_kg")
-  waxKg          Float    @default(0) @map("wax_kg")
-  frames         Int?
-  notes          String?
-  createdAt      DateTime @default(now()) @map("created_at")
-
-  organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
-  hive         Hive          @relation(fields: [hiveId], references: [id], onDelete: Cascade)
-
-  @@index([organizationId])
-  @@index([hiveId, harvestedAt])
-  @@map("harvests")
 }
 
 // ============================================================================

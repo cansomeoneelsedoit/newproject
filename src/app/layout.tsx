@@ -24,7 +24,7 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Kronos",
+  title: "Newproject",
   description: "Multi-tenant application skeleton",
 };
 
