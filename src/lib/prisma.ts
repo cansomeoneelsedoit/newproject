@@ -12,6 +12,10 @@ const globalForPrisma = globalThis as unknown as {
  */
 const ORG_SCOPED_MODELS = new Set([
   "AuditAction",
+  "Apiary",
+  "Hive",
+  "Inspection",
+  "Harvest",
 ]);
 
 const READ_OPS = new Set([
@@ -82,10 +86,22 @@ function createPrismaClient() {
           // organizationId explicitly.
           if (!orgId) return query(args);
 
-           
+
           const a = args as any;
           if (READ_OPS.has(operation) || WRITE_WHERE_OPS.has(operation)) {
-            a.where = { ...(a.where ?? {}), organizationId: orgId };
+            // Spread order matters, and matches the `create` branch below: an
+            // explicit organizationId from the caller WINS over the cookie.
+            //
+            // The cookie is only checked against "does this org exist" (see
+            // getActiveOrgIdFromCookie) — not "is the caller a member of it" —
+            // and it's set with httpOnly:false, so a user can point it at any
+            // org id they can guess. Letting it override the caller would turn
+            // every correctly-scoped query into a cross-tenant read.
+            //
+            // So: call sites that resolved the org through requireActiveOrgId()
+            // (which DOES verify membership) stay authoritative, and this
+            // injection is only a backstop for code that forgot to scope.
+            a.where = { organizationId: orgId, ...(a.where ?? {}) };
           }
           // Spread order matters: explicit organizationId on the caller's
           // data object wins, so call sites that have already validated

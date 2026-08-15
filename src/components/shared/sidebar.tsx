@@ -10,6 +10,9 @@ type NavItem = { key: string; href: string };
 
 const NAV_ITEMS: NavItem[] = [
   { key: "dashboard", href: "/" },
+  { key: "apiaries", href: "/apiaries" },
+  { key: "hives", href: "/hives" },
+  { key: "harvests", href: "/harvests" },
   { key: "settings", href: "/settings" },
 ];
 
@@ -28,7 +31,7 @@ export function Sidebar({ isSuperuser = false }: { isSuperuser?: boolean }) {
     <aside className="hidden w-64 shrink-0 flex-col border-r bg-card md:flex">
       <div className="flex items-center gap-3 border-b px-5 py-4">
         <div className="flex h-9 w-9 items-center justify-center rounded-md bg-accent font-serif text-accent-foreground">
-          S
+          K
         </div>
         <div className="leading-tight">
           <div className="text-sm font-semibold">{tCommon("appName")}</div>

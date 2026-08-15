@@ -1,7 +1,7 @@
 {
   "common": {
-    "appName": "Newproject",
-    "appTagline": "Skeleton",
+    "appName": "Kronos",
+    "appTagline": "Apiary management",
     "signIn": "Sign in",
     "signOut": "Sign out",
     "email": "Email",
@@ -18,10 +18,13 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "settings": "Settings"
+    "settings": "Settings",
+    "apiaries": "Apiaries",
+    "hives": "Hives",
+    "harvests": "Harvests"
   },
   "signin": {
-    "title": "Sign in to Newproject",
+    "title": "Sign in to Kronos",
     "subtitle": "Sign in to your workspace",
     "submit": "Sign in",
     "invalid": "Invalid email or password"

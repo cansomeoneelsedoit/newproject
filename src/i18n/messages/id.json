@@ -1,7 +1,7 @@
 {
   "common": {
-    "appName": "Newproject",
-    "appTagline": "Skeleton",
+    "appName": "Kronos",
+    "appTagline": "Manajemen apiari",
     "signIn": "Masuk",
     "signOut": "Keluar",
     "email": "Email",
@@ -18,10 +18,13 @@
   },
   "nav": {
     "dashboard": "Dasbor",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "apiaries": "Apiari",
+    "hives": "Sarang",
+    "harvests": "Panen"
   },
   "signin": {
-    "title": "Masuk ke Newproject",
+    "title": "Masuk ke Kronos",
     "subtitle": "Masuk ke ruang kerja Anda",
     "submit": "Masuk",
     "invalid": "Email atau kata sandi salah"
