@@ -3,15 +3,15 @@ services:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: newproject
-      POSTGRES_PASSWORD: newproject
-      POSTGRES_DB: newproject
+      POSTGRES_USER: kronos
+      POSTGRES_PASSWORD: kronos
+      POSTGRES_DB: kronos
     ports:
       - "5435:5432"
     volumes:
-      - newproject-db:/var/lib/postgresql/data
+      - kronos-db:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U newproject -d newproject"]
+      test: ["CMD-SHELL", "pg_isready -U kronos -d kronos"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -29,7 +29,7 @@ services:
     environment:
       # Host `db` is the postgres service above; the web service talks to it
       # over the docker network (container-side port stays 5432).
-      DATABASE_URL: postgresql://newproject:newproject@db:5432/newproject?schema=public
+      DATABASE_URL: postgresql://kronos:kronos@db:5432/kronos?schema=public
       DATABASE_SSL: "false"
       AUTH_SECRET: ${AUTH_SECRET:-dev-secret-change-me}
       AUTH_URL: http://localhost:3004
@@ -47,4 +47,4 @@ services:
       - /app/.next
 
 volumes:
-  newproject-db:
+  kronos-db:
