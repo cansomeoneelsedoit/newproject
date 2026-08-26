@@ -1,7 +1,7 @@
 {
   "common": {
-    "appName": "Newproject",
-    "appTagline": "Skeleton",
+    "appName": "Kronos",
+    "appTagline": "Intelijen perdagangan",
     "signIn": "Masuk",
     "signOut": "Keluar",
     "email": "Email",
@@ -18,10 +18,15 @@
   },
   "nav": {
     "dashboard": "Dasbor",
-    "settings": "Pengaturan"
+    "settings": "Pengaturan",
+    "instruments": "Instrumen",
+    "signals": "Sinyal",
+    "backtests": "Uji Balik",
+    "portfolio": "Portofolio",
+    "tradingview": "TradingView"
   },
   "signin": {
-    "title": "Masuk ke Newproject",
+    "title": "Masuk ke Kronos",
     "subtitle": "Masuk ke ruang kerja Anda",
     "submit": "Masuk",
     "invalid": "Email atau kata sandi salah"

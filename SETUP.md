@@ -1,129 +1,204 @@
-# newproject — Setup Guide
+# Kronos — running it locally
 
-Multi-tenant **Next.js 16 + Postgres + Prisma + Auth.js** skeleton, deployed on Railway.
+AI-assisted trading platform: market data → strategy signals → backtesting →
+portfolio and paper trading. Next.js 16 + Postgres + Prisma + Auth.js.
 
-- **Live:** https://newproject.up.railway.app _(once Railway is provisioned)_
-- **Repo:** https://github.com/cansomeoneelsedoit/newproject
-- **Canonical local path:** `C:\Users\boyds\Desktop\newproject`
-- **Dev sign-in:** `dev@newproject.local` / `devpassword`
-- **Local ports:** app **3004**, Postgres **5435** (host-side)
+- **Dev sign-in:** `dev@kronos.local` / `devpassword`
+- **Ports:** app **3004**, Postgres **5435** (host side)
+
+**It runs with no credentials.** Prices default to deterministic locally
+generated series, and the analysis feature falls back to a built-in rule-based
+writer when there's no Anthropic key. You do not need an API key or a market
+data subscription to see the whole thing working.
 
 ---
 
-## 1. Prerequisites
+## Prerequisites
 
 | Tool | Version | Notes |
 |---|---|---|
-| Node.js | 22.x+ | Docker base image is `node:22-alpine` |
-| npm | 10+ | Repo uses `npm ci` (strict lockfile) |
-| Docker + Compose | latest | Recommended local path (Postgres + app) |
-| Git | any | Repo is LF; CRLF warnings on Windows are normal |
+| Node.js | 22.x+ | `node --version` |
+| npm | 10+ | ships with Node |
+| Postgres | 16 | either via Docker (below) or installed locally |
+| Git | any | repo is LF; CRLF warnings on Windows are normal and harmless |
 
-## 2. Tech stack
+---
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 16 (App Router + Turbopack) |
-| UI | React 19, Tailwind v4 + shadcn/Radix primitives |
-| Language | TypeScript (`strict`) |
-| Database | Postgres 16 |
-| ORM | Prisma 6 (`prisma-client-js`) |
-| Auth | Auth.js / NextAuth v5 (JWT) — credentials + optional Google |
-| Multi-tenant | `Organization` + `OrganizationMembership`, cookie active-org, Prisma `$extends` auto-scoping |
-| i18n | next-intl (EN/ID, cookie locale) |
-| Forms | react-hook-form + zod |
-| Tests | Vitest |
+## Option A — Docker for Postgres, app on your machine (recommended)
 
-## 3. Local development (Docker Compose — recommended)
+The most reliable mix: the database in a container, the app on host Node so
+hot-reload and breakpoints behave normally.
 
 ```bash
-git clone https://github.com/cansomeoneelsedoit/newproject.git
-cd newproject
+git clone <your-kronos-remote> kronos      # or: git clone kronos.bundle kronos
+cd kronos
+
+cp .env.example .env                       # Windows PowerShell: copy .env.example .env
+docker compose up -d db                    # Postgres 16 on localhost:5435
+
+npm install
+npm run setup                              # generate client, migrate, seed
+npm run dev                                # http://localhost:3004
+```
+
+Sign in with `dev@kronos.local` / `devpassword`.
+
+`.env.example` already points `DATABASE_URL` at the compose database
+(`kronos:kronos@localhost:5435/kronos`), so no editing is needed for this path.
+
+## Option B — everything in Docker
+
+```bash
 cp .env.example .env
-docker compose up --build      # builds, migrates, seeds, starts dev
-docker compose up -d           # subsequent runs
+docker compose up --build                  # db + web; migrates and seeds on boot
 ```
 
-- App: <http://localhost:3004> · Postgres: `localhost:5435` (`newproject`/`newproject`/`newproject`)
-- The web container boots with `prisma migrate deploy && seed && next dev`.
+App on <http://localhost:3004>. The web container runs
+`prisma migrate deploy && seed && next dev`, with source bind-mounted for
+hot reload.
+
+## Option C — your own Postgres, no Docker
+
+Create a database, then point `.env` at it:
 
 ```bash
-docker compose exec web npm test
-docker compose exec web npx prisma studio        # :5555
-docker compose exec web npx prisma migrate dev --name <change>
-docker compose exec db psql -U newproject -d newproject
+createdb kronos                            # or use an existing server/database
+cp .env.example .env
+# edit DATABASE_URL in .env to your own connection string
+npm install
+npm run setup
+npm run dev
 ```
 
-## 4. Local development (host Node, no Docker)
+---
+
+## What `npm run setup` does
+
+```
+prisma generate       # build the typed client from prisma/schema.prisma
+prisma migrate deploy # create the tables
+tsx prisma/seed.ts    # demo org, dev login, 6 instruments × 400 bars,
+                      # 4 strategies, signals, 4 backtests, a paper account
+```
+
+It's **idempotent** — safe to re-run. Every row is keyed on a stable business
+value, not a timestamp, so re-seeding updates rather than duplicating.
+
+---
+
+## Everyday commands
 
 ```bash
-npm ci
-cp .env.example .env            # DATABASE_URL → your local Postgres on :5435
-npx prisma generate
-npx prisma migrate deploy
-npm run db:seed
-npm run dev                     # http://localhost:3004 (script binds -p 3004)
+npm run dev              # dev server on :3004
+npm test                 # 140 unit tests (quant core, validation, TradingView)
+npm run typecheck        # tsc --noEmit — run before committing
+npm run lint             # eslint
+npm run build            # production build
+npm run prisma:studio    # browse the database on :5555
+npm run db:reset         # drop, re-migrate, re-seed (destructive)
 ```
 
-## 5. Environment variables
+---
 
-| Var | Required | Purpose |
-|---|---|---|
-| `DATABASE_URL` | ✅ | Postgres URL. Local: `postgresql://newproject:newproject@localhost:5435/newproject?schema=public`. Prod: Railway Postgres plugin. |
-| `DATABASE_SSL` | — | `false` locally; Railway Postgres uses SSL automatically. |
-| `AUTH_SECRET` | ✅ | `openssl rand -base64 32`. |
-| `AUTH_URL` | ✅ | Dev `http://localhost:3004`; prod the Railway domain. |
-| `AUTH_TRUST_HOST` | ✅ (prod) | `true` — required behind Railway's proxy. |
-| `UPLOAD_DIR` | ✅ (prod) | Dev `./uploads`; prod `/data/uploads` (Railway Volume). |
-| `ANTHROPIC_API_KEY` / `GEMINI_API_KEY` | optional | The SDKs ship with the stack for AI features you add. |
-| `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` | optional | Enables Google sign-in. Redirect: `http://localhost:3004/api/auth/callback/google`. |
+## Configuration you may want
 
-## 6. Database & seed
+Everything below is optional; the app works without any of it.
 
-- Schema: `prisma/schema.prisma` — Auth.js tables + `Organization`/`OrganizationMembership` + `Setting` + `AuditAction`.
-- Seed: `prisma/seed.ts` — **idempotent**; creates one org (`newproject`) + one superuser `dev@newproject.local` / `devpassword`.
-- On first setup the init migration is created with a live DB: `npx prisma migrate dev --name init`.
+### Real market data instead of generated prices
 
-## 7. npm scripts
-
-```bash
-npm run dev            # next dev -p 3004
-npm run build          # prisma generate && next build
-npm run start:prod     # prisma migrate deploy && seed && next start   (Railway)
-npm run typecheck      # tsc --noEmit   ← run before every commit
-npm run lint           # eslint
-npm test               # vitest run
-npm run prisma:migrate # prisma migrate dev
-npm run prisma:studio  # prisma studio (5555)
-npm run db:seed        # idempotent seed
+```env
+MARKET_DATA_PROVIDER=stooq
 ```
 
-## 8. Deployment (Railway)
+Pulls real key-free daily bars from Stooq. It fails soft — a network problem
+returns an empty series and a message in the UI rather than an error page. The
+default, `synthetic`, generates deterministic series locally (seeded per symbol,
+so the same symbol always produces the same history).
 
-1. Railway dashboard → New Project → Deploy from GitHub repo `newproject` (enables auto-deploy on `main`).
-2. New → Database → **PostgreSQL** (provides `${{ Postgres.DATABASE_URL }}`).
-3. web service → Volumes → New Volume, mount path `/data`.
-4. Builder = `DOCKERFILE` (already set in `railway.json`); start `npm run start:prod`; healthcheck `/api/health`.
-5. Set env vars (dashboard → web → Variables):
-   ```
-   DATABASE_URL        = ${{ Postgres.DATABASE_URL }}
-   AUTH_SECRET         = <openssl rand -base64 32>
-   AUTH_URL            = https://newproject.up.railway.app
-   AUTH_TRUST_HOST     = true
-   UPLOAD_DIR          = /data/uploads
-   ```
-6. Push to `main` → auto-deploys. Verify `GET /api/health` → 200.
+**Generated prices are not market data.** The UI labels this wherever numbers
+appear, and anything computed from them — signals, backtests, P&L — is a test of
+the machinery rather than a claim about a real market.
 
-> Prod env vars must be set in the **dashboard** — the CLI/GraphQL `variables --set`
-> path may be blocked. The container runs as **root** so it can write the Volume
-> mount; do not re-add `USER nextjs`.
+### Claude-written analysis
 
-## 9. Verifying a healthy setup
-
-```bash
-curl http://localhost:3004/api/health     # → 200
-npm run typecheck                          # → no errors
-npm test                                   # → all pass
+```env
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-Then sign in at <http://localhost:3004> with `dev@newproject.local` / `devpassword`.
+With a key, **Analyse** on an instrument page calls `claude-opus-5` and asks it
+to interpret the indicator snapshot. Without one, the same button runs a
+deterministic rule-based writer over the identical snapshot. Every stored
+analysis records which engine produced it and the UI badges it, so the two are
+never confused.
+
+---
+
+## Connecting TradingView
+
+Kronos generates the Pine script; TradingView fires the alerts; Kronos fills the
+paper orders. Open **TradingView** in the sidebar and work down the page:
+
+1. Pick a **paper account** and a **notional per signal**, then Save. Until an
+   account is linked, every alert is rejected (and logged as such).
+2. Copy the **Pine script** for a strategy → TradingView → Pine Editor → Add to
+   chart.
+3. Create an alert on that script. Trigger: **"alert() function calls only"**.
+   Notifications → Webhook URL: the URL shown on the page. **Leave the alert
+   message box empty** — the script supplies its own JSON.
+
+Two things to know before you rely on it:
+
+- **TradingView cannot reach `localhost`.** The webhook URL has to be public.
+  For a local instance, run a tunnel (`cloudflared tunnel --url
+  http://localhost:3004`, `ngrok http 3004`, …) and create the alert against the
+  tunnel's hostname. The page warns you when the URL it is showing is local.
+- **The secret lives in the script.** TradingView cannot send custom headers, so
+  the shared secret travels in the alert body and is baked into the script you
+  copy. Treat that script as a credential; **Rotate secret** invalidates every
+  copy already pasted into TradingView.
+
+Alerts set a *target position* — long, short or flat — rather than adding a
+trade, so a repeated alert will not pyramid, and a "buy" on a symbol you hold
+manually will resize that holding. Use a dedicated paper account if you also
+trade by hand. Every alert is logged on the same page whether or not it traded,
+including rejected ones.
+
+## Troubleshooting
+
+| Symptom | Cause / fix |
+|---|---|
+| `Can't reach database server at localhost:5435` | Postgres isn't up. `docker compose up -d db`, or point `DATABASE_URL` at your own server. |
+| `port is already allocated` on 5435 | Something else holds the port. Change the host side of the mapping in `docker-compose.yml` (`"5436:5432"`) and update `DATABASE_URL` to match. |
+| Port 3004 in use | `npm run dev -- -p 3005`, and set `AUTH_URL=http://localhost:3005` in `.env` — Auth.js needs the two to agree or sign-in redirects fail. |
+| Sign-in loops back to `/signin` | `AUTH_SECRET` missing or `AUTH_URL` doesn't match the address you're browsing. |
+| `The table 'public.instruments' does not exist` | Migrations weren't applied — run `npm run setup`. |
+| Empty dashboard after setup | The seed ran against a different database than the app reads. Check `DATABASE_URL` is the same in both shells. |
+| Type errors only on build, not in the editor | The legacy Prisma generator types the client loosely. Always run `npm run typecheck` before committing. |
+| `git` reports CRLF warnings on Windows | Expected — the repo is LF. Harmless. |
+| TradingView alert returns 307 / lands on `/signin` | The webhook path is being caught by the auth proxy. `/api/webhooks` is exempted in `src/proxy.ts`; check the matcher there if you've edited it. |
+| TradingView alert returns `Bad secret` | The pasted script predates a **Rotate secret**. Re-copy it from the TradingView page. |
+| Alerts log as `REJECTED — No instrument named …` | TradingView's ticker doesn't match a Kronos symbol. Add the instrument with the exact ticker the alert sends. |
+
+---
+
+## Where things live
+
+```
+src/lib/            pure quant core — no Prisma, no React, all unit-tested
+  indicators.ts     SMA, EMA, RSI, ATR, MACD, Bollinger, Donchian
+  strategies.ts     four strategies; each maps candles → target position
+  backtest.ts       next-bar-open execution, commission + slippage
+  metrics.ts        CAGR, drawdown, Sharpe, Sortino, profit factor
+  portfolio.ts      average-cost position accounting
+  validation.ts     out-of-sample split, walk-forward, acceptance gates
+  pine.ts           Pine v5 generation for TradingView
+  alerts.ts         TradingView alert parsing and position sizing
+  synthetic.ts      deterministic price generation
+src/server/         data access, server actions, market data, AI layer
+src/app/(app)/      dashboard, instruments, signals, backtests, portfolio
+prisma/             schema, migrations, seed
+```
+
+See `CLAUDE.md` for the architectural notes — especially the no-lookahead rule
+in the backtester and the tenant-scoping rules, both of which are easy to break
+by accident.
