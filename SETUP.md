@@ -104,6 +104,26 @@ npm run db:reset         # drop, re-migrate, re-seed (destructive)
 
 Everything below is optional; the app works without any of it.
 
+### Your own superuser login
+
+The demo login is public — it's printed above and in the README — so use it to
+look around, not to own anything. To sign in as yourself, put this in `.env`:
+
+```env
+ADMIN_EMAIL=you@example.com
+ADMIN_PASSWORD=your-password
+ADMIN_NAME=Your Name
+```
+
+then `npm run db:seed`. You get a SUPERUSER who owns the demo org, which means
+the **Users** page in the sidebar — add, edit, reset passwords, delete.
+
+The credentials live in `.env` (gitignored) and never in `seed.ts`, deliberately:
+a password committed to a repository stays in its history after you delete it,
+and changing it later doesn't un-leak the old one. Re-running the seed resets
+this password to whatever `ADMIN_PASSWORD` currently says, so it's also how you
+get back in if you lock yourself out.
+
 ### Real market data instead of generated prices
 
 ```env

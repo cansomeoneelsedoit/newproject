@@ -69,6 +69,47 @@ const STRATEGIES = [
 
 const BARS = 400;
 
+/**
+ * Optional second superuser, taken from the environment.
+ *
+ * The demo login above is public knowledge — it is printed in the README — so
+ * it is fine hard-coded. A real account is not, which is why this one is read
+ * from `ADMIN_EMAIL` / `ADMIN_PASSWORD` rather than written into the file: a
+ * password committed to a repository stays in its history even after it is
+ * deleted, and cannot be un-leaked by changing it later.
+ *
+ * Set both variables in `.env` and re-run `npm run db:seed`. With either unset
+ * this is a no-op, so the seed still works with no configuration. Re-running it
+ * resets the password to whatever `ADMIN_PASSWORD` currently holds, which makes
+ * it the recovery path if you lock yourself out.
+ */
+async function seedAdminUser(organizationId: string) {
+  const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  const password = process.env.ADMIN_PASSWORD;
+  if (!email || !password) return;
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  const admin = await prisma.user.upsert({
+    where: { email },
+    update: { passwordHash, role: UserRole.SUPERUSER },
+    create: {
+      email,
+      name: process.env.ADMIN_NAME?.trim() || email.split("@")[0],
+      passwordHash,
+      role: UserRole.SUPERUSER,
+    },
+  });
+
+  await prisma.organizationMembership.upsert({
+    where: { userId_organizationId: { userId: admin.id, organizationId } },
+    update: { role: OrgRole.OWNER },
+    create: { userId: admin.id, organizationId, role: OrgRole.OWNER },
+  });
+
+  // Never log the password, and never log it back as "confirmation".
+  console.log(`Admin superuser ready: ${email}`);
+}
+
 async function main() {
   const org = await prisma.organization.upsert({
     where: { slug: "kronos" },
@@ -93,6 +134,8 @@ async function main() {
     update: {},
     create: { userId: user.id, organizationId: org.id, role: OrgRole.OWNER },
   });
+
+  await seedAdminUser(org.id);
 
   await prisma.setting.upsert({
     where: { id: "singleton" },
