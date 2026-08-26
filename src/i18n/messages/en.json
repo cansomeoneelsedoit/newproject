@@ -22,7 +22,8 @@
     "instruments": "Instruments",
     "signals": "Signals",
     "backtests": "Backtests",
-    "portfolio": "Portfolio"
+    "portfolio": "Portfolio",
+    "tradingview": "TradingView"
   },
   "signin": {
     "title": "Sign in to Kronos",

@@ -10,8 +10,17 @@ import { requireActiveOrgId } from "@/server/org";
 import { recordAction } from "@/server/audit";
 import { fetchCandles, activeProvider } from "@/server/market-data";
 import { analyseInstrument, buildSnapshot } from "@/server/ai";
-import { getCandles } from "@/server/kronos";
+import { getCandles, newWebhookSecret } from "@/server/kronos";
 import { backtest, DEFAULT_CONFIG } from "@/lib/backtest";
+import {
+  DEFAULT_OOS_FRACTION,
+  DEFAULT_RULES,
+  checkAcceptance,
+  finalVerdict,
+  splitSample,
+  walkForward,
+  walkForwardVerdict,
+} from "@/lib/validation";
 import { latestSignal, parseParams, type StrategyKind } from "@/lib/strategies";
 import {
   applyFill,
@@ -20,6 +29,7 @@ import {
   slippedPrice,
   type Position as PositionState,
 } from "@/lib/portfolio";
+import { settleOrder } from "@/server/fills";
 import { round } from "@/lib/format";
 
 export type ActionResult<T = void> = { ok: true; data?: T } | { ok: false; error: string };
@@ -351,42 +361,115 @@ export async function runBacktest(input: unknown): Promise<ActionResult<{ id: st
   if (!strategy) return { ok: false, error: "Strategy not found" };
 
   const candles = await getCandles(instrument.id, 2000);
-  if (candles.length < 60) {
-    return { ok: false, error: "Not enough price history — sync more bars first" };
+  // The holdout costs 30% of history and walk-forward needs several windows on
+  // top of that, so short series cannot be validated at all. Refuse rather than
+  // silently skipping gates and reporting a number that means nothing.
+  if (candles.length < 150) {
+    return {
+      ok: false,
+      error: `Need at least 150 bars to validate (have ${candles.length}) — sync more history first`,
+    };
   }
 
-  const result = backtest(strategy.kind as StrategyKind, candles, strategy.params, {
+  const cfg = {
     initialCash: parsed.data.initialCash,
     commissionBps: parsed.data.commissionBps,
     slippageBps: parsed.data.slippageBps,
     exposure: DEFAULT_CONFIG.exposure,
+  };
+  const kind = strategy.kind as StrategyKind;
+  const runOn = (rows: typeof candles) => backtest(kind, rows, strategy.params, cfg);
+
+  // --- The three gates ------------------------------------------------------
+  // 1. Tune and measure on the in-sample period only.
+  // 2. Check consistency across windows WITHIN that in-sample period — passing
+  //    the full series here would place the windows inside the holdout and
+  //    quietly destroy the very thing gate 3 is measuring.
+  // 3. Score the untouched holdout exactly once.
+  const { inSample, outOfSample } = splitSample(candles, DEFAULT_OOS_FRACTION);
+
+  const isResult = runOn(inSample);
+  const windows = walkForward(inSample, runOn, 5, 0.5);
+  const wfVerdict = walkForwardVerdict(windows);
+  const oosResult = runOn(outOfSample);
+
+  const isCheck = checkAcceptance({
+    totalReturnPct: isResult.summary.totalReturnPct,
+    sharpe: isResult.summary.sharpe,
+    maxDrawdownPct: isResult.summary.maxDrawdownPct,
+    profitFactor: isResult.summary.profitFactor,
+    tradeCount: isResult.summary.tradeCount,
+    winRatePct: isResult.summary.winRatePct,
   });
+  // The holdout is judged on a shorter span, so demanding the full trade count
+  // there would reject everything on sample size alone. Scale it with the split.
+  const oosRules = {
+    ...DEFAULT_RULES,
+    minTrades: Math.max(5, Math.floor(DEFAULT_RULES.minTrades * DEFAULT_OOS_FRACTION)),
+  };
+  const oosCheck = checkAcceptance(
+    {
+      totalReturnPct: oosResult.summary.totalReturnPct,
+      sharpe: oosResult.summary.sharpe,
+      maxDrawdownPct: oosResult.summary.maxDrawdownPct,
+      profitFactor: oosResult.summary.profitFactor,
+      tradeCount: oosResult.summary.tradeCount,
+      winRatePct: oosResult.summary.winRatePct,
+    },
+    oosRules,
+  );
+  const verdict = finalVerdict(isCheck, wfVerdict, oosCheck);
 
   const created = await prisma.backtest.create({
     data: {
       organizationId: c.organizationId,
       instrumentId: instrument.id,
       strategyId: strategy.id,
-      from: candles[0].ts,
-      to: candles[candles.length - 1].ts,
+      from: inSample[0].ts,
+      to: inSample[inSample.length - 1].ts,
       initialCash: parsed.data.initialCash,
       commissionBps: parsed.data.commissionBps,
       slippageBps: parsed.data.slippageBps,
-      finalEquity: round(result.summary.finalEquity, 2),
-      totalReturnPct: round(result.summary.totalReturnPct, 2),
-      cagrPct: round(result.summary.cagrPct, 2),
-      maxDrawdownPct: round(result.summary.maxDrawdownPct, 2),
-      sharpe: round(result.summary.sharpe, 3),
-      winRatePct: round(result.summary.winRatePct, 2),
+      finalEquity: round(isResult.summary.finalEquity, 2),
+      totalReturnPct: round(isResult.summary.totalReturnPct, 2),
+      cagrPct: round(isResult.summary.cagrPct, 2),
+      maxDrawdownPct: round(isResult.summary.maxDrawdownPct, 2),
+      sharpe: round(isResult.summary.sharpe, 3),
+      winRatePct: round(isResult.summary.winRatePct, 2),
       // summarise() already clamps an infinite profit factor for storage.
-      profitFactor: round(result.summary.profitFactor, 3),
-      tradeCount: result.summary.tradeCount,
-      equityCurve: result.equityCurve.map((p) => ({
+      profitFactor: round(isResult.summary.profitFactor, 3),
+      tradeCount: isResult.summary.tradeCount,
+      equityCurve: isResult.equityCurve.map((p) => ({
         ts: p.ts.toISOString(),
         equity: round(p.equity, 2),
       })),
+
+      accepted: verdict.accepted,
+      verdictSummary: verdict.summary,
+      failures: verdict.failures,
+      oosFrom: outOfSample[0]?.ts ?? null,
+      oosTo: outOfSample[outOfSample.length - 1]?.ts ?? null,
+      oosReturnPct: round(oosResult.summary.totalReturnPct, 2),
+      oosSharpe: round(oosResult.summary.sharpe, 3),
+      oosMaxDrawdownPct: round(oosResult.summary.maxDrawdownPct, 2),
+      oosTradeCount: oosResult.summary.tradeCount,
+      oosWinRatePct: round(oosResult.summary.winRatePct, 2),
+      walkForwardPassed: wfVerdict.passed,
+      walkForwardReason: wfVerdict.reason,
+      walkForwardWindows: windows.map((w) => ({
+        window: w.window,
+        from: w.from.toISOString(),
+        to: w.to.toISOString(),
+        bars: w.bars,
+        totalReturnPct: round(w.totalReturnPct, 2),
+        sharpe: round(w.sharpe, 3),
+        maxDrawdownPct: round(w.maxDrawdownPct, 2),
+        tradeCount: w.tradeCount,
+        winRatePct: round(w.winRatePct, 2),
+      })),
+
       trades: {
-        create: result.trades.map((t) => ({
+        create: isResult.trades.map((t) => ({
           side: t.side,
           quantity: round(t.quantity, 6),
           entryTs: t.entryTs,
@@ -405,11 +488,16 @@ export async function runBacktest(input: unknown): Promise<ActionResult<{ id: st
     type: "backtest.run",
     entityType: "Backtest",
     entityId: created.id,
-    description: `Backtested "${strategy.name}" on ${instrument.symbol}`,
+    description: `Backtested "${strategy.name}" on ${instrument.symbol} — ${
+      verdict.accepted ? "accepted" : "rejected"
+    }`,
     userId: c.userId,
     payload: {
       symbol: instrument.symbol,
-      totalReturnPct: round(result.summary.totalReturnPct, 2),
+      inSampleReturnPct: round(isResult.summary.totalReturnPct, 2),
+      oosReturnPct: round(oosResult.summary.totalReturnPct, 2),
+      accepted: verdict.accepted,
+      failures: verdict.failures,
     },
   });
 
@@ -482,18 +570,11 @@ const orderSchema = z.object({
 });
 
 /**
- * Place a paper order and settle it against the latest close.
+ * Place a paper order from the UI.
  *
- * Fill model, stated plainly because a paper fill that flatters the trader is
- * worse than useless:
- * - MARKET fills at the last close, moved against the trader by `slippageBps`.
- * - LIMIT fills only if the last close is already at or through the limit, at
- *   the better of the limit and the slipped price. Otherwise it rests as
- *   PENDING rather than pretending to fill.
- * - Commission is charged in basis points of notional on every fill.
- *
- * The whole settlement runs in one transaction so cash, position, and order
- * status can never disagree.
+ * The fill itself lives in `src/server/fills.ts` and is shared with the
+ * TradingView webhook — see the fill model documented there. This wrapper only
+ * resolves the caller's organisation, records the audit entry and revalidates.
  */
 export async function placeOrder(input: unknown): Promise<ActionResult<{ id: string; status: string }>> {
   const c = await ctx();
@@ -504,159 +585,22 @@ export async function placeOrder(input: unknown): Promise<ActionResult<{ id: str
     return { ok: false, error: "A limit order needs a limit price" };
   }
 
-  const [account, instrument] = await Promise.all([
-    prisma.account_.findFirst({
-      where: { id: parsed.data.accountId, organizationId: c.organizationId },
-      select: { id: true, name: true, cash: true },
-    }),
-    prisma.instrument.findFirst({
-      where: { id: parsed.data.instrumentId, organizationId: c.organizationId },
-      select: {
-        id: true,
-        symbol: true,
-        candles: { orderBy: { ts: "desc" }, take: 1, select: { close: true, ts: true } },
-      },
-    }),
-  ]);
-  if (!account) return { ok: false, error: "Account not found" };
-  if (!instrument) return { ok: false, error: "Instrument not found" };
+  const settled = await settleOrder({ ...parsed.data, organizationId: c.organizationId });
+  if (!settled.ok) return settled;
 
-  const lastClose = instrument.candles[0]?.close;
-  if (lastClose === undefined) {
-    return { ok: false, error: `No price history for ${instrument.symbol} — sync candles first` };
+  if (settled.status === "FILLED") {
+    await recordAction(prisma, {
+      type: "order.fill",
+      entityType: "Order",
+      entityId: settled.orderId,
+      description: `${parsed.data.side} ${parsed.data.quantity} ${settled.symbol} @ ${settled.fillPrice}`,
+      userId: c.userId,
+      payload: { symbol: settled.symbol, side: parsed.data.side, price: settled.fillPrice },
+    });
   }
-
-  const signedQty = parsed.data.side === "BUY" ? parsed.data.quantity : -parsed.data.quantity;
-  const slipped = slippedPrice(lastClose, parsed.data.side, parsed.data.slippageBps);
-
-  // Decide whether this order fills at all.
-  let fillPrice: number | null = null;
-  let note: string | null = null;
-  if (parsed.data.type === "MARKET") {
-    fillPrice = slipped;
-  } else {
-    const limit = parsed.data.limitPrice as number;
-    const marketable = parsed.data.side === "BUY" ? lastClose <= limit : lastClose >= limit;
-    if (marketable) {
-      // Never fill worse than the limit the trader specified.
-      fillPrice = parsed.data.side === "BUY" ? Math.min(slipped, limit) : Math.max(slipped, limit);
-    } else {
-      note = `Resting: last close ${round(lastClose, 4)} has not reached the limit ${limit}`;
-    }
-  }
-
-  if (fillPrice === null) {
-    const order = await prisma.order_.create({
-      data: {
-        organizationId: c.organizationId,
-        accountId: account.id,
-        instrumentId: instrument.id,
-        side: parsed.data.side,
-        type: parsed.data.type,
-        quantity: parsed.data.quantity,
-        limitPrice: parsed.data.limitPrice ?? null,
-        status: "PENDING",
-        note,
-      },
-    });
-    refresh();
-    return { ok: true, data: { id: order.id, status: "PENDING" } };
-  }
-
-  const commission = commissionFor(signedQty, fillPrice, parsed.data.commissionBps);
-  const delta = cashDelta({ quantity: signedQty, price: fillPrice, commission });
-
-  // Refuse a buy the account cannot fund. Shorts are allowed — this is a paper
-  // book, and a short raises cash rather than spending it.
-  if (delta < 0 && account.cash + delta < 0) {
-    const order = await prisma.order_.create({
-      data: {
-        organizationId: c.organizationId,
-        accountId: account.id,
-        instrumentId: instrument.id,
-        side: parsed.data.side,
-        type: parsed.data.type,
-        quantity: parsed.data.quantity,
-        limitPrice: parsed.data.limitPrice ?? null,
-        status: "REJECTED",
-        note: `Insufficient cash: need ${round(-delta, 2)}, have ${round(account.cash, 2)}`,
-      },
-    });
-    refresh();
-    return { ok: true, data: { id: order.id, status: "REJECTED" } };
-  }
-
-  const orderId = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
-    const existing = await tx.position.findFirst({
-      where: {
-        organizationId: c.organizationId,
-        accountId: account.id,
-        instrumentId: instrument.id,
-      },
-      select: { id: true, quantity: true, avgCost: true, realizedPnl: true },
-    });
-
-    const before: PositionState = existing
-      ? { quantity: existing.quantity, avgCost: existing.avgCost, realizedPnl: existing.realizedPnl }
-      : { quantity: 0, avgCost: 0, realizedPnl: 0 };
-
-    const after = applyFill(before, {
-      quantity: signedQty,
-      price: fillPrice as number,
-      commission,
-    });
-
-    if (existing) {
-      await tx.position.update({
-        where: { id: existing.id },
-        data: { quantity: after.quantity, avgCost: after.avgCost, realizedPnl: after.realizedPnl },
-      });
-    } else {
-      await tx.position.create({
-        data: {
-          organizationId: c.organizationId,
-          accountId: account.id,
-          instrumentId: instrument.id,
-          quantity: after.quantity,
-          avgCost: after.avgCost,
-          realizedPnl: after.realizedPnl,
-        },
-      });
-    }
-
-    await tx.account_.update({
-      where: { id: account.id },
-      data: { cash: account.cash + delta },
-    });
-
-    const order = await tx.order_.create({
-      data: {
-        organizationId: c.organizationId,
-        accountId: account.id,
-        instrumentId: instrument.id,
-        side: parsed.data.side,
-        type: parsed.data.type,
-        quantity: parsed.data.quantity,
-        limitPrice: parsed.data.limitPrice ?? null,
-        status: "FILLED",
-        filledPrice: round(fillPrice as number, 4),
-        filledAt: new Date(),
-      },
-    });
-    return order.id;
-  });
-
-  await recordAction(prisma, {
-    type: "order.fill",
-    entityType: "Order",
-    entityId: orderId,
-    description: `${parsed.data.side} ${parsed.data.quantity} ${instrument.symbol} @ ${round(fillPrice, 4)}`,
-    userId: c.userId,
-    payload: { symbol: instrument.symbol, side: parsed.data.side, price: round(fillPrice, 4) },
-  });
 
   refresh();
-  return { ok: true, data: { id: orderId, status: "FILLED" } };
+  return { ok: true, data: { id: settled.orderId, status: settled.status } };
 }
 
 export async function cancelOrder(id: string): Promise<ActionResult> {
@@ -744,4 +688,83 @@ export async function generateAnalysis(instrumentId: string): Promise<ActionResu
   revalidatePath(`/instruments/${instrument.id}`);
   refresh();
   return { ok: true, data: { id: row.id } };
+}
+
+// ---------------------------------------------------------------------------
+// TradingView endpoint
+// ---------------------------------------------------------------------------
+
+const endpointSchema = z.object({
+  accountId: z.string().min(1).nullable().optional(),
+  enabled: z.boolean().default(true),
+  notionalPerTrade: z.coerce.number().positive("Notional must be positive").max(10_000_000),
+  slippageBps: z.coerce.number().min(0).max(500).default(2),
+  commissionBps: z.coerce.number().min(0).max(500).default(5),
+});
+
+export async function updateWebhookEndpoint(input: unknown): Promise<ActionResult> {
+  const c = await ctx();
+  if (!c.ok) return c;
+  const parsed = endpointSchema.safeParse(input);
+  if (!parsed.success) {
+    return { ok: false, error: parsed.error.issues[0]?.message ?? "Validation failed" };
+  }
+
+  const accountId = parsed.data.accountId ?? null;
+  if (accountId) {
+    const account = await prisma.account_.findFirst({
+      where: { id: accountId, organizationId: c.organizationId },
+      select: { id: true },
+    });
+    if (!account) return { ok: false, error: "Account not found" };
+  }
+
+  await prisma.webhookEndpoint.upsert({
+    where: { organizationId: c.organizationId },
+    create: {
+      organizationId: c.organizationId,
+      secret: newWebhookSecret(),
+      accountId,
+      enabled: parsed.data.enabled,
+      notionalPerTrade: parsed.data.notionalPerTrade,
+      slippageBps: parsed.data.slippageBps,
+      commissionBps: parsed.data.commissionBps,
+    },
+    update: {
+      accountId,
+      enabled: parsed.data.enabled,
+      notionalPerTrade: parsed.data.notionalPerTrade,
+      slippageBps: parsed.data.slippageBps,
+      commissionBps: parsed.data.commissionBps,
+    },
+  });
+
+  revalidatePath("/alerts");
+  return { ok: true };
+}
+
+/**
+ * Rotate the shared secret. Every Pine script already pasted into TradingView
+ * stops working the moment this runs — that is the point, and the UI says so.
+ */
+export async function rotateWebhookSecret(): Promise<ActionResult> {
+  const c = await ctx();
+  if (!c.ok) return c;
+  const secret = newWebhookSecret();
+  await prisma.webhookEndpoint.upsert({
+    where: { organizationId: c.organizationId },
+    create: { organizationId: c.organizationId, secret },
+    update: { secret },
+  });
+
+  await recordAction(prisma, {
+    type: "webhook.rotate",
+    entityType: "WebhookEndpoint",
+    entityId: c.organizationId,
+    description: "Rotated the TradingView webhook secret",
+    userId: c.userId,
+  });
+
+  revalidatePath("/alerts");
+  return { ok: true };
 }

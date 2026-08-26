@@ -90,7 +90,7 @@ value, not a timestamp, so re-seeding updates rather than duplicating.
 
 ```bash
 npm run dev              # dev server on :3004
-npm test                 # 91 unit tests (the quant core)
+npm test                 # 140 unit tests (quant core, validation, TradingView)
 npm run typecheck        # tsc --noEmit — run before committing
 npm run lint             # eslint
 npm run build            # production build
@@ -133,6 +133,36 @@ never confused.
 
 ---
 
+## Connecting TradingView
+
+Kronos generates the Pine script; TradingView fires the alerts; Kronos fills the
+paper orders. Open **TradingView** in the sidebar and work down the page:
+
+1. Pick a **paper account** and a **notional per signal**, then Save. Until an
+   account is linked, every alert is rejected (and logged as such).
+2. Copy the **Pine script** for a strategy → TradingView → Pine Editor → Add to
+   chart.
+3. Create an alert on that script. Trigger: **"alert() function calls only"**.
+   Notifications → Webhook URL: the URL shown on the page. **Leave the alert
+   message box empty** — the script supplies its own JSON.
+
+Two things to know before you rely on it:
+
+- **TradingView cannot reach `localhost`.** The webhook URL has to be public.
+  For a local instance, run a tunnel (`cloudflared tunnel --url
+  http://localhost:3004`, `ngrok http 3004`, …) and create the alert against the
+  tunnel's hostname. The page warns you when the URL it is showing is local.
+- **The secret lives in the script.** TradingView cannot send custom headers, so
+  the shared secret travels in the alert body and is baked into the script you
+  copy. Treat that script as a credential; **Rotate secret** invalidates every
+  copy already pasted into TradingView.
+
+Alerts set a *target position* — long, short or flat — rather than adding a
+trade, so a repeated alert will not pyramid, and a "buy" on a symbol you hold
+manually will resize that holding. Use a dedicated paper account if you also
+trade by hand. Every alert is logged on the same page whether or not it traded,
+including rejected ones.
+
 ## Troubleshooting
 
 | Symptom | Cause / fix |
@@ -145,6 +175,9 @@ never confused.
 | Empty dashboard after setup | The seed ran against a different database than the app reads. Check `DATABASE_URL` is the same in both shells. |
 | Type errors only on build, not in the editor | The legacy Prisma generator types the client loosely. Always run `npm run typecheck` before committing. |
 | `git` reports CRLF warnings on Windows | Expected — the repo is LF. Harmless. |
+| TradingView alert returns 307 / lands on `/signin` | The webhook path is being caught by the auth proxy. `/api/webhooks` is exempted in `src/proxy.ts`; check the matcher there if you've edited it. |
+| TradingView alert returns `Bad secret` | The pasted script predates a **Rotate secret**. Re-copy it from the TradingView page. |
+| Alerts log as `REJECTED — No instrument named …` | TradingView's ticker doesn't match a Kronos symbol. Add the instrument with the exact ticker the alert sends. |
 
 ---
 
@@ -157,6 +190,9 @@ src/lib/            pure quant core — no Prisma, no React, all unit-tested
   backtest.ts       next-bar-open execution, commission + slippage
   metrics.ts        CAGR, drawdown, Sharpe, Sortino, profit factor
   portfolio.ts      average-cost position accounting
+  validation.ts     out-of-sample split, walk-forward, acceptance gates
+  pine.ts           Pine v5 generation for TradingView
+  alerts.ts         TradingView alert parsing and position sizing
   synthetic.ts      deterministic price generation
 src/server/         data access, server actions, market data, AI layer
 src/app/(app)/      dashboard, instruments, signals, backtests, portfolio

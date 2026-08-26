@@ -32,7 +32,9 @@ export const config = {
   matcher: [
     // Match everything except: /api/auth/*, /api/health (public for Railway
     // health-check), /api/uploads/* (handled inside the route via auth()),
-    // Next internals, and static files.
-    "/((?!api/auth|api/health|api/uploads|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
+    // /api/webhooks/* (authenticated by a per-org shared secret inside the
+    // route — TradingView has no session and cannot send one), Next
+    // internals, and static files.
+    "/((?!api/auth|api/health|api/uploads|api/webhooks|_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)",
   ],
 };

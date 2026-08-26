@@ -21,6 +21,7 @@ const ORG_SCOPED_MODELS = new Set([
   "Position",
   "Order_",
   "AiAnalysis",
+  "WebhookAlert",
 ]);
 
 const READ_OPS = new Set([

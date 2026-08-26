@@ -3,6 +3,15 @@ import bcrypt from "bcryptjs";
 
 import { generateCandles } from "../src/lib/synthetic";
 import { backtest } from "../src/lib/backtest";
+import {
+  DEFAULT_OOS_FRACTION,
+  DEFAULT_RULES,
+  checkAcceptance,
+  finalVerdict,
+  splitSample,
+  walkForward,
+  walkForwardVerdict,
+} from "../src/lib/validation";
 import { latestSignal, type StrategyKind } from "../src/lib/strategies";
 import { applyFill, cashDelta, commissionFor, slippedPrice } from "../src/lib/portfolio";
 
@@ -227,6 +236,7 @@ async function main() {
   ];
 
   let backtestCount = 0;
+  let acceptedCount = 0;
   for (const run of RUNS) {
     const instrumentId = instrumentIds[run.symbol];
     const strategyId = strategyIds[run.strategy];
@@ -241,36 +251,82 @@ async function main() {
     const candles = await candlesFor(instrumentId);
     if (candles.length < 60) continue;
 
-    const result = backtest(spec.kind as StrategyKind, candles, spec.params, {
-      initialCash: 100_000,
-      commissionBps: 5,
-      slippageBps: 2,
+    // Same three gates the live action runs — a seeded backtest that skipped
+    // validation would be exactly the flattering lie this layer exists to stop.
+    const cfg = { initialCash: 100_000, commissionBps: 5, slippageBps: 2 };
+    const runOn = (rows: typeof candles) =>
+      backtest(spec.kind as StrategyKind, rows, spec.params, cfg);
+
+    const { inSample, outOfSample } = splitSample(candles, DEFAULT_OOS_FRACTION);
+    const isResult = runOn(inSample);
+    const windows = walkForward(inSample, runOn, 5, 0.5);
+    const wf = walkForwardVerdict(windows);
+    const oosResult = runOn(outOfSample);
+
+    const pick = (r: typeof isResult) => ({
+      totalReturnPct: r.summary.totalReturnPct,
+      sharpe: r.summary.sharpe,
+      maxDrawdownPct: r.summary.maxDrawdownPct,
+      profitFactor: r.summary.profitFactor,
+      tradeCount: r.summary.tradeCount,
+      winRatePct: r.summary.winRatePct,
     });
+    const isCheck = checkAcceptance(pick(isResult));
+    const oosCheck = checkAcceptance(pick(oosResult), {
+      ...DEFAULT_RULES,
+      minTrades: Math.max(5, Math.floor(DEFAULT_RULES.minTrades * DEFAULT_OOS_FRACTION)),
+    });
+    const verdict = finalVerdict(isCheck, wf, oosCheck);
 
     await prisma.backtest.create({
       data: {
         organizationId: org.id,
         instrumentId,
         strategyId,
-        from: candles[0].ts,
-        to: candles[candles.length - 1].ts,
-        initialCash: 100_000,
-        commissionBps: 5,
-        slippageBps: 2,
-        finalEquity: result.summary.finalEquity,
-        totalReturnPct: result.summary.totalReturnPct,
-        cagrPct: result.summary.cagrPct,
-        maxDrawdownPct: result.summary.maxDrawdownPct,
-        sharpe: result.summary.sharpe,
-        winRatePct: result.summary.winRatePct,
-        profitFactor: result.summary.profitFactor,
-        tradeCount: result.summary.tradeCount,
-        equityCurve: result.equityCurve.map((p) => ({
-          ts: p.ts.toISOString(),
-          equity: Math.round(p.equity * 100) / 100,
+        from: inSample[0].ts,
+        to: inSample[inSample.length - 1].ts,
+        initialCash: cfg.initialCash,
+        commissionBps: cfg.commissionBps,
+        slippageBps: cfg.slippageBps,
+        finalEquity: isResult.summary.finalEquity,
+        totalReturnPct: isResult.summary.totalReturnPct,
+        cagrPct: isResult.summary.cagrPct,
+        maxDrawdownPct: isResult.summary.maxDrawdownPct,
+        sharpe: isResult.summary.sharpe,
+        winRatePct: isResult.summary.winRatePct,
+        profitFactor: isResult.summary.profitFactor,
+        tradeCount: isResult.summary.tradeCount,
+        equityCurve: isResult.equityCurve.map((pt) => ({
+          ts: pt.ts.toISOString(),
+          equity: Math.round(pt.equity * 100) / 100,
         })),
+
+        accepted: verdict.accepted,
+        verdictSummary: verdict.summary,
+        failures: verdict.failures,
+        oosFrom: outOfSample[0]?.ts ?? null,
+        oosTo: outOfSample[outOfSample.length - 1]?.ts ?? null,
+        oosReturnPct: oosResult.summary.totalReturnPct,
+        oosSharpe: oosResult.summary.sharpe,
+        oosMaxDrawdownPct: oosResult.summary.maxDrawdownPct,
+        oosTradeCount: oosResult.summary.tradeCount,
+        oosWinRatePct: oosResult.summary.winRatePct,
+        walkForwardPassed: wf.passed,
+        walkForwardReason: wf.reason,
+        walkForwardWindows: windows.map((w) => ({
+          window: w.window,
+          from: w.from.toISOString(),
+          to: w.to.toISOString(),
+          bars: w.bars,
+          totalReturnPct: w.totalReturnPct,
+          sharpe: w.sharpe,
+          maxDrawdownPct: w.maxDrawdownPct,
+          tradeCount: w.tradeCount,
+          winRatePct: w.winRatePct,
+        })),
+
         trades: {
-          create: result.trades.map((t) => ({
+          create: isResult.trades.map((t) => ({
             side: t.side,
             quantity: t.quantity,
             entryTs: t.entryTs,
@@ -284,6 +340,7 @@ async function main() {
         },
       },
     });
+    if (verdict.accepted) acceptedCount += 1;
     backtestCount += 1;
   }
 
@@ -373,6 +430,7 @@ async function main() {
     strategies: STRATEGIES.length,
     signalsWritten: signalCount,
     backtestsWritten: backtestCount,
+    backtestsAccepted: acceptedCount,
   });
 }
 

@@ -41,6 +41,61 @@ unit-tests directly (91 tests in `src/lib/*.test.ts`):
   path run every fill through `applyFill`. Handles partial closes and flips
   through zero (close, then re-open the excess at the fill price).
 
+## Validation — the part that matters
+
+A backtest that only reports its in-sample return is a sales pitch. `runBacktest`
+(`src/server/kronos-actions.ts`) runs **three gates** via `src/lib/validation.ts`
+and persists all of them:
+
+1. **In-sample acceptance** — `checkAcceptance()` against `DEFAULT_RULES`
+   (≥30 trades, profit factor 1.3–4, max DD ≥ −35%, Sharpe ≥ 0.8, win rate ≤ 90%).
+   The *upper* bounds are not a typo: a profit factor of 8 or a 95% win rate is
+   evidence of a bug or a lookahead leak, not of an edge.
+2. **Walk-forward** — 5 windows over the in-sample slice. Needs 60%+ of windows
+   profitable and no window worse than −40% drawdown.
+3. **Out-of-sample** — the final `DEFAULT_OOS_FRACTION` (30%) of bars, never
+   touched by steps 1–2.
+
+**The invariant, and the reason this file exists:** walk-forward windows are cut
+from the *in-sample slice only*. `splitSample()` first, `walkForwardRanges()`
+second, on the shorter array. Tiling windows across the full series lets the
+holdout leak into tuning, which is the exact bug this layer was ported to fix —
+`validation.test.ts` has a regression test that asserts every window end index is
+`<= splitIndex`.
+
+`Backtest.from`/`to` describe the **in-sample** window; the holdout is
+`oosFrom`/`oosTo`. The UI shows both side by side and flags decay over 20 points,
+because a strategy that goes +36% in-sample and −7% out-of-sample is the whole
+failure mode in one row.
+
+## TradingView
+
+Validate here, alert there, fill back here.
+
+- `src/lib/pine.ts` — pure Pine v5 generator, one template per strategy kind.
+  Entries carry `alert_message=kronosPayload(...)`, so a single
+  "alert() function calls only" alert posts the JSON payload to Kronos.
+  It mirrors the Kronos parameters but **is not** an independent check on them:
+  TradingView's engine, bar timing and data source all differ. Pine slippage is
+  left at 0 on purpose — Pine counts ticks (absolute), Kronos counts basis points
+  (relative), and there is no honest conversion without the symbol's mintick.
+- `src/lib/alerts.ts` — pure parsing, constant-time secret compare, and sizing.
+  An alert names a **target state** (long/short/flat), not a trade; `deltaOrder()`
+  works out the difference from the current position, so a repeated alert does not
+  pyramid. Consequence worth knowing: the linked account's position in a symbol
+  is *owned* by the alerts.
+- `src/app/api/webhooks/tradingview/[org]/route.ts` — the receiver. Auth is a
+  per-org shared secret **in the body**, because TradingView cannot send headers.
+  `src/proxy.ts` therefore exempts `/api/webhooks` from the session redirect —
+  without that exemption every alert gets a 307 to `/signin`.
+- Every alert is persisted to `WebhookAlert` whether or not it trades, with the
+  raw body minus the secret. `WebhookEndpoint` holds the org's secret, target
+  account and sizing; it is deliberately **not** in `ORG_SCOPED_MODELS` since the
+  webhook looks it up with no cookie.
+- `src/server/fills.ts` is the single paper-fill path, shared by the order dialog
+  and the webhook. Two fill models that drift apart would be worse than the
+  indirection.
+
 ## Market data
 
 `src/server/market-data.ts` is a provider seam. Default `synthetic` generates

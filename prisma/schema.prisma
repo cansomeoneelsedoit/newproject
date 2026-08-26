@@ -106,6 +106,8 @@ model Organization {
   positions    Position[]
   orders       Order_[]
   analyses     AiAnalysis[]
+  webhookEndpoint WebhookEndpoint?
+  webhookAlerts   WebhookAlert[]
 
   @@map("organizations")
 }
@@ -297,6 +299,8 @@ model Backtest {
   organizationId String?  @map("organization_id")
   instrumentId   String   @map("instrument_id")
   strategyId     String   @map("strategy_id")
+  /// The IN-SAMPLE window. The out-of-sample holdout is the oos* fields below;
+  /// headline metrics on this row describe the in-sample period only.
   from           DateTime
   to             DateTime
   initialCash    Float    @map("initial_cash")
@@ -312,6 +316,27 @@ model Backtest {
   tradeCount     Int      @map("trade_count")
   /// Equity curve points, for the detail chart.
   equityCurve    Json     @map("equity_curve")
+
+  // --- Validation ---------------------------------------------------------
+  // A backtest is not a result until it has survived a holdout and a
+  // walk-forward. These are denormalised so the list view can show the verdict
+  // without recomputing anything.
+  accepted           Boolean   @default(false)
+  verdictSummary     String    @default("") @map("verdict_summary")
+  /// Every reason the run was rejected, each tagged with its gate.
+  failures           Json      @default("[]")
+  oosFrom            DateTime? @map("oos_from")
+  oosTo              DateTime? @map("oos_to")
+  oosReturnPct       Float     @default(0) @map("oos_return_pct")
+  oosSharpe          Float     @default(0) @map("oos_sharpe")
+  oosMaxDrawdownPct  Float     @default(0) @map("oos_max_drawdown_pct")
+  oosTradeCount      Int       @default(0) @map("oos_trade_count")
+  oosWinRatePct      Float     @default(0) @map("oos_win_rate_pct")
+  walkForwardPassed  Boolean   @default(false) @map("walk_forward_passed")
+  walkForwardReason  String    @default("") @map("walk_forward_reason")
+  /// One row per walk-forward window, for the detail table.
+  walkForwardWindows Json      @default("[]") @map("walk_forward_windows")
+
   createdAt      DateTime @default(now()) @map("created_at")
 
   organization Organization?   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
@@ -359,6 +384,7 @@ model Account_ {
   organization Organization? @relation(fields: [organizationId], references: [id], onDelete: Cascade)
   positions    Position[]
   orders       Order_[]
+  webhookEndpoints WebhookEndpoint[]
 
   @@unique([organizationId, name])
   @@index([organizationId])
@@ -459,4 +485,71 @@ model AuditAction {
   @@index([userId, createdAt])
   @@index([undone, createdAt])
   @@map("audit_actions")
+}
+
+// ---------------------------------------------------------------------------
+// TradingView integration
+// ---------------------------------------------------------------------------
+
+enum AlertStatus {
+  /// Accepted and turned into a paper order.
+  FILLED
+  /// Understood, but no order was needed (already at the target position).
+  IGNORED
+  /// Well-formed but not actionable — unknown symbol, no price, endpoint off.
+  REJECTED
+  /// Could not be parsed, or the secret did not match.
+  INVALID
+}
+
+/// Per-organisation TradingView receiver. One endpoint per org: the URL carries
+/// the org id and the shared secret travels in the alert body, because
+/// TradingView cannot send custom headers.
+model WebhookEndpoint {
+  id             String  @id @default(cuid())
+  organizationId String  @unique @map("organization_id")
+  /// Shared secret. Compared in constant time against the alert payload.
+  secret         String
+  /// Where fills land. Alerts are rejected while this is unset.
+  accountId      String? @map("account_id")
+  enabled        Boolean @default(true)
+  /// Currency notional per signal; quantity is notional / price.
+  notionalPerTrade Float @default(1000) @map("notional_per_trade")
+  slippageBps    Float   @default(2) @map("slippage_bps")
+  commissionBps  Float   @default(5) @map("commission_bps")
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  organization Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  account      Account_?      @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  alerts       WebhookAlert[]
+
+  @@map("webhook_endpoints")
+}
+
+/// Every inbound alert, kept whether or not it traded. The raw body is stored
+/// verbatim: when a TradingView alert misfires at 3am the only useful evidence
+/// is what was actually posted, not our interpretation of it.
+model WebhookAlert {
+  id             String      @id @default(cuid())
+  organizationId String?     @map("organization_id")
+  endpointId     String?     @map("endpoint_id")
+  /// Exactly what TradingView posted, before parsing.
+  raw            Json
+  symbol         String      @default("")
+  action         String      @default("")
+  price          Float?
+  strategyName   String?     @map("strategy_name")
+  status         AlertStatus @default(REJECTED)
+  /// Why it was ignored or rejected, in plain language.
+  note           String?
+  /// The paper order this alert produced, if any.
+  orderId        String?     @map("order_id")
+  receivedAt     DateTime    @default(now()) @map("received_at")
+
+  organization Organization?    @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  endpoint     WebhookEndpoint? @relation(fields: [endpointId], references: [id], onDelete: SetNull)
+
+  @@index([organizationId, receivedAt])
+  @@map("webhook_alerts")
 }

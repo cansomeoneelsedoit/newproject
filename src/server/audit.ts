@@ -15,6 +15,12 @@ export type RecordActionArgs = {
   description: string;
   userId?: string | null;
   payload?: AuditPayload;
+  /**
+   * Set explicitly when there is no request cookie to scope by — the webhook
+   * receiver, the seed, any CLI. In a request context the Prisma extension
+   * stamps this from the active org, so callers there can omit it.
+   */
+  organizationId?: string | null;
 };
 
 export async function recordAction(tx: AnyTx, args: RecordActionArgs) {
@@ -26,6 +32,7 @@ export async function recordAction(tx: AnyTx, args: RecordActionArgs) {
       description: args.description,
       userId: args.userId ?? null,
       payload: (args.payload ?? {}) as InputJsonValue,
+      ...(args.organizationId ? { organizationId: args.organizationId } : {}),
     },
   });
 }

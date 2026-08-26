@@ -12,6 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Pnl, strategyLabel } from "@/components/kronos/badges";
+import { VerdictBadge } from "@/components/kronos/verdict";
 import { DeleteBacktestButton, RunBacktestDialog } from "./backtest-actions";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +30,8 @@ export default async function BacktestsPage() {
         <div>
           <h1 className="font-serif text-3xl">Backtests</h1>
           <p className="text-sm text-muted-foreground">
-            Strategies run over stored history, with commission and slippage applied.
+            Every run is scored on a held-out period and across walk-forward windows.
+            A green in-sample number alone is not a result.
           </p>
         </div>
         <RunBacktestDialog
@@ -54,8 +56,9 @@ export default async function BacktestsPage() {
                 <TableRow>
                   <TableHead>Symbol</TableHead>
                   <TableHead>Strategy</TableHead>
-                  <TableHead className="text-right">Return</TableHead>
-                  <TableHead className="text-right">CAGR</TableHead>
+                  <TableHead>Verdict</TableHead>
+                  <TableHead className="text-right">In-sample</TableHead>
+                  <TableHead className="text-right">Holdout</TableHead>
                   <TableHead className="text-right">Max DD</TableHead>
                   <TableHead className="text-right">Sharpe</TableHead>
                   <TableHead className="text-right">Win rate</TableHead>
@@ -76,8 +79,9 @@ export default async function BacktestsPage() {
                       {b.strategy.name}
                       <span className="ml-1.5 text-xs">({strategyLabel(b.strategy.kind)})</span>
                     </TableCell>
+                    <TableCell><VerdictBadge accepted={b.accepted} /></TableCell>
                     <TableCell className="text-right"><Pnl value={b.totalReturnPct} pct /></TableCell>
-                    <TableCell className="text-right"><Pnl value={b.cagrPct} pct /></TableCell>
+                    <TableCell className="text-right"><Pnl value={b.oosReturnPct} pct /></TableCell>
                     <TableCell className="text-right tabular-nums text-muted-foreground">
                       −{b.maxDrawdownPct.toFixed(1)}%
                     </TableCell>

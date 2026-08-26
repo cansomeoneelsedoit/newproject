@@ -228,6 +228,12 @@ export async function listBacktests(limit = 50) {
       profitFactor: true,
       tradeCount: true,
       createdAt: true,
+      accepted: true,
+      verdictSummary: true,
+      failures: true,
+      oosReturnPct: true,
+      oosSharpe: true,
+      walkForwardPassed: true,
       instrument: { select: { id: true, symbol: true } },
       strategy: { select: { id: true, name: true, kind: true } },
     },
@@ -255,6 +261,19 @@ export async function getBacktest(id: string) {
       tradeCount: true,
       equityCurve: true,
       createdAt: true,
+      accepted: true,
+      verdictSummary: true,
+      failures: true,
+      oosFrom: true,
+      oosTo: true,
+      oosReturnPct: true,
+      oosSharpe: true,
+      oosMaxDrawdownPct: true,
+      oosTradeCount: true,
+      oosWinRatePct: true,
+      walkForwardPassed: true,
+      walkForwardReason: true,
+      walkForwardWindows: true,
       instrument: { select: { id: true, symbol: true, name: true, currency: true } },
       strategy: { select: { id: true, name: true, kind: true, params: true } },
       trades: {
@@ -487,4 +506,114 @@ export async function getDashboard(): Promise<Dashboard> {
     recentBacktests,
     latestAnalysis: analyses[0] ?? null,
   };
+}
+
+// ---------------------------------------------------------------------------
+// TradingView
+// ---------------------------------------------------------------------------
+
+export type WebhookEndpointView = {
+  id: string;
+  organizationId: string;
+  secret: string;
+  enabled: boolean;
+  accountId: string | null;
+  accountName: string | null;
+  notionalPerTrade: number;
+  slippageBps: number;
+  commissionBps: number;
+};
+
+/**
+ * The org's TradingView endpoint, created on first read.
+ *
+ * Created lazily rather than in the seed so an org that never touches
+ * TradingView carries no secret at all. The secret is returned here because the
+ * page has to display it — it is embedded in the Pine script the user copies.
+ */
+export async function getWebhookEndpoint(): Promise<WebhookEndpointView> {
+  const organizationId = await requireActiveOrgId();
+  const existing = await prisma.webhookEndpoint.findUnique({
+    where: { organizationId },
+    select: {
+      id: true,
+      organizationId: true,
+      secret: true,
+      enabled: true,
+      accountId: true,
+      notionalPerTrade: true,
+      slippageBps: true,
+      commissionBps: true,
+      account: { select: { name: true } },
+    },
+  });
+
+  const row =
+    existing ??
+    (await prisma.webhookEndpoint.create({
+      data: { organizationId, secret: newWebhookSecret() },
+      select: {
+        id: true,
+        organizationId: true,
+        secret: true,
+        enabled: true,
+        accountId: true,
+        notionalPerTrade: true,
+        slippageBps: true,
+        commissionBps: true,
+        account: { select: { name: true } },
+      },
+    }));
+
+  return {
+    id: row.id,
+    organizationId: row.organizationId,
+    secret: row.secret,
+    enabled: row.enabled,
+    accountId: row.accountId,
+    accountName: row.account?.name ?? null,
+    notionalPerTrade: row.notionalPerTrade,
+    slippageBps: row.slippageBps,
+    commissionBps: row.commissionBps,
+  };
+}
+
+/** 32 hex chars from the platform CSPRNG. */
+export function newWebhookSecret(): string {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return Array.from(bytes, (b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+export type AlertRow = {
+  id: string;
+  symbol: string;
+  action: string;
+  price: number | null;
+  strategyName: string | null;
+  status: string;
+  note: string | null;
+  orderId: string | null;
+  receivedAt: Date;
+};
+
+export async function listWebhookAlerts(limit = 100): Promise<AlertRow[]> {
+  const organizationId = await requireActiveOrgId();
+  const rows = await prisma.webhookAlert.findMany({
+    where: { organizationId },
+    orderBy: { receivedAt: "desc" },
+    take: limit,
+    select: {
+      id: true,
+      symbol: true,
+      action: true,
+      price: true,
+      strategyName: true,
+      status: true,
+      note: true,
+      orderId: true,
+      receivedAt: true,
+    },
+  });
+  return rows as AlertRow[];
 }

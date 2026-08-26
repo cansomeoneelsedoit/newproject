@@ -14,6 +14,7 @@ const NAV_ITEMS: NavItem[] = [
   { key: "signals", href: "/signals" },
   { key: "backtests", href: "/backtests" },
   { key: "portfolio", href: "/portfolio" },
+  { key: "tradingview", href: "/tradingview" },
   { key: "settings", href: "/settings" },
 ];
 

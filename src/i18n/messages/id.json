@@ -22,7 +22,8 @@
     "instruments": "Instrumen",
     "signals": "Sinyal",
     "backtests": "Uji Balik",
-    "portfolio": "Portofolio"
+    "portfolio": "Portofolio",
+    "tradingview": "TradingView"
   },
   "signin": {
     "title": "Masuk ke Kronos",
