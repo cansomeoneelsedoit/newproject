@@ -4,7 +4,10 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import bcrypt from "bcryptjs";
 
+import type { Prisma } from "@prisma/client";
+
 import { prisma } from "@/server/prisma";
+import { requireActiveOrgId } from "@/server/org";
 import { auth } from "@/auth";
 
 export type ActionResult<T = void> = { ok: true; data?: T } | { ok: false; error: string };
@@ -28,14 +31,34 @@ export async function createUser(input: unknown): Promise<ActionResult<{ id: str
   if (!auth.ok) return auth;
   const parsed = createSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: "Validation failed" };
+  // Every Kronos page resolves the caller's organisation and throws without
+  // one, so a user created with no membership can sign in and then sees
+  // nothing but "No active organisation". They join the creator's active org —
+  // that is the org the superuser is provisioning them for.
+  let organizationId: string;
   try {
-    const u = await prisma.user.create({
-      data: {
-        name: parsed.data.name,
-        email: parsed.data.email.toLowerCase(),
-        role: parsed.data.role,
-        passwordHash: await bcrypt.hash(parsed.data.password, 10),
-      },
+    organizationId = await requireActiveOrgId();
+  } catch {
+    return { ok: false, error: "No active organisation to add the user to" };
+  }
+
+  const passwordHash = await bcrypt.hash(parsed.data.password, 10);
+  try {
+    // One transaction: a user without their membership is a broken account, so
+    // the two rows land together or not at all.
+    const u = await prisma.$transaction(async (tx: Prisma.TransactionClient) => {
+      const created = await tx.user.create({
+        data: {
+          name: parsed.data.name,
+          email: parsed.data.email.toLowerCase(),
+          role: parsed.data.role,
+          passwordHash,
+        },
+      });
+      await tx.organizationMembership.create({
+        data: { userId: created.id, organizationId, role: "MEMBER" },
+      });
+      return created;
     });
     revalidatePath("/admin/users");
     return { ok: true, data: { id: u.id } };
