@@ -8,8 +8,7 @@ Nothing here depends on a chat session: clone, run one command, get the PDF.
 ```bash
 cd sparmanik-sop
 pip install pymupdf pillow          # once
-python3 scripts/build_book.py       # -> output/Sparmanik_4.0_Melon_SOP_Book.pdf (63 pages)
-python3 scripts/staff_nutrient_cards.py   # -> build/batch_id.html, batch_en.html (print to PDF with Chromium)
+python3 scripts/build_book.py       # builds everything in output/ (book, daily cards, nutrition chart, nutrient cards)
 ```
 
 `build_book.py` takes `sources/Melon_SOP_Book_EN_v3.8_06-08-2026.pdf`, applies every 4.0 text change in place
@@ -23,6 +22,8 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 | --- | --- |
 | `output/Sparmanik_4.0_Melon_SOP_Book.pdf` | The current book |
 | `output/Sparmanik_4.0_Kartu_Nutrisi_1-5-10_Hari.pdf` | Staff nutrient cards, ID + EN, 1/5/10-day batches |
+| `output/Sparmanik_4.0_Daily_Cards_ID.pdf` / `_EN.pdf` | Daily job card for every day HST 0–85 (`scripts/daily_cards.py` — dates live in `jobs()`) |
+| `output/Sparmanik_4.0_Daily_Nutrition_Chart_EN.pdf` | Day-by-day feed/water chart HST 0–75 (book pages 11–13) |
 | `sources/` | Every earlier book and card we were given (v3.4 ID, v3.7, v3.8, older ID, cost card v2.5, Day 8 action card) |
 | `assets/products/` | Photos of the 11 products (from cost card v1.4) |
 | `assets/logo.jpg`, `assets/floorplan.jpg` | Farm logo and Greenhouse 1 floor plan (from v3.8) |
@@ -32,6 +33,7 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 
 | Version | Date | Notes |
 | --- | --- | --- |
+| v3.1 ID (`NEW_SOP_Melon_Book_ID_older.pdf`) | 31 Jul 2026 | First playbook; had an optional silica leaf spray (not used in 4.0) |
 | v3.4 ID, v3.7 EN, v3.8 EN | 6 Aug 2026 | Stage-by-stage playbook (sources/) |
 | v4.6 (not in repo) | Sep 2026 | Source of cost card v2.5 volumes; Trichoderma HST 0/17/38/59, Tri-Pholate HST 20/28/35 |
 | **4.0** | 6 Oct 2026 | v3.8 + v4.6 timings + 2026 crop lessons. Where they disagree, the 2026 crop wins |
@@ -60,7 +62,7 @@ Fruit 0.7–1.5 kg (target 1.8–2.2). 19 Sep census: 514 fruit, average 786 g.
 
 ## Open items
 
-- Daily action cards for staff (one card per HST day) — see `sources/Day8_Action_Card_EN_v1.2_06-08-2026.pdf` for the format.
-- Indonesian edition of 4.0 (v3.4 ID is the matching Indonesian design).
+- Indonesian edition of the full 4.0 book (v3.4 ID is the matching Indonesian design). Daily cards and nutrient cards are already Indonesian.
+- Indonesian Daily Nutrition Chart.
 - Replace draft plant heights (page 58) with our own averages after the next crop.
 - Confirm grade A–D limits (page 57).
