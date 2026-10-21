@@ -53,6 +53,9 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 8. **5-day stock batches (25 L)** as normal; 1-day (5 L bucket) and 10-day (50 L) use the same recipe. Strength never changes.
 9. **Rolling harvest.** Pick ripe fruit every morning, leave the rest. Test Brix on fruit that split that day — never cut good fruit.
 10. **One dry wilting bag:** soak that bag 30–60 min in plain water and clear the dripper (the only plain-water job allowed).
+11. **No citric acid.** Citric acid monohydrate (E330) put in the water tower made it smell fishy overnight
+    (bacteria feed on it, grow slime, pH drifts back up). Tower drained. Feed self-settles ~pH 6.0; if a mixed
+    1,000 L tank reads above 6.3, use the Shopee **pH Down 1 L** bottles in the mixed tank only, a little at a time.
 
 ## 2026 crop record
 

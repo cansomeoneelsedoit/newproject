@@ -30,7 +30,7 @@ page(51,'KNOW YOUR PRODUCTS · 2 OF 2','Tank, drench and spray products','None o
  '<div class="call y"><b class="t">The three that get confused</b><b>Krista MKP vs Krista K Plus</b> — both Yara, both white, both say KRISTA. MKP → Drum B, K Plus → Drum A.<br>'
  '<b>Calcinit vs Karate Plus Boroni</b> — both calcium nitrate, both Drum A. Boroni carries boron: Flower stock only.<br>'
  '<b>SOP vs MAG-S</b> — both white 1 kg packs. SOP → straight into the tank. MAG-S → Drum B.</div>'
- '<div class="call r"><b class="t">Banned from the farm</b>Boric acid (about 17.5% B, roughly 50× stronger than Boroni) · Fe-EDTA (stops feeding iron above pH 6.5).</div>')
+ '<div class="call r"><b class="t">Banned from the farm</b>Boric acid (about 17.5% B, roughly 50× stronger than Boroni) · Fe-EDTA (stops feeding iron above pH 6.5) · Citric acid (made the water tower smell fishy; use pH Down 1 L in the mixed tank, only above pH 6.3).</div>')
 
 # ---- cost per crop, recalculated for 4.0 (model checked against cost card v2.5 totals)
 PR = {'Calcinit':14800,'MAG-S':16000,'SOP':25000,'Krista MKP':63000,'Krista K Plus':46000,'Karate Plus Boroni':13200,

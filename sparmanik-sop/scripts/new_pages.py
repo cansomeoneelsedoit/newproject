@@ -140,10 +140,11 @@ page(61,'PROBLEMS · 2026 LESSONS','What went wrong in 2026 — and the fix','Ad
 <tr><td><b>One bag wilting, coir dry inside</b></td><td>Blocked dripper / water-repellent coir</td><td>Soak that bag 30–60 min in plain water, clear the dripper</td><td>Not recovered next morning, or 3+ bags</td></tr>
 <tr><td><b>New leaves pale, green veins</b></td><td>Fe-EDTA at high run-off pH</td><td>Run-off pH weekly; Fe-EDDHA only</td><td>Run-off pH over 6.8</td></tr>
 <tr><td><b>Deformed fruit, dead flowers</b></td><td>Boric acid instead of Boroni</td><td>Keep pollinating new flowers; check the sack in Stock A</td><td>Always, same day</td></tr>
+<tr><td><b>Water tower smells fishy</b></td><td>Citric acid fed bacteria</td><td>Drain and rinse the tower; pH Down only, in the mixed tank, only above 6.3</td><td>Always, same day</td></tr>
 <tr><td><b>Whole house wilting at midday</b></td><td>34.8 °C, 59% humidity</td><td>Mist leaves, shade, vents (page 56)</td><td>Still wilting at 16:00</td></tr>
 <tr><td><b>Ripe-looking fruit, Brix under 12</b></td><td>Not ripe, or damaged</td><td>Leave that row longer</td><td>Main harvest within 3 days</td></tr></table>
 <div class="call r"><b class="t">Never (added in 4.0)</b><ul style="margin:2pt 0 0">
-<li>Boric acid or Fe-EDTA anywhere on the farm.</li>
+<li>Boric acid, Fe-EDTA or citric acid anywhere on the farm.</li>
 <li>Plain water, glass watering or silicon after fruit set (HST 38).</li>
 <li>MKP and Calcinit in the same spray pack. Leaf sprays HST 45–59.</li>
 <li>Cutting a good fruit to test Brix.</li></ul></div>''')
