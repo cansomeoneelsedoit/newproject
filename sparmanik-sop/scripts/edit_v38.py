@@ -188,4 +188,8 @@ p.insert_text((411.8,108.9),'stop at Day 36 (4.0).',fontsize=8.6,fontfile=FBK,fo
 p=d[40]; r=fitz.Rect(310.3,362.4,511.2,372.5); pix=p.get_pixmap(dpi=72); fl=tuple(v/255 for v in pix.pixel(309,367))
 p.add_redact_annot(r,fill=fl); p.apply_redactions(images=0,graphics=0)
 p.insert_text((310.3,370.6),'Silicon — root drench HST 8–36 only (4.0)',fontsize=10.1,fontfile=FONTS['r'],fontname='KR',color=hexc('26331f'))
+# p46 timer table: the Finish row (plain water) is a picture — cover its cells (4.0 has no plain-water finish)
+p=d[45]; p.draw_rect(fitz.Rect(192,323.5,530,349.5),color=None,fill=(0.984,0.973,0.945),overlay=True)
+t='not used in 4.0 — Ripen feed to the last fruit'; w=fitz.Font(fontfile=FBK).text_length(t,fontsize=9)
+p.insert_text((361-w/2,339.6),t,fontsize=9,fontfile=FBK,fontname='KB',color=hexc('8a3a12'))
 d.save(OUT,garbage=3,deflate=True); print('saved',OUT,len(d))

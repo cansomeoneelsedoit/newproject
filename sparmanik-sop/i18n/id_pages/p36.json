@@ -227,7 +227,7 @@
    ],
    [
     "Sisakan SATU buah/tanaman.",
-    " Pangkas pucuk ~25 daun. Mulai"
+    " Pangkas ~25 daun."
    ]
   ]
  },
@@ -235,7 +235,7 @@
   "id": 22,
   "lines": [
    [
-    "semprot daun Ca."
+    "Mulai semprot daun Ca."
    ]
   ]
  },
@@ -274,7 +274,7 @@
     "Besar"
    ],
    [
-    "Awasi BER."
+    "Pasang perangkap. Awasi BER."
    ],
    [
     "2.55"
@@ -428,7 +428,7 @@
     "Panen, sortir & kemas sebelum 3 Mar",
     " — pasar ",
     "≥",
-    "1 minggu"
+    "1"
    ]
   ]
  },
@@ -436,7 +436,7 @@
   "id": 47,
   "lines": [
    [
-    "sebelum Idul Fitri. Hanya yang matang."
+    "minggu sebelum Idul Fitri. Matang saja."
    ],
    [
     "—"
@@ -455,7 +455,7 @@
   "id": 50,
   "lines": [
    [
-    "Jaring muncul. Tanpa semprot daun. Bungkus buah/perangkap."
+    "Jaring muncul. Tanpa semprot daun. Bungkus buah."
    ]
   ]
  },
@@ -463,7 +463,7 @@
   "id": 51,
   "lines": [
    [
-    "Pakan Matang lanjut. Panen bertahap, hanya yang matang."
+    "Pakan Matang terus. Panen bertahap, matang saja."
    ],
    [
     "Lalat buah KRITIS."
@@ -480,7 +480,7 @@
     "2.7"
    ],
    [
-    "Pakan Matang. Brix"
+    "Pakan S4. Brix"
    ]
   ]
  }

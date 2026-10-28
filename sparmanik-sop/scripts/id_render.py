@@ -11,6 +11,9 @@ FONTS = {'r': F + 'LiberationSans-Regular.ttf', 'b': F + 'LiberationSans-Bold.tt
          'd': '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'}
 FO = {k: fitz.Font(fontfile=v) for k, v in FONTS.items()}
 d = fitz.open(SRC)
+VEILS = {31: [fitz.Rect(64, 318, 531, 385)]}   # faded 'not used in 4.0' box drawn by edit_v38.py
+_ex = os.path.join(ROOT, 'i18n', 'id_extra.json')
+EXTRA = json.load(open(_ex)) if os.path.exists(_ex) else {}
 
 # ---- font weight per Type3 font ref: compare ink coverage with Liberation Regular vs Bold
 _cov = {}
@@ -87,12 +90,20 @@ def run(pages=None):
     for pn in range(len(d)):
         if pages and pn + 1 not in pages: continue
         fn = os.path.join(ROOT, 'i18n', 'id_pages', f'p{pn+1:02d}.json')
-        if not os.path.exists(fn): continue
-        tr = {b['id']: b for b in json.load(open(fn))}
+        if not os.path.exists(fn) and not any(e['page'] == pn + 1 for e in EXTRA.get('blocks', [])): continue
+        tr = {b['id']: b for b in json.load(open(fn))} if os.path.exists(fn) else {}
         p = d[pn]; W = p.rect.width
+        for e in EXTRA.get('blocks', []):
+            if e['page'] != pn + 1: continue
+            b = [b for bi, b in enumerate(p.get_text('dict')['blocks']) if bi == e['block']][0]
+            ls = [[x for x in l['spans'] if x['text'].strip()] for l in b['lines']]
+            ls = [l for l in ls if l]
+            lines = [['' for _ in l] for l in ls]; lines[0][0] = e['text']
+            tr[e['block']] = {'id': e['block'], 'lines': lines, 'align': e.get('align')}
         rects = [fitz.Rect(dr['rect']) for dr in p.get_drawings() if dr.get('fill') is not None and dr['rect'].width > 20 and dr['rect'].height > 8]
         PL = page_lines(p)
         allL = [(fitz.Rect(sp[0]['bbox']).x0, fitz.Rect(sp[-1]['bbox']).x1, fitz.Rect(sp[0]['bbox']).y0, fitz.Rect(sp[0]['bbox']).y1, (bi, li)) for bi, _, ls in PL for li, sp in enumerate(ls)]
+        tr_spaced = {(pn, e['block']): True for e in EXTRA.get('blocks', []) if e['page'] == pn + 1 and e.get('spaced')}
         jobs = []
         for bi, bb, ls in PL:
             if bi not in tr: continue
@@ -110,7 +121,8 @@ def run(pages=None):
                 left_peers = sum(1 for a in others if abs(a[0] - x0) < 1.2)
                 ctr_peers = sum(1 for a in others if abs((a[0] + a[1]) / 2 - cx) < 1.2 and abs((a[1] - a[0]) - lw) > 3)
                 in_cont_ctr = cont is not None and abs((cont.x0 + cont.x1) / 2 - cx) < 2.5 and (x0 - cont.x0) > 12 and (lw > 0.3 * cont.width or cont.width < 200)
-                centered = in_cont_ctr or (ctr_peers > left_peers and ctr_peers >= 1)
+                centered = in_cont_ctr or (ctr_peers > left_peers and ctr_peers >= 1 and left_peers == 0)
+                if tr[bi].get('align'): centered = tr[bi]['align'] == 'center'
                 row = [a for a in others if a[2] < y1 - 1 and a[3] > y0 + 1]
                 right = [a[0] for a in row if a[0] > x1 - 0.5]
                 left = [a[1] for a in row if a[1] < x0 + 0.5]
@@ -129,6 +141,7 @@ def run(pages=None):
                 jobs.append(dict(bi=bi, sp=sp, new=new, lo=lo, hi=hi, centered=centered))
         for j in jobs:
             raw = ' '.join(s['text'] for s in j['sp'])
+            if tr_spaced.get((pn, j['bi'])): raw = 'S P A C E D '
             spaced = bool(SPACED.match(raw + ' '))
             caps = (not spaced) and raw.upper() == raw and j['sp'][0]['size'] < 9.5 and re.search('[A-Z]{3}', raw)
             j['track'] = 2.6 if spaced else (0.7 if caps else 0)
@@ -138,11 +151,12 @@ def run(pages=None):
         bscale = {}
         for j in jobs: bscale[j['bi']] = min(bscale.get(j['bi'], 1.0), j['scale'])
         for j in jobs:
-            for s in j['sp']: p.add_redact_annot(fitz.Rect(s['bbox']) + (-0.3, -0.2, 0.3, 0.2), fill=bg(pn, s['bbox']))
+            for s in j['sp']: p.add_redact_annot(fitz.Rect(s['bbox']) + (-0.3, -0.2, 0.3, 0.2), fill=False)
         p.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE, graphics=fitz.PDF_REDACT_LINE_ART_NONE, text=fitz.PDF_REDACT_TEXT_REMOVE)
         for j in jobs:
             if not j['segs']: continue
             sc = max(bscale[j['bi']], 0.6); track = j['track']
+            op = 0.4 if any(fitz.Rect(j['sp'][0]['bbox']).tl + (2, 4) in v for v in VEILS.get(pn + 1, [])) else 1
             tw = j['w'] * sc
             x = max((j['lo'] + j['hi']) / 2 - tw / 2, j['lo']) if j['centered'] else j['lo']
             for s, t, k in j['segs']:
@@ -150,13 +164,25 @@ def run(pages=None):
                 c = rgb(s['color'])
                 if track:
                     for ch in t:
-                        p.insert_text(o, ch, fontsize=sz, fontfile=FONTS[k], fontname='ID' + k, color=c)
+                        p.insert_text(o, ch, fontsize=sz, fontfile=FONTS[k], fontname='ID' + k, color=c, fill_opacity=op)
                         o.x += FO[k].text_length(ch, fontsize=sz) + track * sc
                     x = o.x - track * sc
                 else:
-                    p.insert_text(o, t, fontsize=sz, fontfile=FONTS[k], fontname='ID' + k, color=c)
+                    p.insert_text(o, t, fontsize=sz, fontfile=FONTS[k], fontname='ID' + k, color=c, fill_opacity=op)
                     x += FO[k].text_length(t, fontsize=sz)
             if sc < 0.8: print(f'p{pn+1} block {j["bi"]}: shrunk to {sc:.2f} — shorten', file=sys.stderr)
+    for e in EXTRA.get('patches', []):
+        pn = e['page'] - 1
+        if pages and pn + 1 not in pages: continue
+        p = d[pn]; r = fitz.Rect(e['rect'])
+        fill = tuple(e['fill']) if e.get('fill') else bg(pn, r)
+        p.draw_rect(r, color=None, fill=fill, overlay=True)
+        k = e.get('font', 'b'); sz = e['size']
+        c = tuple(int(e.get('color', '22301e')[i:i + 2], 16) / 255 for i in (0, 2, 4))
+        w = FO[k].text_length(e['text'], fontsize=sz)
+        if w > r.width - 2: sz *= (r.width - 2) / w; w = FO[k].text_length(e['text'], fontsize=sz)
+        x = r.x0 + 1 if e.get('align', 'left') == 'left' else (r.x0 + r.x1) / 2 - w / 2
+        p.insert_text((x, e['y']), e['text'], fontsize=sz, fontfile=FONTS[k], fontname='ID' + k, color=c)
     d.save(OUT, garbage=3, deflate=True); print('saved', OUT)
 
 if __name__ == '__main__':

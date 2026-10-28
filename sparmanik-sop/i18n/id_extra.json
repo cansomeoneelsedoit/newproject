@@ -1,0 +1,144 @@
+{
+ "blocks": [
+  {
+   "page": 1,
+   "block": 9,
+   "text": "SPARMANIK 4.0 · PANDUAN BERTAHAP",
+   "spaced": true,
+   "align": "center"
+  },
+  {
+   "page": 31,
+   "block": 29,
+   "text": "TAHAP 6 · GENERATIF · PAKAN S4 SAMPAI PANEN",
+   "spaced": true,
+   "align": "left"
+  },
+  {
+   "page": 17,
+   "block": 11,
+   "text": "3 jam"
+  },
+  {
+   "page": 24,
+   "block": 4,
+   "text": "2 jam"
+  },
+  {
+   "page": 28,
+   "block": 4,
+   "text": "2 jam"
+  },
+  {
+   "page": 31,
+   "block": 3,
+   "text": "3 jam"
+  }
+ ],
+ "patches": [
+  {
+   "page": 42,
+   "rect": [
+    70,
+    741,
+    248,
+    756
+   ],
+   "y": 751.4,
+   "size": 9.8,
+   "text": "Untuk 10 batch drum 50 L"
+  },
+  {
+   "page": 43,
+   "rect": [
+    70,
+    323,
+    170,
+    339
+   ],
+   "y": 334.4,
+   "size": 10.12,
+   "text": "Stok B"
+  },
+  {
+   "page": 43,
+   "rect": [
+    70,
+    383,
+    170,
+    399
+   ],
+   "y": 394.4,
+   "size": 10.12,
+   "text": "Atur EC"
+  },
+  {
+   "page": 46,
+   "rect": [
+    70,
+    215,
+    188,
+    230
+   ],
+   "y": 225.4,
+   "size": 9.38,
+   "text": "Tumbuh (8–25)"
+  },
+  {
+   "page": 46,
+   "rect": [
+    70,
+    273,
+    188,
+    288
+   ],
+   "y": 283.2,
+   "size": 9.38,
+   "text": "Besar (40–60)"
+  },
+  {
+   "page": 46,
+   "rect": [
+    70,
+    329,
+    188,
+    345
+   ],
+   "y": 339.7,
+   "size": 9.38,
+   "text": "Akhir (72–panen)"
+  },
+  {
+   "page": 46,
+   "rect": [
+    192,
+    323.5,
+    530,
+    349.5
+   ],
+   "fill": [
+    0.984,
+    0.973,
+    0.945
+   ],
+   "y": 339.6,
+   "size": 9,
+   "align": "center",
+   "color": "8a3a12",
+   "text": "tidak dipakai di 4.0 — pakan Matang sampai buah terakhir"
+  },
+  {
+   "page": 49,
+   "rect": [
+    70,
+    181,
+    180,
+    196
+   ],
+   "y": 191.8,
+   "size": 10.12,
+   "color": "ffffff",
+   "text": "Stok B"
+  }
+ ]
+}

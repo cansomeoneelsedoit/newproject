@@ -231,7 +231,7 @@
    ],
    [
     "Sisakan SATU buah/tanaman.",
-    " Pangkas pucuk ~25 daun. Mulai"
+    " Pangkas ~25 daun."
    ]
   ]
  },
@@ -239,7 +239,7 @@
   "id": 22,
   "lines": [
    [
-    "semprot daun Ca."
+    "Mulai semprot daun Ca."
    ]
   ]
  },
@@ -294,7 +294,7 @@
   "id": 30,
   "lines": [
    [
-    "Awasi BER."
+    "Pasang perangkap. Awasi BER."
    ]
   ]
  },
@@ -413,7 +413,7 @@
    [
     "Hanya matang penuh (lepas+jaring+aroma, brix ",
     "≥",
-    " 15). Sortir,"
+    " 15)."
    ]
   ]
  },
@@ -421,7 +421,7 @@
   "id": 44,
   "lines": [
    [
-    "kemas, jual segera."
+    "Sortir, kemas, jual segera."
    ]
   ]
  },
@@ -453,7 +453,7 @@
   "id": 50,
   "lines": [
    [
-    "Jaring muncul. Tanpa semprot daun. Bungkus buah/perangkap."
+    "Jaring muncul. Tanpa semprot daun. Bungkus buah."
    ]
   ]
  },
@@ -461,7 +461,7 @@
   "id": 51,
   "lines": [
    [
-    "Pakan Matang lanjut. Panen bertahap, hanya yang matang."
+    "Pakan Matang terus. Panen bertahap, matang saja."
    ],
    [
     "Lalat buah KRITIS."
@@ -478,7 +478,7 @@
     "2.7"
    ],
    [
-    "Pakan Matang. Brix"
+    "Pakan S4. Brix"
    ]
   ]
  }

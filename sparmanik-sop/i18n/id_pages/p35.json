@@ -229,7 +229,7 @@
   "lines": [
    [
     "Sisakan SATU buah/tanaman.",
-    " Pangkas pucuk ~25 daun. Mulai"
+    " Pangkas ~25 daun."
    ]
   ]
  },
@@ -237,7 +237,7 @@
   "id": 23,
   "lines": [
    [
-    "semprot daun Ca."
+    "Mulai semprot daun Ca."
    ],
    [
     "2.4"
@@ -290,7 +290,7 @@
     "Besar"
    ],
    [
-    "Awasi BER."
+    "Pasang perangkap. Awasi BER."
    ],
    [
     "2.55"
@@ -447,7 +447,7 @@
   "id": 47,
   "lines": [
    [
-    "Jaring muncul. Tanpa semprot daun. Bungkus buah/perangkap."
+    "Jaring muncul. Tanpa semprot daun. Bungkus buah."
    ]
   ]
  },
@@ -455,7 +455,7 @@
   "id": 48,
   "lines": [
    [
-    "Pakan Matang lanjut. Panen bertahap, hanya yang matang."
+    "Pakan Matang terus. Panen bertahap, matang saja."
    ]
   ]
  },
@@ -477,7 +477,7 @@
     "2.7"
    ],
    [
-    "Pakan Matang. Brix"
+    "Pakan S4. Brix"
    ]
   ]
  }
