@@ -1,0 +1,252 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"Daily checks & log"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Check"
+],
+[
+"OK range"
+],
+[
+"If out"
+],
+[
+"✓"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Feed EC"
+],
+[
+"stage value"
+],
+[
+"low",
+"→",
+"add A+B · high",
+"→",
+"dilute"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Feed pH"
+],
+[
+"5.8–6.3"
+],
+[
+"usually ~6.0 by itself; if >6.3 add acid"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Drain EC"
+],
+[
+"≤",
+" feed + 1.0"
+],
+[
+"higher",
+"→",
+"flush more"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Drain %"
+],
+[
+"15–20%"
+],
+[
+"low",
+"→",
+"+1 min · high",
+"→",
+"−1 pulse"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"Only change the timer at a stage change (or if run-off drifts for several days). Lab-test the feed monthly."
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Log"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Date"
+],
+[
+"Stage"
+],
+[
+"Feed EC"
+],
+[
+"pH"
+],
+[
+"Drain EC"
+],
+[
+"Drain %"
+],
+[
+"By"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Feed lands at pH 6.0 on its own — usually no acid needed"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Raw water is pH 7.7, but the fertilisers (especially MKP) pull the mixed feed down to about"
+],
+[
+"pH 6.0",
+" — right in the 5.8–6.3 target. So in normal running you ",
+"add no acid",
+"; just confirm"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"with the meter. Keep a little acid on hand only for the odd batch reading ",
+"above 6.3",
+" — most"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"likely in ripening (Sizing / Ripen, less MKP) or the dry season. Then add slowly to ~6.0 and"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"note the mL."
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"Your water (tested)"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"pH ~7.6 · EC ",
+"0.18 mS/cm (184 µS)",
+" · TDS ~86 ppm — soft and low in minerals, so alkalinity"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"is low and the feed self-drops to ~6.0. Because the raw water is so low, nearly all the feed"
+],
+[
+"EC is your nutrients — the recipe delivers accurate ppm. ",
+"Read the feed in EC/mS mode"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"and aim for the stage EC. (If reading ppm/0.5 mode instead: ~1050 · 1200 · 1275 · 1350.)"
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Calibrate both pens periodically."
+]
+],
+"spaced": false
+}
+]

@@ -1,0 +1,388 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"Plant problem picture guide"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Match what you see. ",
+"SEE ",
+"→",
+" MEANS ",
+"→",
+" DO."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Brown sunken patch"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"on fruit base"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Calcium not reaching fruit (BER)"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Airflow · steady water · ease"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"early-K"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Old leaves yellow"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"between veins"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Magnesium low"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Check MAG-S · foliar Epsom"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"New leaves pale, veins"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"green"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"Iron / pH too high"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"Lower pH ~6.0 · add Fe-"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"EDDHA"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"Brown burnt leaf edges"
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Boron excess / salt high"
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"Check Boroni dose · check"
+]
+],
+"spaced": false
+},
+{
+"id": 20,
+"lines": [
+[
+"EC"
+]
+],
+"spaced": false
+},
+{
+"id": 21,
+"lines": [
+[
+"White powder on"
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"leaves"
+]
+],
+"spaced": false
+},
+{
+"id": 23,
+"lines": [
+[
+"Powdery mildew"
+]
+],
+"spaced": false
+},
+{
+"id": 24,
+"lines": [
+[
+"Fans · morning water ·"
+]
+],
+"spaced": false
+},
+{
+"id": 25,
+"lines": [
+[
+"fungicide · silicon"
+]
+],
+"spaced": false
+},
+{
+"id": 26,
+"lines": [
+[
+"Coir always wet,"
+]
+],
+"spaced": false
+},
+{
+"id": 27,
+"lines": [
+[
+"wilting"
+]
+],
+"spaced": false
+},
+{
+"id": 28,
+"lines": [
+[
+"Overwatering / root rot"
+]
+],
+"spaced": false
+},
+{
+"id": 29,
+"lines": [
+[
+"Cut a pulse · add perlite ·"
+]
+],
+"spaced": false
+},
+{
+"id": 30,
+"lines": [
+[
+"check drainage"
+]
+],
+"spaced": false
+},
+{
+"id": 31,
+"lines": [
+[
+"Maggots / rot inside"
+]
+],
+"spaced": false
+},
+{
+"id": 32,
+"lines": [
+[
+"fruit"
+]
+],
+"spaced": false
+},
+{
+"id": 33,
+"lines": [
+[
+"Fruit fly (lalat buah)"
+]
+],
+"spaced": false
+},
+{
+"id": 34,
+"lines": [
+[
+"Traps · bag fruit · destroy"
+]
+],
+"spaced": false
+},
+{
+"id": 35,
+"lines": [
+[
+"stung fruit"
+]
+],
+"spaced": false
+},
+{
+"id": 36,
+"lines": [
+[
+"Brown gummy ooze on"
+]
+],
+"spaced": false
+},
+{
+"id": 37,
+"lines": [
+[
+"stem base"
+]
+],
+"spaced": false
+},
+{
+"id": 38,
+"lines": [
+[
+"Gummy Stem Blight"
+]
+],
+"spaced": false
+},
+{
+"id": 39,
+"lines": [
+[
+"(hot+humid)"
+]
+],
+"spaced": false
+},
+{
+"id": 40,
+"lines": [
+[
+"Airflow · fungicide · remove"
+]
+],
+"spaced": false
+},
+{
+"id": 41,
+"lines": [
+[
+"infected · avoid stem"
+]
+],
+"spaced": false
+},
+{
+"id": 42,
+"lines": [
+[
+"wetness"
+]
+],
+"spaced": false
+}
+]

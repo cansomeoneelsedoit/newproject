@@ -1,0 +1,20 @@
+[
+{"id": 0, "lines": [["PAKAN S1 · DRUM"], ["Cara mengisi drum"]]},
+{"id": 1, "lines": [["Isi drum ", "SETENGAH", " dengan air hangat."], ["1"]]},
+{"id": 2, "lines": [["Timbang produk 1. Tuang. Aduk sampai air ", "JERNIH", "."], ["2"]]},
+{"id": 3, "lines": [["Setelah jernih, baru timbang produk berikutnya. Tuang. Aduk sampai jernih."], ["3"]]},
+{"id": 4, "lines": [["Ulangi sampai semua produk masuk ke drum."], ["4"]]},
+{"id": 5, "lines": [["Tambah air sampai tanda ", "50 LITER", "."], ["5"]]},
+{"id": 6, "lines": [["Tulis ", "A atau B", " dan ", "TANGGAL HARI INI", " di drum."], ["6"]]},
+{"id": 7, "lines": [["Tutup rapat. Jauhkan dari matahari. Pakai dalam 2 minggu."], ["7"]]},
+{"id": 8, "lines": [["Jangan pernah"]]},
+{"id": 9, "lines": [["Jangan masukkan produk Drum A ke Drum B, atau sebaliknya."]]},
+{"id": 10, "lines": [["Jangan campur Drum A dan Drum B — keduanya hanya bertemu di tangki 1000 L."]]},
+{"id": 11, "lines": [["Jangan pakai sendok atau pengaduk yang sama untuk A dan B."]]},
+{"id": 12, "lines": [["Jangan tambah produk berikutnya selagi air masih keruh."]]},
+{"id": 13, "lines": [["Jangan masukkan SOP atau Kalsika ke drum ini."]]},
+{"id": 14, "lines": [["Memakai drum"]]},
+{"id": 15, "lines": [["5 L dari DRUM A + 5 L dari DRUM B ", "→", " 1000 L air.", " Air dulu ", "→", " tambah A ", "→", " aduk ", "→", " tambah B"]]},
+{"id": 16, "lines": [["→", " aduk ", "→", " isi sampai 1000 L. Lalu atur ", "EC 2.1", ", cek ", "pH 5.8–6.3", ". Pakai gayung 5 L bertanda. Satu"]]},
+{"id": 17, "lines": [["drum cukup untuk 10 tangki 1000 L."]]}
+]

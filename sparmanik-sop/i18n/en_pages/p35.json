@@ -1,0 +1,520 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"Crop 2 — Jul–Oct 2026"
+]
+],
+"spaced": false
+},
+{
+"id": 1,
+"lines": [
+[
+"Week"
+],
+[
+"HST"
+],
+[
+"Stage"
+],
+[
+"Do this week"
+],
+[
+"EC"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Nursery"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"6–19 Jul"
+],
+[
+"−14",
+"→",
+"0"
+],
+[
+"Nursery"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Soak 7–9 h ",
+"→",
+" sprout ",
+"→",
+" rockwool ",
+"→",
+" bottom-feed."
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Harden. 2–3 true leaves."
+],
+[
+"0.5",
+"→",
+"1.5"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"20–26 Jul"
+],
+[
+"0–6"
+],
+[
+"Establish"
+],
+[
+"Transplant 20 Jul.",
+" Settle roots. Water every 4 h",
+"→",
+"3"
+],
+[
+"h. Train. Daily EC/pH."
+],
+[
+"2.1"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"27 Jul–2 Aug"
+],
+[
+"7–13"
+],
+[
+"Grow"
+],
+[
+"Train vine. Remove laterals below node 8. Silicon"
+],
+[
+"drench weekly. Scout pests."
+],
+[
+"2.1"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"3–9 Aug"
+],
+[
+"14–20"
+],
+[
+"Grow"
+],
+[
+"Keep training. Silicon weekly. Watch"
+],
+[
+"aphids/thrips/mildew."
+],
+[
+"2.1"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"10–16 Aug"
+],
+[
+"21–27"
+],
+[
+"Grow",
+"→",
+"Flower"
+],
+[
+"First flowers (~HST 25). Feed EC 2.4 (Boroni in)."
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"Hand-pollinate 8–10 AM."
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"17–23 Aug"
+],
+[
+"28–34"
+],
+[
+"Flower/Set"
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Hand-pollinate daily 8–10 AM. Water every 2 h."
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"Fruit-fly traps up."
+],
+[
+"2.4"
+]
+],
+"spaced": false
+},
+{
+"id": 21,
+"lines": [
+[
+"24–30 Aug"
+],
+[
+"35–41"
+],
+[
+"Set/Select"
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"Keep ONE fruit/plant.",
+" Top ~25 leaves. Start Ca"
+]
+],
+"spaced": false
+},
+{
+"id": 23,
+"lines": [
+[
+"foliar."
+],
+[
+"2.4"
+]
+],
+"spaced": false
+},
+{
+"id": 25,
+"lines": [
+[
+"31 Aug–6"
+]
+],
+"spaced": false
+},
+{
+"id": 26,
+"lines": [
+[
+"Sep"
+]
+],
+"spaced": false
+},
+{
+"id": 27,
+"lines": [
+[
+"42–48"
+],
+[
+"Sizing"
+],
+[
+"Feed EC 2.55. Water every 2 h, 8 min. Support fruit."
+],
+[
+"2.55"
+]
+],
+"spaced": false
+},
+{
+"id": 29,
+"lines": [
+[
+"7–13 Sep"
+],
+[
+"49–55"
+],
+[
+"Sizing"
+],
+[
+"Watch BER."
+],
+[
+"2.55"
+]
+],
+"spaced": false
+},
+{
+"id": 31,
+"lines": [
+[
+"14–20 Sep"
+],
+[
+"56–62"
+],
+[
+"Sizing",
+"→",
+"Ripen"
+],
+[
+"Fruit near full size. Prepare feed switch."
+],
+[
+"2.55",
+"→",
+"2.7"
+]
+],
+"spaced": false
+},
+{
+"id": 33,
+"lines": [
+[
+"21–27 Sep"
+],
+[
+"63–69"
+],
+[
+"Ripen"
+],
+[
+"Feed EC 2.7 (cut N, max K). Start brix testing."
+],
+[
+"Steady water."
+],
+[
+"2.7"
+]
+],
+"spaced": false
+},
+{
+"id": 35,
+"lines": [
+[
+"28 Sep–4"
+]
+],
+"spaced": false
+},
+{
+"id": 36,
+"lines": [
+[
+"Oct"
+]
+],
+"spaced": false
+},
+{
+"id": 37,
+"lines": [
+[
+"70–76"
+],
+[
+"Ripen/Finish"
+]
+],
+"spaced": false
+},
+{
+"id": 39,
+"lines": [
+[
+"5–12 Oct"
+],
+[
+"77–84"
+],
+[
+"Finish"
+],
+[
+"≥",
+" 15. Watch cracking. Destroy"
+],
+[
+"stung fruit."
+]
+],
+"spaced": false
+},
+{
+"id": 40,
+"lines": [
+[
+"HARVEST"
+]
+],
+"spaced": false
+},
+{
+"id": 41,
+"lines": [
+[
+"13–20 Oct"
+],
+[
+"85–92"
+],
+[
+"Harvest"
+],
+[
+"Pick fully-ripe only (slip+net+aroma, brix ",
+"≥",
+" 15)."
+]
+],
+"spaced": false
+},
+{
+"id": 42,
+"lines": [
+[
+"Sort, pack, sell now."
+]
+],
+"spaced": false
+},
+{
+"id": 44,
+"lines": [
+[
+"Greenhouse prep 21 Oct–7 Nov: remove, disinfect, flush, check equipment, re-buffer, make new stock."
+]
+],
+"spaced": false
+},
+{
+"id": 46,
+"lines": [
+[
+"Ca foliar to HST 44."
+]
+],
+"spaced": false
+},
+{
+"id": 47,
+"lines": [
+[
+"Netting forms. No leaf spray. Bag fruit/traps."
+]
+],
+"spaced": false
+},
+{
+"id": 48,
+"lines": [
+[
+"Ripen feed continues. Rolling pick, ripe fruit only."
+]
+],
+"spaced": false
+},
+{
+"id": 49,
+"lines": [
+[
+"Fruit fly CRITICAL."
+],
+[
+"2.7"
+]
+],
+"spaced": false
+},
+{
+"id": 50,
+"lines": [
+[
+"2.7"
+],
+[
+"Ripen feed. Brix"
+]
+],
+"spaced": false
+}
+]

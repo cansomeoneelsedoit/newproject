@@ -1,0 +1,315 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"Two tanks · stock · mixing"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Make the stock — large batch in a drum"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Recipe key:",
+" S1 = Grow (Stage 3) · S2 = Flower (Stage 4) · S3 = Sizing (Stage 5) · S4 = Ripen (Stage 6). Staff"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"pages use the stage & EC; only the mix room uses S1–S4."
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"5 L of stock feeds 1000 L.",
+" So a ",
+"50 L drum = ten 1000 L batches",
+"; a ",
+"100 L drum = twenty",
+". Figures below"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"are for a ",
+"50 L drum — double every number for a 100 L drum.",
+" Don't make more than ~2 weeks' worth (a"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"giant 1000 L stock drum would sit too long and the iron degrades). Make Tank A and Tank B in ",
+"separate",
+" drums."
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"TANK A · kg / 50 L drum"
+],
+[
+"Grow"
+],
+[
+"Flower"
+],
+[
+"Sizing"
+],
+[
+"Ripen"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Calcinit"
+],
+[
+"8.7"
+],
+[
+"9.45"
+],
+[
+"9.45"
+],
+[
+"8.95"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"K Plus"
+],
+[
+"3.45"
+],
+[
+"1.15"
+],
+[
+"—"
+],
+[
+"—"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"TANK B · kg / 50 L drum"
+],
+[
+"Grow"
+],
+[
+"Flower"
+],
+[
+"Sizing"
+],
+[
+"Ripen"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"MKP"
+],
+[
+"2.2"
+],
+[
+"2.3"
+],
+[
+"2.1"
+],
+[
+"1.85"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"Vitaflex"
+],
+[
+"0.2"
+],
+[
+"0.2"
+],
+[
+"0.2"
+],
+[
+"0.2"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"To fill a drum: part-fill with warm water, add one product at a time and stir until clear, then top up to the drum"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"mark (50 L or 100 L). Take ",
+"5 L to each 1000 L feed tank"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"drums warm; use within 1–2 weeks; keep out of sun. Never combine A & B undiluted."
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"SOP — separate, add straight into the 1000 L tank"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"SOP"
+],
+[
+"Grow"
+],
+[
+"Flower"
+],
+[
+"Sizing"
+],
+[
+"Ripen"
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Per 1000 L (one bag)"
+],
+[
+"—"
+],
+[
+"310 g"
+],
+[
+"535 g"
+],
+[
+"645 g"
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"Never mix calcium with sulphate/phosphate undiluted"
+]
+],
+"spaced": false
+},
+{
+"id": 20,
+"lines": [
+[
+"Tank A = Calcinit · Boroni · K Plus.   Tank B = MKP · MAG-S · Vitaflex+Fe. They meet only"
+],
+[
+"diluted in the 1000 L. ",
+"SOP is added separately",
+" (below). Kalsika goes in neither."
+]
+],
+"spaced": false
+},
+{
+"id": 42,
+"lines": [
+[
+"with a marked container. *4.0: no Boroni in S3. Keep"
+]
+],
+"spaced": false
+}
+]

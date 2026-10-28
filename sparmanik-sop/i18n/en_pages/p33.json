@@ -1,0 +1,33 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"Y E A R P L A N · 3 C R O P S"
+],
+[
+"Crop schedule"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Three crops a year. Find the week you're in and do that row. Dates follow the SOP — shift ±a few days to the real transplant date."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Daily always:",
+" irrigation + fertigation, EC + pH, pest scouting."
+]
+],
+"spaced": false
+}
+]

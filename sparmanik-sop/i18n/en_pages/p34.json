@@ -1,0 +1,521 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"Crop 1 — seed 1 Apr ",
+"→",
+" harvest Jul 2026"
+]
+],
+"spaced": false
+},
+{
+"id": 1,
+"lines": [
+[
+"Week"
+],
+[
+"HST"
+],
+[
+"Stage"
+],
+[
+"Do this week"
+],
+[
+"EC"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Nursery"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"1–14 Apr"
+],
+[
+"−14",
+"→",
+"0"
+],
+[
+"Nursery"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Seed soak 1 Apr.",
+" Warm water 7–9 h ",
+"→",
+" sprout ",
+"→"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"rockwool ",
+"→",
+" bottom-feed. Harden. 2–3 leaves."
+],
+[
+"0.5",
+"→",
+"1.5"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"15–21 Apr"
+],
+[
+"0–6"
+],
+[
+"Establish"
+],
+[
+"Transplant ~15 Apr.",
+" Settle roots. Water every 4"
+],
+[
+"h",
+"→",
+"3 h. Train. Daily EC/pH."
+],
+[
+"2.1"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"22–28 Apr"
+],
+[
+"7–13"
+],
+[
+"Grow"
+],
+[
+"Train vine. Remove laterals below node 8. Silicon"
+],
+[
+"drench weekly. Scout pests."
+],
+[
+"2.1"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"29 Apr–5"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"May"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"14–20"
+],
+[
+"Grow"
+],
+[
+"Keep training. Silicon weekly. Watch"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"aphids/thrips/mildew."
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"6–12 May"
+],
+[
+"21–27"
+],
+[
+"Grow",
+"→",
+"Flower"
+],
+[
+"First flowers (~HST 25). Feed EC 2.4 (Boroni in)."
+],
+[
+"Hand-pollinate 8–10 AM."
+],
+[
+"2.1",
+"→",
+"2.4"
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"13–19 May"
+],
+[
+"28–34"
+],
+[
+"Flower/Set"
+],
+[
+"Hand-pollinate daily 8–10 AM. Water every 2 h."
+],
+[
+"Fruit-fly traps up."
+],
+[
+"2.4"
+]
+],
+"spaced": false
+},
+{
+"id": 21,
+"lines": [
+[
+"20–26 May"
+],
+[
+"35–41"
+],
+[
+"Set/Select"
+],
+[
+"Keep ONE fruit/plant.",
+" Top ~25 leaves. Start Ca"
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"foliar."
+]
+],
+"spaced": false
+},
+{
+"id": 25,
+"lines": [
+[
+"27 May–2"
+]
+],
+"spaced": false
+},
+{
+"id": 26,
+"lines": [
+[
+"Jun"
+]
+],
+"spaced": false
+},
+{
+"id": 27,
+"lines": [
+[
+"42–48"
+],
+[
+"Sizing"
+],
+[
+"Feed EC 2.55. Water every 2 h, 8 min. Support fruit."
+],
+[
+"2.55"
+]
+],
+"spaced": false
+},
+{
+"id": 29,
+"lines": [
+[
+"3–9 Jun"
+],
+[
+"49–55"
+],
+[
+"Sizing"
+]
+],
+"spaced": false
+},
+{
+"id": 30,
+"lines": [
+[
+"Watch BER."
+]
+],
+"spaced": false
+},
+{
+"id": 33,
+"lines": [
+[
+"10–16 Jun"
+],
+[
+"56–62"
+],
+[
+"Sizing",
+"→",
+"Ripen"
+],
+[
+"Fruit near full size. Prepare feed switch."
+],
+[
+"2.55",
+"→",
+"2.7"
+]
+],
+"spaced": false
+},
+{
+"id": 35,
+"lines": [
+[
+"17–23 Jun"
+],
+[
+"63–69"
+],
+[
+"Ripen"
+]
+],
+"spaced": false
+},
+{
+"id": 36,
+"lines": [
+[
+"Feed EC 2.7 (cut N, max K). Start brix testing."
+]
+],
+"spaced": false
+},
+{
+"id": 37,
+"lines": [
+[
+"Steady water."
+],
+[
+"2.7"
+]
+],
+"spaced": false
+},
+{
+"id": 39,
+"lines": [
+[
+"24–30 Jun"
+],
+[
+"70–76"
+],
+[
+"Ripen/Finish"
+]
+],
+"spaced": false
+},
+{
+"id": 41,
+"lines": [
+[
+"1–8 Jul"
+],
+[
+"77–84"
+],
+[
+"Finish"
+],
+[
+"≥",
+" 15. Watch cracking. Destroy"
+],
+[
+"stung fruit."
+]
+],
+"spaced": false
+},
+{
+"id": 42,
+"lines": [
+[
+"HARVEST"
+]
+],
+"spaced": false
+},
+{
+"id": 43,
+"lines": [
+[
+"9–16 Jul"
+],
+[
+"85–92"
+],
+[
+"Harvest"
+],
+[
+"Pick fully-ripe only (slip+net+aroma, brix ",
+"≥",
+" 15). Sort,"
+]
+],
+"spaced": false
+},
+{
+"id": 44,
+"lines": [
+[
+"pack, sell now."
+]
+],
+"spaced": false
+},
+{
+"id": 46,
+"lines": [
+[
+"Turnaround (~mid–late Jul): harvest, remove plants, clean & disinfect, flush lines, re-buffer coir, make new"
+]
+],
+"spaced": false
+},
+{
+"id": 47,
+"lines": [
+[
+"stock. Gap to Crop 2 transplant (20 Jul) is tight."
+]
+],
+"spaced": false
+},
+{
+"id": 49,
+"lines": [
+[
+"Ca foliar to HST 44."
+]
+],
+"spaced": false
+},
+{
+"id": 50,
+"lines": [
+[
+"Netting forms. No leaf spray. Bag fruit/traps."
+]
+],
+"spaced": false
+},
+{
+"id": 51,
+"lines": [
+[
+"Ripen feed continues. Rolling pick, ripe fruit only."
+],
+[
+"Fruit fly CRITICAL."
+],
+[
+"2.7"
+]
+],
+"spaced": false
+},
+{
+"id": 52,
+"lines": [
+[
+"2.7"
+],
+[
+"Ripen feed. Brix"
+]
+],
+"spaced": false
+}
+]

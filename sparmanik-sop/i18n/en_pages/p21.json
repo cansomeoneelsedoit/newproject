@@ -1,0 +1,225 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"S TA G E 3 · V E G E TAT I V E · H S T 8 – 2 5"
+],
+[
+"Carry on the same until Day 25"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Nothing changes now. Just repeat the weekly routine below."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"The weekly routine"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Job"
+],
+[
+"How often"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Silicon drench (Kalsika)"
+],
+[
+"Once a week",
+" — see the page before this one"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Check run-off is 15–20%"
+],
+[
+"2–3 times a week",
+" — not on a silicon day"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"Trichoderma cup drench"
+],
+[
+"Every ",
+"2–3 weeks",
+" — 2 days away from silicon"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Train the vine, remove laterals below node 8"
+],
+[
+"As the plants grow"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Look under the leaves for pests"
+],
+[
+"2 times a week",
+" — check ~10 plants per row"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Write EC, pH, drain % and your name in the log"
+],
+[
+"Every time you check"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Around Day 25",
+" the first female flowers appear — small melon behind the petals. That is the"
+],
+[
+"signal to move to ",
+"Stage 4 · Flower",
+". ",
+"Mix the new S2 stock the night before.",
+" Turn the page."
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"The feed does NOT change"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"S1 Grow",
+" — 5 L Stock A + 5 L Stock B per 1000 L. Set ",
+"EC 2.1",
+", check ",
+"pH 5.8–6.3",
+". ",
+"No SOP"
+],
+[
+"yet",
+" — SOP only starts at Flower. Make a fresh tank whenever it runs out."
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"The timer does NOT change"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"Every ",
+"3 hours, 6 minutes",
+" — 8 am · 11 am · 2 pm · 5 pm. Leave it alone until Day 25. The"
+],
+[
+"only exception is silicon day: ",
+"2 pulses only",
+", 2 pm and 5 pm."
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"Do not change anything on your own"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"Do not change the feed, the EC, or the timer because of rain, one dry-looking day, or one"
+],
+[
+"odd reading. Only adjust if run-off is wrong for ",
+"several days in a row",
+". If something looks"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"wrong, ",
+"tell the supervisor",
+"."
+]
+],
+"spaced": false
+}
+]

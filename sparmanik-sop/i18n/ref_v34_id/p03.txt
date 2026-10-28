@@ -1,0 +1,43 @@
+M U L A I D I S I N I · K E B U T U H A N T I A P H A R I
+Buat pakan
+A
+5 L Stok A
+(oranye)
++
+B
+5 L Stok B
+(biru)
+=
+1000
+L
+isi dengan air
+Lalu cek: EC = angka minggu ini  ·  pH 5.8–6.3  ·  Selesai ✓
+Tumbuh → EC 2.1
+Bunga → 2.4
+Besar → 2.55
+Matang → 2.7
+TIAP CAMPURAN OTOMATIS MEMBERI PPM INI — TIDAK PERLU DIATUR
+Tumbuh
+Bunga
+Besar
+Matang
+N
+180
+175
+158
+138
+K
+195
+240
+285
+325
+Ca
+165
+195
+195
+170
+Tabel lengkap N-P-K-Ca-Mg di Referensi. K naik untuk gula; Ca tetap tinggi cegah BER.
+Tahap buah & matang saja: tuang juga kantong SOP minggu ini (hijau) sebelum ditambah air.
+Selalu 5 L Stok A + 5 L Stok B per 1000 L. Drum sudah dibuat untuk tahap ini, jadi pakan selalu benar — tuang
+cairannya, masukkan kantong SOP bila tahap buah, tambah air, atur EC + pH. Tanpa hitung-hitungan.
+3

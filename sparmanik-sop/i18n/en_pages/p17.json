@@ -1,0 +1,197 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"S TA G E 3 · S 1 F E E D · E C 2 . 1 · P H 5 . 8 – 6 . 3"
+],
+[
+"Watering — Day 0 to Day 25"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Two timer settings only."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"DAY 0–7 "
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"EVERY"
+],
+[
+"4 h"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"MINUTES"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"PER PLANT"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"8 am · 12 pm · 4 pm"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"DAY 8–25 "
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"EVERY"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"MINUTES"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"PER PLANT"
+],
+[
+"0.8 L"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"8 am · 11 am · 2 pm · 5 pm"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"Rules"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"Set the timer ",
+"ONCE",
+". Leave it until Day 8."
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Do NOT change the timer because it rained — the coir drains itself."
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"Never water at night. All pulses in daylight."
+]
+],
+"spaced": false
+},
+{
+"id": 20,
+"lines": [
+[
+"From Day 8: silicon drench (Kalsika) ",
+"once a week",
+", plain water, on its own — never in the feed tank."
+]
+],
+"spaced": false
+},
+{
+"id": 21,
+"lines": [
+[
+"— Establish / root settling"
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"▼",
+" ON DAY 8, CHANGE THE TIMER ",
+"▼"
+]
+],
+"spaced": false
+},
+{
+"id": 23,
+"lines": [
+[
+"— Grow"
+]
+],
+"spaced": false
+}
+]

@@ -1,0 +1,40 @@
+R E F E R E N S I
+Cek harian & catatan
+Cek
+Rentang OK
+Bila di luar
+✓
+EC pakan
+nilai tahap
+rendah→tambah A+B · tinggi→encerkan
+pH pakan
+5.8–6.3
+biasanya ~6.0 sendiri; bila >6.3 tambah asam
+EC buangan
+≤ pakan + 1.0
+lebih tinggi→bilas lebih banyak
+% buangan
+15–20%
+kurang→+1 menit · lebih→−1 pulsa
+Ubah timer hanya saat ganti tahap (atau bila air buangan menyimpang beberapa hari). Uji lab pakan tiap bulan.
+Catatan
+Tanggal
+Tahap
+EC pakan
+pH
+EC buangan
+% buangan
+Oleh
+Pakan turun ke pH 6.0 sendiri — biasanya tanpa asam
+Air baku pH 7.7, tapi pupuk (terutama MKP) menarik pakan campuran ke sekitar pH 6.0 —
+tepat di target 5.8–6.3. Jadi saat normal Anda tidak menambah asam; cukup cek dengan
+meter. Simpan sedikit asam hanya untuk batch yang terbaca di atas 6.3 — biasanya saat
+matang (Besar/Matang, MKP lebih sedikit) atau musim kemarau. Lalu tambah pelan
+sampai ~6.0 dan catat mL-nya.
+Air Anda (hasil uji)
+pH ~7.6 · EC 0.18 mS/cm (184 µS) · TDS ~86 ppm — lunak & rendah mineral, jadi
+alkalinitas rendah dan pakan turun sendiri ke ~6.0. Karena air baku sangat rendah, hampir
+seluruh EC pakan adalah pupuk Anda — resep memberi ppm akurat. Baca pakan dalam
+mode EC/mS dan tuju EC tahap. (Bila mode ppm/0.5: ~1050 · 1200 · 1275 · 1350.)
+Kalibrasi kedua pen berkala.
+41

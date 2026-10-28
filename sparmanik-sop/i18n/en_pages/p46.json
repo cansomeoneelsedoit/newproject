@@ -1,0 +1,160 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"Watering timer (simple intervals)"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Set the timer as a plain ",
+"every-2/3/4-hour",
+" cycle for the stage, first pulse after sunrise, last well before dark. Small, frequent"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"pulses — keep them running ",
+"through midday",
+" (that's when the plant drinks most; don't skip the middle of the day)."
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Stage (HST)"
+],
+[
+"Every"
+],
+[
+"Min"
+],
+[
+"Clock times"
+],
+[
+"≈",
+"/day"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Establish (0–7)"
+],
+[
+"4 h"
+],
+[
+"5"
+],
+[
+"8am·12pm·4pm"
+],
+[
+"0.5 L"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Flower/Set (25–40)"
+],
+[
+"2 h"
+],
+[
+"7"
+],
+[
+"8am·10am·12pm·2pm·4pm"
+],
+[
+"1.2 L"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"Ripening (60–72)"
+],
+[
+"3 h"
+],
+[
+"6"
+],
+[
+"8am·11am·2pm·5pm"
+],
+[
+"0.8 L"
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"Set once per stage"
+]
+],
+"spaced": false
+},
+{
+"id": 23,
+"lines": [
+[
+"Enter the stage's interval & minutes, then leave it. Don't re-program for one rainy day —"
+]
+],
+"spaced": false
+},
+{
+"id": 24,
+"lines": [
+[
+"free-draining coir sheds the extra. Check run-off ~2–3×/week (aim 15–20%); only adjust"
+],
+[
+"the whole schedule if it drifts for several days. If the timer has no day/night setting, choose"
+]
+],
+"spaced": false
+},
+{
+"id": 25,
+"lines": [
+[
+"the start so pulses land in daylight — avoid watering into the night."
+]
+],
+"spaced": false
+}
+]

@@ -1,0 +1,214 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"S 1 F E E D · D R U M"
+],
+[
+"How to fill a drum"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Fill the drum ",
+"HALF FULL",
+" with warm water."
+],
+[
+"1"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Weigh product 1. Pour it in. Stir until the water is ",
+"CLEAR",
+"."
+],
+[
+"2"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Only when clear, weigh the next product. Pour in. Stir until clear."
+],
+[
+"3"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Repeat until every product is in the drum."
+],
+[
+"4"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Add water up to the ",
+"50 LITRE",
+" mark."
+],
+[
+"5"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"Write ",
+"A or B",
+" and ",
+"TODAY'S DATE",
+" on the drum."
+],
+[
+"6"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Close the lid. Keep out of the sun. Use within 2 weeks."
+],
+[
+"7"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Never do this"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Never put a Drum A product into Drum B, or the reverse."
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Never mix Drum A and Drum B together — they meet only in the 1000 L tank."
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"Never share a scoop or stirrer between A and B."
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"Never add the next product while the water is still cloudy."
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"Never put SOP or Kalsika into these drums."
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"Using the drums"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"5 L from DRUM A + 5 L from DRUM B ",
+"→",
+" 1000 L water.",
+" Water first ",
+"→",
+" add A ",
+"→",
+" stir ",
+"→",
+" add B"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"→",
+" stir ",
+"→",
+" top up to 1000 L. Then set ",
+"EC 2.1",
+", check ",
+"pH 5.8–6.3",
+". Use a marked 5 L jug. One"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"drum makes 10 tanks of 1000 L."
+]
+],
+"spaced": false
+}
+]

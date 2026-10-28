@@ -1,0 +1,40 @@
+R E F E R E N S I
+Denah & ID tanaman
+Greenhouse 1 — Rumah Produksi Utama dijalankan sebagai fasilitas produksi &
+pemuliaan: tiap baris, polybag, dan tanaman punya ID unik sehingga dapat dilacak dari
+benih sampai panen.
+Denah & aturan
+10 baris A–J, bernomor Selatan → Utara; polybag 01–43 Timur → Barat per baris.
+43 polybag per baris · 2 tanaman per polybag → 430 polybag, 860 tanaman total.
+Satu buah per tanaman — jadi 2 buah per polybag, masing-masing di tanamannya sendiri.
+Jarak: antar-baris 1,70 m (pusat ke pusat) · antar-polybag 625 mm · antar-tanaman 150–200 mm
+dalam polybag.
+Varietas per baris
+Baris
+Varietas
+Polybag · benih
+A–E
+Yellow Kirin Kevin
+215 · 430
+F–G
+White Kirin Kevin
+86 · 172
+H–I
+Sparmanik Manis Candy (Orange Candy Selection)
+86 · 172
+J
+Yellow Kirin Australia F3
+43 · 86
+Sistem ID tanaman
+Beri label tiap polybag dengan nomornya saja (mis. A12). Tandai dua tanaman di dalamnya sebagai Tanaman A dan
+Tanaman B → ID lengkap A12A dan A12B. Format: Baris + Nomor + Tanaman (A01A, A01B … J48A, J48B).
+Catatan yang disimpan (per tanaman)
+Penyerbukan: catat tiap kawin-silang per tanaman, mis. H18A diserbuki oleh H20B.
+Kualitas buah: berat, brix, bentuk, jala, warna kulit, daya simpan, ketahanan penyakit, hasil.
+Seleksi benih: ambil benih hanya dari tanaman terbaik.
+Penyakit: laporkan dengan ID tanaman; cek tetangga; catat perlakuannya.
+Bila satu tanaman mati atau sakit
+Ganti hanya tanaman itu (mis. A12B). Tanaman lain (A12A) tetap memakai ID &
+catatannya. Dua tanaman dalam satu polybag tumbuh berbeda — mencatat masing-
+masing memungkinkan memilih genetik terbaik dan membuang yang jelek.
+35

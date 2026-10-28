@@ -1,0 +1,65 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"PPM targets & ranges"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"The feed's designed output. Confirm by lab monthly (±10–15% is fine). Bold = target."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"ppm"
+],
+[
+"Grow"
+],
+[
+"Flower"
+],
+[
+"Sizing"
+],
+[
+"Ripen"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"Mg"
+],
+[
+"55"
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Micros (all stages): Fe 2.2 · Mn 0.30 · Zn 0.33 · B 0.2–0.44 (keep <0.6) · Cu 0.32 · Mo 0.05 ppm."
+]
+],
+"spaced": false
+}
+]

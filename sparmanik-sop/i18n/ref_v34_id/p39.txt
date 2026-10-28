@@ -1,0 +1,32 @@
+Buat pakan — per 1000 L
+Per 1000 L
+Tumbuh
+Bunga
+Besar
+Matang
+Stok A
+5 L
+5 L
+5 L
+5 L
+Kantong SOP
+—
+310 g
+535 g
+645 g
+Atur pH
+5.8–6.3
+5.8–6.3
+5.8–6.3
+5.8–6.3
+~900 L air → tuang 5 L A, aduk → tuang 5 L B, aduk → (Bunga/Besar/Matang) masukkan kantong SOP, aduk
+→ tambah air sampai 1000 L → atur EC lalu pH.
+Kenapa SOP dipisah
+Kalium sulfat sukar larut (~110 g/L), jadi satu-satunya yang tidak bisa masuk stok pekat.
+Dikeluarkan, Stok A & B tetap pekat — cukup 5 L tiap-tiap per 1000 L. Timbang SOP jadi
+kantong per tangki; larutkan dulu satu kantong di ember air hangat, lalu tuang ke 1000 L
+(Bunga/Besar/Matang saja).
+Daftar bahan lengkap untuk satu drum
+Tangki A: Calcinit, Boroni, K Plus. Tangki B: MKP, MAG-S, Vitaflex, Fe-EDTA. Kantong
+terpisah: SOP. Siram mingguan terpisah (tidak masuk drum): Kalsika (silikon).
+39

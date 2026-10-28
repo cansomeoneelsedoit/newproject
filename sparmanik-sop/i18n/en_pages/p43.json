@@ -1,0 +1,201 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"Make the feed — per 1000 L"
+]
+],
+"spaced": false
+},
+{
+"id": 1,
+"lines": [
+[
+"Per 1000 L"
+],
+[
+"Grow"
+],
+[
+"Flower"
+],
+[
+"Sizing"
+],
+[
+"Ripen"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Stock A"
+],
+[
+"5 L"
+],
+[
+"5 L"
+],
+[
+"5 L"
+],
+[
+"5 L"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"SOP bag"
+],
+[
+"—"
+],
+[
+"310 g"
+],
+[
+"535 g"
+],
+[
+"645 g"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Set pH"
+],
+[
+"5.8–6.3"
+],
+[
+"5.8–6.3"
+],
+[
+"5.8–6.3"
+],
+[
+"5.8–6.3"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"~900 L water ",
+"→",
+" add 5 L A, stir ",
+"→",
+" add 5 L B, stir ",
+"→",
+" (Flower / Sizing / Ripen) tip in the SOP bag, stir ",
+"→",
+" top to 1000"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"L ",
+"→",
+" set EC then pH."
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Why SOP is separate"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Potassium sulphate barely dissolves (~110 g/L), so it's the one thing that ",
+"can't",
+" go in a"
+],
+[
+"strong stock. Kept out of it, Stock A & B stay strong — only ",
+"5 L each",
+" per 1000 L. Pre-weigh"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"SOP into per-tank bags; pre-dissolve a bag in a bucket of warm water, then pour into the"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"1000 L (Flower / Sizing / Ripen only)."
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"Full ingredient list for a drum batch"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"Tank A: ",
+"Calcinit, Boroni, K Plus.",
+" Tank B: ",
+"MKP, MAG-S, Vitaflex, Fe-EDDHA.",
+" Separate"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"bag: ",
+"SOP.",
+" Separate weekly drench (not in any drum): ",
+"Kalsika",
+" (silicon)."
+]
+],
+"spaced": false
+}
+]

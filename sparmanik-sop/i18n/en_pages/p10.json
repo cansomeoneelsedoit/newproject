@@ -1,0 +1,805 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"P R E -W E I G H E D B A G S · O N E P E R S TA G E"
+],
+[
+"One bag per stage"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Everything is already in the bag. Nothing to add at mixing time."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"BAG GROW-A  ",
+"→",
+"  DRUM A"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Calcinit ",
+"Yara"
+],
+[
+"8.70 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Krista K Plus ",
+"Yara"
+],
+[
+"3.45 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"bag weight"
+],
+[
+"12.15 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"BAG GROW-B  ",
+"→",
+"  DRUM B"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Krista MKP ",
+"Yara"
+],
+[
+"2.20 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"MAG-S ",
+"Meroke"
+],
+[
+"5.70 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Vitaflex ",
+"Meroke"
+],
+[
+"0.20 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Micro Fe EDDHA 6% ",
+"Meroke"
+],
+[
+"0.05 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"bag weight"
+],
+[
+"8.15 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"SOP PER TANK"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"none"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"BAG FLOWER-A  ",
+"→",
+"  DRUM A"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"Calcinit ",
+"Yara"
+],
+[
+"9.45 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"Karate Plus Boroni ",
+"Meroke"
+],
+[
+"0.80 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"Krista K Plus ",
+"Yara"
+],
+[
+"1.15 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"bag weight"
+],
+[
+"11.40 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"BAG FLOWER-B  ",
+"→",
+"  DRUM B"
+]
+],
+"spaced": false
+},
+{
+"id": 20,
+"lines": [
+[
+"Krista MKP ",
+"Yara"
+],
+[
+"2.30 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 21,
+"lines": [
+[
+"MAG-S ",
+"Meroke"
+],
+[
+"6.05 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"Vitaflex ",
+"Meroke"
+],
+[
+"0.20 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 23,
+"lines": [
+[
+"Micro Fe EDDHA 6% ",
+"Meroke"
+],
+[
+"0.05 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 24,
+"lines": [
+[
+"bag weight"
+],
+[
+"8.60 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 25,
+"lines": [
+[
+"SOP PER TANK"
+]
+],
+"spaced": false
+},
+{
+"id": 27,
+"lines": [
+[
+"BAG SIZING-A  ",
+"→",
+"  DRUM A"
+]
+],
+"spaced": false
+},
+{
+"id": 28,
+"lines": [
+[
+"Calcinit ",
+"Yara"
+],
+[
+"9.45 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 29,
+"lines": [
+[
+"Meroke"
+]
+],
+"spaced": false
+},
+{
+"id": 30,
+"lines": [
+[
+"bag weight"
+]
+],
+"spaced": false
+},
+{
+"id": 31,
+"lines": [
+[
+"BAG SIZING-B  ",
+"→",
+"  DRUM B"
+]
+],
+"spaced": false
+},
+{
+"id": 32,
+"lines": [
+[
+"Krista MKP ",
+"Yara"
+],
+[
+"2.10 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 33,
+"lines": [
+[
+"MAG-S ",
+"Meroke"
+],
+[
+"6.25 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 34,
+"lines": [
+[
+"Vitaflex ",
+"Meroke"
+],
+[
+"0.20 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 35,
+"lines": [
+[
+"Micro Fe EDDHA 6% ",
+"Meroke"
+],
+[
+"0.05 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 36,
+"lines": [
+[
+"bag weight"
+],
+[
+"8.60 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 37,
+"lines": [
+[
+"SOP PER TANK"
+]
+],
+"spaced": false
+},
+{
+"id": 39,
+"lines": [
+[
+"BAG RIPEN-A  ",
+"→",
+"  DRUM A"
+]
+],
+"spaced": false
+},
+{
+"id": 40,
+"lines": [
+[
+"Calcinit ",
+"Yara"
+],
+[
+"8.95 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 41,
+"lines": [
+[
+"bag weight"
+],
+[
+"8.95 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 42,
+"lines": [
+[
+"BAG RIPEN-B  ",
+"→",
+"  DRUM B"
+]
+],
+"spaced": false
+},
+{
+"id": 43,
+"lines": [
+[
+"Krista MKP ",
+"Yara"
+],
+[
+"1.85 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 44,
+"lines": [
+[
+"MAG-S ",
+"Meroke"
+],
+[
+"6.25 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 45,
+"lines": [
+[
+"Vitaflex ",
+"Meroke"
+],
+[
+"0.20 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 46,
+"lines": [
+[
+"Micro Fe EDDHA 6% ",
+"Meroke"
+],
+[
+"0.05 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 47,
+"lines": [
+[
+"bag weight"
+],
+[
+"8.35 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 48,
+"lines": [
+[
+"SOP PER TANK"
+]
+],
+"spaced": false
+},
+{
+"id": 50,
+"lines": [
+[
+"One crop = 9 sets, 18 bags.",
+" Weigh out: Calcinit 83.05 kg · MAG-S 54.55 · SOP 28.20 (loose) · Krista MKP 19.45 · Krista K"
+]
+],
+"spaced": false
+},
+{
+"id": 51,
+"lines": [
+[
+"from the air and sets hard."
+]
+],
+"spaced": false
+},
+{
+"id": 52,
+"lines": [
+[
+"The whole job"
+]
+],
+"spaced": false
+},
+{
+"id": 53,
+"lines": [
+[
+"Tip ",
+"BAG A",
+" into ",
+"Drum A",
+". Tip ",
+"BAG B",
+" into ",
+"Drum B",
+". Top both to ",
+"50 L",
+" and stir until clear. That is all."
+]
+],
+"spaced": false
+},
+{
+"id": 54,
+"lines": [
+[
+"GROW"
+]
+],
+"spaced": false
+},
+{
+"id": 55,
+"lines": [
+[
+"Vegetative"
+]
+],
+"spaced": false
+},
+{
+"id": 56,
+"lines": [
+[
+"HST 0–25"
+]
+],
+"spaced": false
+},
+{
+"id": 57,
+"lines": [
+[
+"2 sets"
+]
+],
+"spaced": false
+},
+{
+"id": 58,
+"lines": [
+[
+"FLOWER"
+]
+],
+"spaced": false
+},
+{
+"id": 59,
+"lines": [
+[
+"Generative"
+],
+[
+"HST 25–42"
+]
+],
+"spaced": false
+},
+{
+"id": 60,
+"lines": [
+[
+"3 sets"
+]
+],
+"spaced": false
+},
+{
+"id": 61,
+"lines": [
+[
+"SIZING"
+],
+[
+"Generative"
+],
+[
+"HST 42–60"
+]
+],
+"spaced": false
+},
+{
+"id": 62,
+"lines": [
+[
+"3 sets"
+]
+],
+"spaced": false
+},
+{
+"id": 63,
+"lines": [
+[
+"RIPEN"
+]
+],
+"spaced": false
+},
+{
+"id": 64,
+"lines": [
+[
+"Generative"
+],
+[
+"HST 60–72"
+]
+],
+"spaced": false
+},
+{
+"id": 65,
+"lines": [
+[
+"1 set"
+]
+],
+"spaced": false
+},
+{
+"id": 66,
+"lines": [
+[
+"Three rules"
+]
+],
+"spaced": false
+},
+{
+"id": 67,
+"lines": [
+[
+"1.",
+" A bag marked ",
+"A",
+" only ever goes in ",
+"Drum A",
+"; a bag marked ",
+"B",
+" only ever in ",
+"Drum B",
+". Never swap them. ",
+"2.",
+" One set ="
+]
+],
+"spaced": false
+},
+{
+"id": 68,
+"lines": [
+[
+"one Drum A + one Drum B = ",
+"ten 1000 L tanks",
+", at 5 L + 5 L per tank. ",
+"3. SOP is never in a bag",
+" — weigh it fresh into"
+]
+],
+"spaced": false
+},
+{
+"id": 69,
+"lines": [
+[
+"each 1000 L tank, using the green column above."
+]
+],
+"spaced": false
+},
+{
+"id": 71,
+"lines": [
+[
+"Boroni — not used (4.0)"
+],
+[
+"—"
+]
+],
+"spaced": false
+},
+{
+"id": 72,
+"lines": [
+[
+"9.45 kg"
+]
+],
+"spaced": false
+},
+{
+"id": 73,
+"lines": [
+[
+"Plus 10.35 · Karate Plus Boroni 2.40 · Vitaflex 1.80 · Micro Fe EDDHA 0.45. Double-bag and seal the Calcinit — it pulls water"
+]
+],
+"spaced": false
+}
+]

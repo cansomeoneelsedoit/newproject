@@ -1,0 +1,161 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"S TA G E 3 · R U N - O F F"
+],
+[
+"Check run-off 2–3× a week"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Target 15–20% drains from the bottom."
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"If…"
+],
+[
+"Do"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Too little"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"under 15%"
+],
+[
+"Add 1 minute to every pulse."
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Too much"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"over 20%"
+],
+[
+"Remove 1 pulse from the day."
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Run-off log"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Write the date, day (HST), drain %, and your name — 2–3× each week."
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Date"
+],
+[
+"HST"
+],
+[
+"EC"
+],
+[
+"pH"
+],
+[
+"Drain %"
+],
+[
+"Name"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Day 25:",
+" first female flowers appear ",
+"→",
+" move to Stage 4, change the feed and the timer. ",
+"Mix the"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"new S2 stock the night before."
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"Important"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"Only change it if it is wrong for ",
+"several days",
+" — not for one day."
+]
+],
+"spaced": false
+}
+]

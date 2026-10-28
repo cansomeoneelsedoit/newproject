@@ -1,0 +1,157 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"Products"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Product"
+],
+[
+"Analysis"
+],
+[
+"Role"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"Calcinit (Yara)"
+],
+[
+"15.5% N · 19% Ca"
+],
+[
+"Calcium, N — Tank A"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"Krista K Plus (KNO",
+"₃",
+")"
+],
+[
+"13.7% N · 38.4% K"
+],
+[
+"Potassium, N — Tank A"
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Krista MKP"
+],
+[
+"22.7% P · 28.2% K"
+],
+[
+"Phosphorus — Tank B"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"Meroke MAG-S"
+],
+[
+"9.6% Mg · 13% S"
+],
+[
+"Magnesium — Tank B"
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"Meroke SOP"
+],
+[
+"~43% K · 18% S"
+],
+[
+"Ripening K (no N) — Tank B"
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"Vitaflex + Fe-EDDHA"
+],
+[
+"Fe·Mn·Zn·Cu·B·Mo"
+],
+[
+"Micros — Tank B"
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Karate Plus Boroni"
+],
+[
+"Ca-nitrate + 0.3% B"
+],
+[
+"Boron at flowering — Tank A (part-swap)"
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Kalsika"
+],
+[
+"K-silicate"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"Silicon — root drench HST 8–36 only (4.0)"
+]
+],
+"spaced": false
+}
+]

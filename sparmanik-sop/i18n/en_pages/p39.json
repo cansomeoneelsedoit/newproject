@@ -1,0 +1,312 @@
+[
+{
+"id": 0,
+"lines": [
+[
+"R E F E R E N C E"
+],
+[
+"Greenhouse layout & plant ID"
+]
+],
+"spaced": true
+},
+{
+"id": 1,
+"lines": [
+[
+"Greenhouse 1 — Main Production House is run as a ",
+"production & breeding facility",
+":"
+]
+],
+"spaced": false
+},
+{
+"id": 2,
+"lines": [
+[
+"every row, polybag and plant has a unique ID so any plant can be tracked seed-to-"
+]
+],
+"spaced": false
+},
+{
+"id": 3,
+"lines": [
+[
+"harvest."
+]
+],
+"spaced": false
+},
+{
+"id": 4,
+"lines": [
+[
+"Layout & rules"
+]
+],
+"spaced": false
+},
+{
+"id": 5,
+"lines": [
+[
+"10 rows A–J",
+", numbered ",
+"South ",
+"→",
+" North",
+"; polybags numbered ",
+"01–43 East ",
+"→",
+" West",
+" per row."
+]
+],
+"spaced": false
+},
+{
+"id": 6,
+"lines": [
+[
+"43 polybags per row · 2 plants per polybag",
+"→",
+"430 polybags, 860 plants",
+" total."
+]
+],
+"spaced": false
+},
+{
+"id": 7,
+"lines": [
+[
+"One fruit per plant",
+" — so 2 fruit per bag, each on its own plant."
+]
+],
+"spaced": false
+},
+{
+"id": 8,
+"lines": [
+[
+"Spacing:",
+" rows 1.70 m (centre-to-centre) · polybags 625 mm · plants 150–200 mm within a bag."
+]
+],
+"spaced": false
+},
+{
+"id": 9,
+"lines": [
+[
+"Varieties by row"
+]
+],
+"spaced": false
+},
+{
+"id": 10,
+"lines": [
+[
+"Rows"
+],
+[
+"Variety"
+],
+[
+"Polybags · seeds"
+]
+],
+"spaced": false
+},
+{
+"id": 11,
+"lines": [
+[
+"A–E"
+],
+[
+"Yellow Kirin Kevin"
+],
+[
+"215 · 430"
+]
+],
+"spaced": false
+},
+{
+"id": 12,
+"lines": [
+[
+"F–G"
+],
+[
+"White Kirin Kevin"
+],
+[
+"86 · 172"
+]
+],
+"spaced": false
+},
+{
+"id": 13,
+"lines": [
+[
+"H–I"
+],
+[
+"Sparmanik Manis Candy (Orange Candy Selection)"
+],
+[
+"86 · 172"
+]
+],
+"spaced": false
+},
+{
+"id": 14,
+"lines": [
+[
+"J"
+],
+[
+"Yellow Kirin Australia F3"
+],
+[
+"43 · 86"
+]
+],
+"spaced": false
+},
+{
+"id": 15,
+"lines": [
+[
+"Plant ID system"
+]
+],
+"spaced": false
+},
+{
+"id": 16,
+"lines": [
+[
+"Label each ",
+"polybag with its number only",
+" (e.g. ",
+"A12",
+"). Tag the two plants inside as ",
+"Plant A",
+" and ",
+"Plant B",
+"→",
+" full ID ",
+"A12A",
+" and"
+]
+],
+"spaced": false
+},
+{
+"id": 17,
+"lines": [
+[
+"A12B",
+". Format: ",
+"Row + Number + Plant",
+" (A01A, A01B … J48A, J48B)."
+]
+],
+"spaced": false
+},
+{
+"id": 18,
+"lines": [
+[
+"Records to keep (per plant)"
+]
+],
+"spaced": false
+},
+{
+"id": 19,
+"lines": [
+[
+"Pollination:",
+" log each hand-cross by plant, e.g. ",
+"H18A pollinated by H20B",
+"."
+]
+],
+"spaced": false
+},
+{
+"id": 20,
+"lines": [
+[
+"Fruit quality:",
+" weight, brix, shape, netting, skin colour, shelf life, disease resistance, yield."
+]
+],
+"spaced": false
+},
+{
+"id": 21,
+"lines": [
+[
+"Seed selection:",
+" keep seed only from the best-performing plants."
+]
+],
+"spaced": false
+},
+{
+"id": 22,
+"lines": [
+[
+"Disease:",
+" report by plant ID; check neighbours; record the treatment."
+]
+],
+"spaced": false
+},
+{
+"id": 23,
+"lines": [
+[
+"If a plant dies or gets sick"
+]
+],
+"spaced": false
+},
+{
+"id": 24,
+"lines": [
+[
+"Replace ",
+"only that plant",
+" (e.g. A12B). The other plant (A12A) ",
+"keeps its original ID and"
+],
+[
+"record",
+". Two plants in one bag perform differently — recording each one separately lets"
+]
+],
+"spaced": false
+},
+{
+"id": 25,
+"lines": [
+[
+"you pick the best genetics and cull the poor ones."
+]
+],
+"spaced": false
+}
+]
