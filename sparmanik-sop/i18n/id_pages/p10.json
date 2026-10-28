@@ -1,0 +1,735 @@
+[
+ {
+  "id": 0,
+  "lines": [
+   [
+    "KANTONG TERTIMBANG · SATU PER TAHAP"
+   ],
+   [
+    "Satu kantong per tahap"
+   ]
+  ]
+ },
+ {
+  "id": 1,
+  "lines": [
+   [
+    "Semua sudah di dalam kantong. Tidak ada tambahan saat mencampur."
+   ]
+  ]
+ },
+ {
+  "id": 2,
+  "lines": [
+   [
+    "KANTONG TUMBUH-A  ",
+    "→",
+    "  DRUM A"
+   ]
+  ]
+ },
+ {
+  "id": 3,
+  "lines": [
+   [
+    "Calcinit ",
+    "Yara"
+   ],
+   [
+    "8.70 kg"
+   ]
+  ]
+ },
+ {
+  "id": 4,
+  "lines": [
+   [
+    "Krista K Plus ",
+    "Yara"
+   ],
+   [
+    "3.45 kg"
+   ]
+  ]
+ },
+ {
+  "id": 5,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "12.15 kg"
+   ]
+  ]
+ },
+ {
+  "id": 6,
+  "lines": [
+   [
+    "KANTONG TUMBUH-B  ",
+    "→",
+    "  DRUM B"
+   ]
+  ]
+ },
+ {
+  "id": 7,
+  "lines": [
+   [
+    "Krista MKP ",
+    "Yara"
+   ],
+   [
+    "2.20 kg"
+   ]
+  ]
+ },
+ {
+  "id": 8,
+  "lines": [
+   [
+    "MAG-S ",
+    "Meroke"
+   ],
+   [
+    "5.70 kg"
+   ]
+  ]
+ },
+ {
+  "id": 9,
+  "lines": [
+   [
+    "Vitaflex ",
+    "Meroke"
+   ],
+   [
+    "0.20 kg"
+   ]
+  ]
+ },
+ {
+  "id": 10,
+  "lines": [
+   [
+    "Micro Fe EDDHA 6% ",
+    "Meroke"
+   ],
+   [
+    "0.05 kg"
+   ]
+  ]
+ },
+ {
+  "id": 11,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "8.15 kg"
+   ]
+  ]
+ },
+ {
+  "id": 12,
+  "lines": [
+   [
+    "SOP / TANGKI"
+   ]
+  ]
+ },
+ {
+  "id": 13,
+  "lines": [
+   [
+    "tidak ada"
+   ]
+  ]
+ },
+ {
+  "id": 14,
+  "lines": [
+   [
+    "KANTONG BUNGA-A  ",
+    "→",
+    "  DRUM A"
+   ]
+  ]
+ },
+ {
+  "id": 15,
+  "lines": [
+   [
+    "Calcinit ",
+    "Yara"
+   ],
+   [
+    "9.45 kg"
+   ]
+  ]
+ },
+ {
+  "id": 16,
+  "lines": [
+   [
+    "Karate Plus Boroni ",
+    "Meroke"
+   ],
+   [
+    "0.80 kg"
+   ]
+  ]
+ },
+ {
+  "id": 17,
+  "lines": [
+   [
+    "Krista K Plus ",
+    "Yara"
+   ],
+   [
+    "1.15 kg"
+   ]
+  ]
+ },
+ {
+  "id": 18,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "11.40 kg"
+   ]
+  ]
+ },
+ {
+  "id": 19,
+  "lines": [
+   [
+    "KANTONG BUNGA-B  ",
+    "→",
+    "  DRUM B"
+   ]
+  ]
+ },
+ {
+  "id": 20,
+  "lines": [
+   [
+    "Krista MKP ",
+    "Yara"
+   ],
+   [
+    "2.30 kg"
+   ]
+  ]
+ },
+ {
+  "id": 21,
+  "lines": [
+   [
+    "MAG-S ",
+    "Meroke"
+   ],
+   [
+    "6.05 kg"
+   ]
+  ]
+ },
+ {
+  "id": 22,
+  "lines": [
+   [
+    "Vitaflex ",
+    "Meroke"
+   ],
+   [
+    "0.20 kg"
+   ]
+  ]
+ },
+ {
+  "id": 23,
+  "lines": [
+   [
+    "Micro Fe EDDHA 6% ",
+    "Meroke"
+   ],
+   [
+    "0.05 kg"
+   ]
+  ]
+ },
+ {
+  "id": 24,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "8.60 kg"
+   ]
+  ]
+ },
+ {
+  "id": 25,
+  "lines": [
+   [
+    "SOP / TANGKI"
+   ]
+  ]
+ },
+ {
+  "id": 27,
+  "lines": [
+   [
+    "KANTONG BESAR-A  ",
+    "→",
+    "  DRUM A"
+   ]
+  ]
+ },
+ {
+  "id": 28,
+  "lines": [
+   [
+    "Calcinit ",
+    "Yara"
+   ],
+   [
+    "9.45 kg"
+   ]
+  ]
+ },
+ {
+  "id": 29,
+  "lines": [
+   [
+    "Meroke"
+   ]
+  ]
+ },
+ {
+  "id": 30,
+  "lines": [
+   [
+    "berat kantong"
+   ]
+  ]
+ },
+ {
+  "id": 31,
+  "lines": [
+   [
+    "KANTONG BESAR-B  ",
+    "→",
+    "  DRUM B"
+   ]
+  ]
+ },
+ {
+  "id": 32,
+  "lines": [
+   [
+    "Krista MKP ",
+    "Yara"
+   ],
+   [
+    "2.10 kg"
+   ]
+  ]
+ },
+ {
+  "id": 33,
+  "lines": [
+   [
+    "MAG-S ",
+    "Meroke"
+   ],
+   [
+    "6.25 kg"
+   ]
+  ]
+ },
+ {
+  "id": 34,
+  "lines": [
+   [
+    "Vitaflex ",
+    "Meroke"
+   ],
+   [
+    "0.20 kg"
+   ]
+  ]
+ },
+ {
+  "id": 35,
+  "lines": [
+   [
+    "Micro Fe EDDHA 6% ",
+    "Meroke"
+   ],
+   [
+    "0.05 kg"
+   ]
+  ]
+ },
+ {
+  "id": 36,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "8.60 kg"
+   ]
+  ]
+ },
+ {
+  "id": 37,
+  "lines": [
+   [
+    "SOP / TANGKI"
+   ]
+  ]
+ },
+ {
+  "id": 39,
+  "lines": [
+   [
+    "KANTONG MATANG-A  ",
+    "→",
+    "  DRUM A"
+   ]
+  ]
+ },
+ {
+  "id": 40,
+  "lines": [
+   [
+    "Calcinit ",
+    "Yara"
+   ],
+   [
+    "8.95 kg"
+   ]
+  ]
+ },
+ {
+  "id": 41,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "8.95 kg"
+   ]
+  ]
+ },
+ {
+  "id": 42,
+  "lines": [
+   [
+    "KANTONG MATANG-B  ",
+    "→",
+    "  DRUM B"
+   ]
+  ]
+ },
+ {
+  "id": 43,
+  "lines": [
+   [
+    "Krista MKP ",
+    "Yara"
+   ],
+   [
+    "1.85 kg"
+   ]
+  ]
+ },
+ {
+  "id": 44,
+  "lines": [
+   [
+    "MAG-S ",
+    "Meroke"
+   ],
+   [
+    "6.25 kg"
+   ]
+  ]
+ },
+ {
+  "id": 45,
+  "lines": [
+   [
+    "Vitaflex ",
+    "Meroke"
+   ],
+   [
+    "0.20 kg"
+   ]
+  ]
+ },
+ {
+  "id": 46,
+  "lines": [
+   [
+    "Micro Fe EDDHA 6% ",
+    "Meroke"
+   ],
+   [
+    "0.05 kg"
+   ]
+  ]
+ },
+ {
+  "id": 47,
+  "lines": [
+   [
+    "berat kantong"
+   ],
+   [
+    "8.35 kg"
+   ]
+  ]
+ },
+ {
+  "id": 48,
+  "lines": [
+   [
+    "SOP / TANGKI"
+   ]
+  ]
+ },
+ {
+  "id": 50,
+  "lines": [
+   [
+    "Satu musim = 9 set, 18 kantong.",
+    " Timbang: Calcinit 83.05 kg · MAG-S 54.55 · SOP 28.20 (lepas) · Krista MKP 19.45 · Krista K"
+   ]
+  ]
+ },
+ {
+  "id": 51,
+  "lines": [
+   [
+    "dari udara lalu mengeras."
+   ]
+  ]
+ },
+ {
+  "id": 52,
+  "lines": [
+   [
+    "Semua pekerjaannya"
+   ]
+  ]
+ },
+ {
+  "id": 53,
+  "lines": [
+   [
+    "Tuang ",
+    "KANTONG A",
+    " ke ",
+    "Drum A",
+    ". Tuang ",
+    "KANTONG B",
+    " ke ",
+    "Drum B",
+    ". Isi air keduanya sampai ",
+    "50 L",
+    " dan aduk sampai bening. Selesai."
+   ]
+  ]
+ },
+ {
+  "id": 54,
+  "lines": [
+   [
+    "TUMBUH"
+   ]
+  ]
+ },
+ {
+  "id": 55,
+  "lines": [
+   [
+    "Vegetatif"
+   ]
+  ]
+ },
+ {
+  "id": 56,
+  "lines": [
+   [
+    "HST 0–25"
+   ]
+  ]
+ },
+ {
+  "id": 57,
+  "lines": [
+   [
+    "2 set"
+   ]
+  ]
+ },
+ {
+  "id": 58,
+  "lines": [
+   [
+    "BUNGA"
+   ]
+  ]
+ },
+ {
+  "id": 59,
+  "lines": [
+   [
+    "Generatif"
+   ],
+   [
+    "HST 25–42"
+   ]
+  ]
+ },
+ {
+  "id": 60,
+  "lines": [
+   [
+    "3 set"
+   ]
+  ]
+ },
+ {
+  "id": 61,
+  "lines": [
+   [
+    "BESAR"
+   ],
+   [
+    "Generatif"
+   ],
+   [
+    "HST 42–60"
+   ]
+  ]
+ },
+ {
+  "id": 62,
+  "lines": [
+   [
+    "3 set"
+   ]
+  ]
+ },
+ {
+  "id": 63,
+  "lines": [
+   [
+    "MATANG"
+   ]
+  ]
+ },
+ {
+  "id": 64,
+  "lines": [
+   [
+    "Generatif"
+   ],
+   [
+    "HST 60–72"
+   ]
+  ]
+ },
+ {
+  "id": 65,
+  "lines": [
+   [
+    "1 set"
+   ]
+  ]
+ },
+ {
+  "id": 66,
+  "lines": [
+   [
+    "Tiga aturan"
+   ]
+  ]
+ },
+ {
+  "id": 67,
+  "lines": [
+   [
+    "1.",
+    " Kantong bertanda ",
+    "A",
+    " hanya masuk ",
+    "Drum A",
+    "; kantong bertanda ",
+    "B",
+    " hanya ke ",
+    "Drum B",
+    ". Jangan tertukar. ",
+    "2.",
+    " Satu set ="
+   ]
+  ]
+ },
+ {
+  "id": 68,
+  "lines": [
+   [
+    "satu Drum A + satu Drum B = ",
+    "10 tangki 1000 L",
+    ", 5 L + 5 L per tangki. ",
+    "3. SOP tidak di kantong",
+    " — timbang baru untuk"
+   ]
+  ]
+ },
+ {
+  "id": 69,
+  "lines": [
+   [
+    "tiap tangki 1000 L, lihat kolom hijau di atas."
+   ]
+  ]
+ },
+ {
+  "id": 71,
+  "lines": [
+   [
+    "Boroni — tidak dipakai (4.0)"
+   ],
+   [
+    "—"
+   ]
+  ]
+ },
+ {
+  "id": 72,
+  "lines": [
+   [
+    "9.45 kg"
+   ]
+  ]
+ },
+ {
+  "id": 73,
+  "lines": [
+   [
+    "Plus 10.35 · Karate Plus Boroni 2.40 · Vitaflex 1.80 · Micro Fe EDDHA 0.45. Bungkus Calcinit dua lapis, tutup rapat — ia menyerap air"
+   ]
+  ]
+ }
+]

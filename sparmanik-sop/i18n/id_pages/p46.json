@@ -1,0 +1,13 @@
+[
+{"id": 0, "lines": [["REFERENSI"], ["Timer air (interval sederhana)"]]},
+{"id": 1, "lines": [["Atur timer ", "tiap 2/3/4 jam", " sesuai tahap, siraman pertama setelah matahari terbit, terakhir jauh sebelum gelap. Siraman"]]},
+{"id": 2, "lines": [["kecil & sering — tetap jalan ", "saat tengah hari", " (saat itu tanaman paling banyak minum; jangan lewati tengah hari)."]]},
+{"id": 3, "lines": [["Tahap (HST)"], ["Tiap"], ["Menit"], ["Jam"], ["≈", "/hari"]]},
+{"id": 4, "lines": [["Adaptasi (0–7)"], ["4 h"], ["5"], ["8am·12pm·4pm"], ["0.5 L"]]},
+{"id": 5, "lines": [["Bunga/Buah jadi (25–40)"], ["2 h"], ["7"], ["8am·10am·12pm·2pm·4pm"], ["1.2 L"]]},
+{"id": 6, "lines": [["Pematangan (60–72)"], ["3 h"], ["6"], ["8am·11am·2pm·5pm"], ["0.8 L"]]},
+{"id": 22, "lines": [["Atur sekali per tahap"]]},
+{"id": 23, "lines": [["Masukkan interval & menit tahap ini, lalu biarkan. Jangan program ulang karena satu hari hujan —"]]},
+{"id": 24, "lines": [["cocopeat cepat membuang kelebihan air. Cek air buangan ~2–3×/minggu (target 15–20%); ubah"], ["seluruh jadwal hanya bila menyimpang beberapa hari. Bila timer tak punya setelan siang/malam,"]]},
+{"id": 25, "lines": [["atur jam mulai agar siraman jatuh di siang hari — hindari menyiram sampai malam."]]}
+]

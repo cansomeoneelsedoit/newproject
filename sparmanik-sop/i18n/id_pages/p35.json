@@ -1,0 +1,484 @@
+[
+ {
+  "id": 0,
+  "lines": [
+   [
+    "Tanaman 2 — Jul–Okt 2026"
+   ]
+  ]
+ },
+ {
+  "id": 1,
+  "lines": [
+   [
+    "Minggu"
+   ],
+   [
+    "HST"
+   ],
+   [
+    "Tahap"
+   ],
+   [
+    "Kerjakan minggu ini"
+   ],
+   [
+    "EC"
+   ]
+  ]
+ },
+ {
+  "id": 2,
+  "lines": [
+   [
+    "Persemaian"
+   ]
+  ]
+ },
+ {
+  "id": 3,
+  "lines": [
+   [
+    "6–19 Jul"
+   ],
+   [
+    "−14",
+    "→",
+    "0"
+   ],
+   [
+    "Persemaian"
+   ]
+  ]
+ },
+ {
+  "id": 4,
+  "lines": [
+   [
+    "Rendam 7–9 jam ",
+    "→",
+    " kecambah ",
+    "→",
+    " rockwool ",
+    "→",
+    " siram bawah."
+   ]
+  ]
+ },
+ {
+  "id": 5,
+  "lines": [
+   [
+    "Adaptasi. 2–3 daun sejati."
+   ],
+   [
+    "0.5",
+    "→",
+    "1.5"
+   ]
+  ]
+ },
+ {
+  "id": 7,
+  "lines": [
+   [
+    "20–26 Jul"
+   ],
+   [
+    "0–6"
+   ],
+   [
+    "Adaptasi"
+   ],
+   [
+    "Pindah tanam 20 Jul.",
+    " Padatkan akar. Air tiap 4 jam",
+    "→",
+    "3"
+   ],
+   [
+    "jam. Rambatkan. EC/pH harian."
+   ],
+   [
+    "2.1"
+   ]
+  ]
+ },
+ {
+  "id": 9,
+  "lines": [
+   [
+    "27 Jul–2 Agu"
+   ],
+   [
+    "7–13"
+   ],
+   [
+    "Tumbuh"
+   ],
+   [
+    "Rambatkan. Buang tunas samping di bawah ruas 8."
+   ],
+   [
+    "Siram silikon mingguan. Cek hama."
+   ],
+   [
+    "2.1"
+   ]
+  ]
+ },
+ {
+  "id": 11,
+  "lines": [
+   [
+    "3–9 Agu"
+   ],
+   [
+    "14–20"
+   ],
+   [
+    "Tumbuh"
+   ],
+   [
+    "Lanjut rambatkan. Silikon mingguan. Awasi"
+   ],
+   [
+    "kutu daun/thrips/embun tepung."
+   ],
+   [
+    "2.1"
+   ]
+  ]
+ },
+ {
+  "id": 13,
+  "lines": [
+   [
+    "10–16 Agu"
+   ],
+   [
+    "21–27"
+   ],
+   [
+    "Tumbuh",
+    "→",
+    "Bunga"
+   ],
+   [
+    "Bunga pertama (~HST 25). Pakan EC 2.4 (Boroni masuk)."
+   ]
+  ]
+ },
+ {
+  "id": 14,
+  "lines": [
+   [
+    "Serbuki tangan jam 8–10 pagi."
+   ]
+  ]
+ },
+ {
+  "id": 17,
+  "lines": [
+   [
+    "17–23 Agu"
+   ],
+   [
+    "28–34"
+   ],
+   [
+    "Bunga/Jadi"
+   ]
+  ]
+ },
+ {
+  "id": 18,
+  "lines": [
+   [
+    "Serbuki tiap hari 8–10 pagi. Air tiap 2 jam."
+   ]
+  ]
+ },
+ {
+  "id": 19,
+  "lines": [
+   [
+    "Pasang perangkap lalat buah."
+   ],
+   [
+    "2.4"
+   ]
+  ]
+ },
+ {
+  "id": 21,
+  "lines": [
+   [
+    "24–30 Agu"
+   ],
+   [
+    "35–41"
+   ],
+   [
+    "Jadi/Pilih"
+   ]
+  ]
+ },
+ {
+  "id": 22,
+  "lines": [
+   [
+    "Sisakan SATU buah/tanaman.",
+    " Pangkas pucuk ~25 daun. Mulai"
+   ]
+  ]
+ },
+ {
+  "id": 23,
+  "lines": [
+   [
+    "semprot daun Ca."
+   ],
+   [
+    "2.4"
+   ]
+  ]
+ },
+ {
+  "id": 25,
+  "lines": [
+   [
+    "31 Agu–6"
+   ]
+  ]
+ },
+ {
+  "id": 26,
+  "lines": [
+   [
+    "Sep"
+   ]
+  ]
+ },
+ {
+  "id": 27,
+  "lines": [
+   [
+    "42–48"
+   ],
+   [
+    "Besar"
+   ],
+   [
+    "Pakan EC 2.55. Air tiap 2 jam, 8 menit. Topang buah."
+   ],
+   [
+    "2.55"
+   ]
+  ]
+ },
+ {
+  "id": 29,
+  "lines": [
+   [
+    "7–13 Sep"
+   ],
+   [
+    "49–55"
+   ],
+   [
+    "Besar"
+   ],
+   [
+    "Awasi BER."
+   ],
+   [
+    "2.55"
+   ]
+  ]
+ },
+ {
+  "id": 31,
+  "lines": [
+   [
+    "14–20 Sep"
+   ],
+   [
+    "56–62"
+   ],
+   [
+    "Besar",
+    "→",
+    "Matang"
+   ],
+   [
+    "Buah hampir penuh. Siapkan ganti pakan."
+   ],
+   [
+    "2.55",
+    "→",
+    "2.7"
+   ]
+  ]
+ },
+ {
+  "id": 33,
+  "lines": [
+   [
+    "21–27 Sep"
+   ],
+   [
+    "63–69"
+   ],
+   [
+    "Matang"
+   ],
+   [
+    "Pakan EC 2.7 (kurangi N, K maks). Mulai uji brix."
+   ],
+   [
+    "Air stabil."
+   ],
+   [
+    "2.7"
+   ]
+  ]
+ },
+ {
+  "id": 35,
+  "lines": [
+   [
+    "28 Sep–4"
+   ]
+  ]
+ },
+ {
+  "id": 36,
+  "lines": [
+   [
+    "Okt"
+   ]
+  ]
+ },
+ {
+  "id": 37,
+  "lines": [
+   [
+    "70–76"
+   ],
+   [
+    "Matang/Akhir"
+   ]
+  ]
+ },
+ {
+  "id": 39,
+  "lines": [
+   [
+    "5–12 Okt"
+   ],
+   [
+    "77–84"
+   ],
+   [
+    "Akhir"
+   ],
+   [
+    "≥",
+    " 15. Awasi buah pecah. Musnahkan"
+   ],
+   [
+    "buah tersengat."
+   ]
+  ]
+ },
+ {
+  "id": 40,
+  "lines": [
+   [
+    "PANEN"
+   ]
+  ]
+ },
+ {
+  "id": 41,
+  "lines": [
+   [
+    "13–20 Okt"
+   ],
+   [
+    "85–92"
+   ],
+   [
+    "Panen"
+   ],
+   [
+    "Hanya matang penuh (lepas+jaring+aroma, brix ",
+    "≥",
+    " 15)."
+   ]
+  ]
+ },
+ {
+  "id": 42,
+  "lines": [
+   [
+    "Sortir, kemas, jual segera."
+   ]
+  ]
+ },
+ {
+  "id": 44,
+  "lines": [
+   [
+    "Persiapan rumah kaca 21 Okt–7 Nov: bongkar, disinfeksi, bilas, cek peralatan, buffer ulang, buat stok baru."
+   ]
+  ]
+ },
+ {
+  "id": 46,
+  "lines": [
+   [
+    "Semprot Ca sampai HST 44."
+   ]
+  ]
+ },
+ {
+  "id": 47,
+  "lines": [
+   [
+    "Jaring muncul. Tanpa semprot daun. Bungkus buah/perangkap."
+   ]
+  ]
+ },
+ {
+  "id": 48,
+  "lines": [
+   [
+    "Pakan Matang lanjut. Panen bertahap, hanya yang matang."
+   ]
+  ]
+ },
+ {
+  "id": 49,
+  "lines": [
+   [
+    "Lalat buah KRITIS."
+   ],
+   [
+    "2.7"
+   ]
+  ]
+ },
+ {
+  "id": 50,
+  "lines": [
+   [
+    "2.7"
+   ],
+   [
+    "Pakan Matang. Brix"
+   ]
+  ]
+ }
+]

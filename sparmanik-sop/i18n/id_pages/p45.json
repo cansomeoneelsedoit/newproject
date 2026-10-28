@@ -1,0 +1,21 @@
+[
+{"id": 0, "lines": [["REFERENSI"], ["Cek harian & catatan"]]},
+{"id": 1, "lines": [["Cek"], ["Rentang OK"], ["Bila di luar"], ["✓"]]},
+{"id": 2, "lines": [["EC pakan"], ["nilai tahap"], ["rendah", "→", "tambah A+B · tinggi", "→", "encerkan"]]},
+{"id": 3, "lines": [["pH pakan"], ["5.8–6.3"], ["biasanya ~6.0 sendiri; bila >6.3 tambah asam"]]},
+{"id": 4, "lines": [["EC buangan"], ["≤", " pakan + 1.0"], ["lebih tinggi", "→", "bilas lebih banyak"]]},
+{"id": 5, "lines": [["% buangan"], ["15–20%"], ["kurang", "→", "+1 menit · lebih", "→", "−1 siraman"]]},
+{"id": 6, "lines": [["Ubah timer hanya saat ganti tahap (atau bila air buangan menyimpang beberapa hari). Uji lab pakan tiap bulan."]]},
+{"id": 7, "lines": [["Catatan"]]},
+{"id": 8, "lines": [["Tanggal"], ["Tahap"], ["EC pakan"], ["pH"], ["EC buangan"], ["% buangan"], ["Oleh"]]},
+{"id": 9, "lines": [["Pakan turun ke pH 6.0 sendiri — biasanya tanpa asam"]]},
+{"id": 10, "lines": [["Air baku pH 7.7, tapi pupuk (terutama MKP) menarik pakan campuran ke sekitar"], ["pH 6.0", " — tepat di target 5.8–6.3. Jadi saat normal Anda ", "tidak menambah asam", "; cukup cek"]]},
+{"id": 11, "lines": [["dengan meter. Simpan sedikit asam hanya untuk batch yang terbaca ", "di atas 6.3", " — biasanya"]]},
+{"id": 12, "lines": [["saat matang (Besar/Matang, MKP lebih sedikit) atau musim kemarau. Lalu tambah pelan ke ~6.0,"]]},
+{"id": 13, "lines": [["dan catat mL-nya."]]},
+{"id": 14, "lines": [["Air Anda (hasil uji)"]]},
+{"id": 15, "lines": [["pH ~7.6 · EC ", "0.18 mS/cm (184 µS)", " · TDS ~86 ppm — lunak & rendah mineral, jadi alkalinitas"]]},
+{"id": 16, "lines": [["rendah dan pakan turun sendiri ke ~6.0. Karena air baku sangat rendah, hampir seluruh EC"], ["pakan adalah nutrisi Anda — resep memberi ppm akurat. ", "Baca pakan dalam mode EC/mS"]]},
+{"id": 17, "lines": [["dan tuju EC tahap. (Bila memakai mode ppm/0.5: ~1050 · 1200 · 1275 · 1350.)"]]},
+{"id": 18, "lines": [["Kalibrasi kedua pen secara berkala."]]}
+]
