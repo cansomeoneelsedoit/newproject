@@ -21,6 +21,8 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 | Path | What |
 | --- | --- |
 | `output/Sparmanik_4.0_Melon_SOP_Book.pdf` | The current book |
+| `output/Sparmanik_4.0_Buku_SOP_Melon_ID.pdf` | The same book in Indonesian for staff (same 63 pages, same layout) |
+| `output/Sparmanik_4.0_Grafik_Nutrisi_Harian_ID.pdf` | Indonesian day-by-day feed/water chart (book pages 11–13) |
 | `output/Sparmanik_4.0_Kartu_Nutrisi_1-5-10_Hari.pdf` | Staff nutrient cards, ID + EN, 1/5/10-day batches |
 | `output/Sparmanik_4.0_Daily_Cards_ID.pdf` / `_EN.pdf` | Daily job card for every day HST 0–85 (`scripts/daily_cards.py` — dates live in `jobs()`) |
 | `output/Sparmanik_4.0_Daily_Nutrition_Chart_EN.pdf` | Day-by-day feed/water chart HST 0–75 (book pages 11–13) |
@@ -37,6 +39,16 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 | v3.4 ID, v3.7 EN, v3.8 EN | 6 Aug 2026 | Stage-by-stage playbook (sources/) |
 | v4.6 (not in repo) | Sep 2026 | Source of cost card v2.5 volumes; Trichoderma HST 0/17/38/59, Tri-Pholate HST 20/28/35 |
 | **4.0** | 6 Oct 2026 | v3.8 + v4.6 timings + 2026 crop lessons. Where they disagree, the 2026 crop wins |
+
+## Indonesian edition — how it works
+
+`scripts/id_extract.py` dumps every text block of the edited English book to `i18n/en_pages/pNN.json`;
+`i18n/id_pages/pNN.json` holds the Indonesian for the same blocks (same lines and styling runs), and
+`scripts/id_render.py` swaps each line in place, so pictures, boxes and colours stay identical.
+`i18n/id_extra.json` covers text the extractor can't see (letter-spaced headings, table rows stored as
+pictures). New 4.0 pages: `scripts/new_pages_id.py` + `new_pages_extra_id.py`. Glossary: `i18n/BRIEF.md`.
+**When you change the English** (`edit_v38.py` or `new_pages*.py`), make the same change in the Indonesian
+files, then rebuild. If block ids shift, the renderer prints `shape mismatch` for that block.
 
 ## The rules 2026 proved (newer than any book — they override older text)
 
@@ -65,7 +77,6 @@ Fruit 0.7–1.5 kg (target 1.8–2.2). 19 Sep census: 514 fruit, average 786 g.
 
 ## Open items
 
-- Indonesian edition of the full 4.0 book (v3.4 ID is the matching Indonesian design). Daily cards and nutrient cards are already Indonesian.
-- Indonesian Daily Nutrition Chart.
+- Indonesian edition: the greenhouse floor-plan picture (page 38) is still English (it is an image).
 - Replace draft plant heights (page 58) with our own averages after the next crop.
 - Confirm grade A–D limits (page 57).

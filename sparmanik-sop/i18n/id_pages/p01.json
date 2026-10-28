@@ -1,10 +1,108 @@
 [
-{"id": 1, "lines": [["SOP BARU ", "Melon"]]},
-{"id": 2, "lines": [["Buku"]]},
-{"id": 3, "lines": [["Tanam satu tahap demi satu tahap."]]},
-{"id": 4, "lines": [["Baca hanya halaman tahap ini."]]},
-{"id": 5, "lines": [["Target 1.8–2.2 kg · brix 15+"]]},
-{"id": 7, "lines": [["", "Persiapan ", "→", " Persemaian ", "→", " Tumbuh ", "→", " Panen"], ["", "Pakan & air: atur sekali"]]},
-{"id": 8, "lines": [["Sparmanik Farm · Kab. Simalungun  •  SPARMANIK 4.0 · 6 Okt 2026"]]},
-{"id": 9, "lines": [["SPARMANIK 4.0 · PANDUAN TAHAP DEMI TAHAP", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]]}
+{
+"id": 1,
+"lines": [
+[
+"Buku SOP ",
+"Melon"
+]
+]
+},
+{
+"id": 2,
+"lines": [
+[
+"Sparmanik 4.0"
+]
+]
+},
+{
+"id": 3,
+"lines": [
+[
+"Tanam satu tahap demi satu tahap."
+]
+]
+},
+{
+"id": 4,
+"lines": [
+[
+"Baca hanya halaman tahap ini."
+]
+]
+},
+{
+"id": 5,
+"lines": [
+[
+"Target 1.8–2.2 kg · brix 15+"
+]
+]
+},
+{
+"id": 7,
+"lines": [
+[
+"",
+"Persiapan ",
+"→",
+" Persemaian ",
+"→",
+" Tumbuh ",
+"→",
+" Panen"
+],
+[
+"",
+"Pakan & air: atur sekali"
+]
+]
+},
+{
+"id": 8,
+"lines": [
+[
+"Sparmanik Farm · Kab. Simalungun  •  SPARMANIK 4.0 · 6 Okt 2026"
+]
+]
+},
+{
+"id": 9,
+"lines": [
+[
+"SPARMANIK 4.0 · PANDUAN TAHAP DEMI TAHAP",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+""
+]
+]
+}
 ]
