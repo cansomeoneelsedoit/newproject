@@ -1,6 +1,6 @@
 """Crop booklet "Oct to Jan Harvest" 2026-27: dated instructions for one crop, Indonesian + English.
 Sown straight into the polybags 25 Oct 2026; HST 0 = day most seedlings have 2-3 true leaves.
-Run: python3 scripts/crop_booklet.py [HST0 as YYYY-MM-DD]  -> build/crop_{id,en}.html (build_book.py prints them)."""
+Run: python3 scripts/crop_booklet.py [HST0 as YYYY-MM-DD]  -> build/crop_cards_{id,en}.html (build_book.py prints them)."""
 import os, sys, datetime as D, calendar
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from daily_cards import CSS, LOGO, stage, card, SIL, TRI, TPH, CA, LAST, TONE
@@ -210,5 +210,5 @@ if __name__ == '__main__':
     for L in ('id', 'en'):
         P = build(L)
         html = '<!doctype html><html><head><meta charset="utf-8"><title>Sparmanik crop booklet</title>' + CSS + EXTRA_CSS + '</head><body>' + ''.join(P) + '</body></html>'
-        open(os.path.join(ROOT, 'build', f'crop_{L}.html'), 'w', encoding='utf-8').write(html)
+        open(os.path.join(ROOT, 'build', f'crop_cards_{L}.html'), 'w', encoding='utf-8').write(html)
     print('crop booklet', len(P), 'pages · HST 0 =', H0)
