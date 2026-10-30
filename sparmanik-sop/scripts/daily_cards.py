@@ -17,9 +17,13 @@ TRI = {0, 17, 38, 59}
 TPH = {20, 28, 35}
 CA = {35, 42}
 
-def jobs(h):
+def jobs(h, sow=False):
     J = []  # (title_id, title_en, body_id, body_en, tone)  tone: blue|green|red|gold
-    if h == 0:
+    if h == 0 and sow:
+        J.append(('HST 0 — hari mulai hitung + Trichoderma', 'HST 0 — the count starts + Trichoderma',
+                  'Benih ditanam langsung di polybag, jadi tidak ada pindah tanam. Hari ini sebagian besar bibit punya <b>2–3 daun sejati</b>. Sisakan <b>satu bibit terkuat</b> per lubang (potong yang lain di pangkal, jangan dicabut). Lalu <b>1 gelas (250 ml)</b> Trichoderma di pangkal batang: 10 g per ember 10 L, diamkan 15–30 menit, pakai hari ini juga. <b>Jangan</b> lewat dripper atau tangki.',
+                  'Seed went straight into the polybags, so there is no transplant. Today most seedlings have <b>2–3 true leaves</b>. Keep <b>one strongest seedling</b> per hole (cut the others at the base, don’t pull). Then <b>one cup (250 ml)</b> of Trichoderma at the stem base: 10 g per 10 L bucket, stand 15–30 min, use the same day. <b>Never</b> through the drippers or tank.', 'green'))
+    elif h == 0:
         J.append(('Pindah tanam + Trichoderma', 'Transplant + Trichoderma',
                   'Tanam bibit pelan-pelan ke polybag yang sudah dibuffer. Hari ini <b>air biasa saja</b>, belum pupuk. Siram polybag dulu, lalu <b>1 gelas (250 ml)</b> Trichoderma di pangkal batang: 10 g per ember 10 L, diamkan 15–30 menit, pakai hari ini juga. <b>Jangan</b> lewat dripper atau tangki.',
                   'Plant seedlings gently into the buffered bags. <b>Plain water only today</b>, no feed. Water the bags first, then <b>one cup (250 ml)</b> of Trichoderma at the stem base: 10 g per 10 L bucket, stand 15–30 min, use the same day. <b>Never</b> through the drippers or tank.', 'green'))
@@ -113,13 +117,16 @@ ul{margin:3pt 0 0;padding-left:13pt}li{margin:1.5pt 0}
 .foot{position:absolute;left:0;right:0;bottom:14pt;text-align:center;font-size:7pt;color:#8A907F}
 </style>'''
 
-def card(h, L):
+def card(h, L, date=None, sow=False, foot=None):
     ID = L == 'id'; T = lambda a, b: a if ID else b
-    s = stage(h); J = jobs(h)
+    s = stage(h); J = jobs(h, sow)
     sop = s['sop'] or T('tanpa SOP', 'no SOP')
     water = s['water'] if ID else s['water'].replace(',', '.')
     tank = T('air biasa — pupuk mulai besok', 'plain water — feed starts tomorrow') if h == 0 else T(f'Stok {s["k"]}', f'{s["k"]} stock')
-    title = T(f'Hari {h} — tugas HST {h}', f'Day {h} — HST {h} jobs')
+    ec0 = '—'
+    if h == 0 and sow:
+        tank, ec0 = T('Stok S1 · bibit', 'S1 stock · seedlings'), '1.5'
+    title = date or T(f'Hari {h} — tugas HST {h}', f'Day {h} — HST {h} jobs')
     jobs_html = ''
     n = 0
     for tid, ten, bid, ben, tone in J:
@@ -144,16 +151,17 @@ def card(h, L):
         daily_en.append('<b>No plain water, glass watering or silicon.</b> Extra water = split fruit.')
     dl = ''.join(f'<li>{x}</li>' for x in (daily_id if ID else daily_en))
     w = watch(h)
-    return f'''<div class="pg"><div class="hd"><img src="{LOGO}"><div><div class="k">{T("SPARMANIK FARM · KARTU TUGAS HARIAN", "SPARMANIK FARM · DAILY JOB CARD")}</div><h1>{title}</h1><div class="sub">{s["k"]} · {T(*s["name"])} · Sparmanik 4.0</div></div>
+    return f'''<div class="pg"><div class="hd"><img src="{LOGO}"><div><div class="k">{T("SPARMANIK FARM · KARTU TUGAS HARIAN", "SPARMANIK FARM · DAILY JOB CARD")}</div><h1>{title}</h1><div class="sub">{(T("Hari", "Day") + f" {h} · ") if date else ""}{s["k"]} · {T(*s["name"])} · Sparmanik 4.0</div></div>
 <div class="badge" style="background:{s["col"]}"><small>HST</small><b>{h}</b></div></div>
-<div class="feed"><div class="f"><span>{T("TANGKI 1.000 L", "1,000 L TANK")}</span><b>{tank}</b></div><div class="f"><span>EC · pH</span><b>{"—" if h==0 else s["ec"]} · 5,8–6,3</b></div><div class="f"><span>SOP / {T("TANGKI", "TANK")}</span><b>{"—" if h==0 else sop}</b></div><div class="f"><span>TIMER · {water}</span><b style="font-size:8.6pt">{T(*s["timer"])}</b></div></div>
+<div class="feed"><div class="f"><span>{T("TANGKI 1.000 L", "1,000 L TANK")}</span><b>{tank}</b></div><div class="f"><span>EC · pH</span><b>{ec0 if h==0 else s["ec"]} · 5,8–6,3</b></div><div class="f"><span>SOP / {T("TANGKI", "TANK")}</span><b>{"—" if h==0 else sop}</b></div><div class="f"><span>TIMER · {water}</span><b style="font-size:8.6pt">{T(*s["timer"])}</b></div></div>
 {jobs_html}
 <div class="same"><b class="h">{T("Setiap hari", "Every day")}</b><ul>{dl}</ul></div>
 <div class="watch"><b class="h">{T("Awasi tahap ini", "Watch for at this stage")}</b><br>{T(*w)}<br><b>{T("Ragu? Berhenti dan telepon Boyd.", "Not sure? Stop and call Boyd.")}</b></div>
 <div class="sign"><div>{T("EC / pH tangki", "Tank EC / pH")}</div><div>{T("Run-off ml / EC", "Run-off ml / EC")}</div><div>{T("Buah dipetik / dibuang", "Fruit picked / binned")}</div><div>{T("Nama & paraf", "Name & initials")}</div></div>
-<div class="foot">Sparmanik Farm · {T("Kartu harian", "Daily card")} · Sparmanik 4.0 · 6 Okt 2026 · {T("sesuai buku Sparmanik 4.0", "matches the Sparmanik 4.0 book")}</div></div>'''
+<div class="foot">{foot or ('Sparmanik Farm · ' + T("Kartu harian", "Daily card") + ' · Sparmanik 4.0 · 6 Okt 2026 · ' + T("sesuai buku Sparmanik 4.0", "matches the Sparmanik 4.0 book"))}</div></div>'''
 
-for L in ('id', 'en'):
+if __name__ == '__main__':
+  for L in ('id', 'en'):
     html = '<!doctype html><html><head><meta charset="utf-8"><title>Sparmanik daily cards</title>' + CSS + '</head><body>' + ''.join(card(h, L) for h in range(0, LAST + 1)) + '</body></html>'
     open(os.path.join(ROOT, 'build', f'daily_{L}.html'), 'w', encoding='utf-8').write(html)
-print('cards', LAST + 1)
+  print('cards', LAST + 1)

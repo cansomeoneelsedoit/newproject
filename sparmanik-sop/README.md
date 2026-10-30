@@ -21,6 +21,7 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 | Path | What |
 | --- | --- |
 | `output/Sparmanik_4.0_Melon_SOP_Book.pdf` | The current book |
+| `output/Panen_Okt-Jan_2026-27_ID.pdf` / `output/Oct-Jan_Harvest_2026-27_EN.pdf` | Crop booklet for this crop: cover, key dates, calendar, seedling stage, drum recipes, a dated job card for every day HST 0–85, harvest log (`scripts/crop_booklet.py`; reprint with a new HST 0: `python3 scripts/crop_booklet.py 2026-11-06`) |
 | `output/Sparmanik_4.0_Buku_SOP_Melon_ID.pdf` | The same book in Indonesian for staff (same 63 pages, same layout) |
 | `output/Sparmanik_4.0_Grafik_Nutrisi_Harian_ID.pdf` | Indonesian day-by-day feed/water chart (book pages 11–13) |
 | `output/Sparmanik_4.0_Kartu_Nutrisi_1-5-10_Hari.pdf` | Staff nutrient cards, ID + EN, 1/5/10-day batches |

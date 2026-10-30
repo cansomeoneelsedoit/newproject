@@ -57,3 +57,10 @@ print('built', dst, len(out), 'pages')
 chart = fitz.open(); chart.insert_pdf(di, from_page=10, to_page=12)
 chart.set_metadata({'title': 'Sparmanik 4.0 — Grafik Nutrisi Harian', 'author': 'Sparmanik Farm'})
 chart.save(B('output', 'Sparmanik_4.0_Grafik_Nutrisi_Harian_ID.pdf'), garbage=3, deflate=True)
+
+# ---- crop booklet: Oct to Jan Harvest 2026-27 (dated day cards; HST 0 date set in crop_booklet.py)
+subprocess.run(['python3', B('scripts', 'crop_booklet.py')], check=True)
+for L, name in (('id', 'Panen_Okt-Jan_2026-27_ID.pdf'), ('en', 'Oct-Jan_Harvest_2026-27_EN.pdf')):
+    subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--no-pdf-header-footer',
+                    '--print-to-pdf=' + B('output', name), B('build', f'crop_{L}.html')], check=True, stderr=subprocess.DEVNULL)
+print('crop booklet done')
