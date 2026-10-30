@@ -75,6 +75,12 @@ Transplant 30 Jul (HST 0) · boron flush 9 Sep · Sizing 18 Sep (8 days late) ·
 Brix: White Kirin Kevin 19.0 · Yellow Kirin Australia F3 17.4 · Sparmanik Manis Candy 15.5 · Yellow Kirin Kevin 14.6.
 Fruit 0.7–1.5 kg (target 1.8–2.2). 19 Sep census: 514 fruit, average 786 g.
 
+## Crop 2 (2026–27)
+
+Seeds sown straight into the polybags Sun 25 Oct 2026 (no rockwool nursery). HST 0 = the day the seedlings
+have 2–3 true leaves — planned **Wed 4 Nov 2026** (to confirm). From there: Flower Sun 29 Nov · Sizing
+Wed 16 Dec · Ripen Sun 3 Jan 2027 · harvest from about Mon 18 Jan 2027.
+
 ## Open items
 
 - Indonesian edition: the greenhouse floor-plan picture (page 38) is still English (it is an image).
