@@ -6,7 +6,7 @@ B = lambda *p: os.path.join(ROOT, *p)
 os.makedirs(B('build'), exist_ok=True); os.makedirs(B('output'), exist_ok=True)
 subprocess.run(['python3', B('scripts', 'edit_v38.py')], check=True)
 subprocess.run(['python3', B('scripts', 'new_pages.py')], check=True)
-chrome = (glob.glob('/opt/pw-browsers/chromium-*/chrome-linux/chrome') + ['chromium'])[0]
+chrome = (glob.glob('/opt/pw-browsers/chromium-*/chrome-linux*/chrome') + ['chromium'])[0]
 subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--no-pdf-header-footer',
                 '--print-to-pdf=' + B('build', 'new_pages.pdf'), B('build', 'new_pages.html')], check=True, stderr=subprocess.DEVNULL)
 d = fitz.open(B('build', 'v38_edited.pdf')); new = fitz.open(B('build', 'new_pages.pdf'))
