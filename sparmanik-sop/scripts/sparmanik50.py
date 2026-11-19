@@ -104,8 +104,9 @@ def build(L):
     day = lambda h: H0 + D.timedelta(h)
     NM = T({'S1': 'Tumbuh', 'S2': 'Bunga', 'S3': 'Besar', 'S4': 'Matang', 'S0': 'Bibit'}, {'S1': 'Grow', 'S2': 'Flower', 'S3': 'Sizing', 'S4': 'Ripen', 'S0': 'Seedling'})
     P = []
+    KEY = ['']
     def page(inner, num=True):
-        P.append(f'<div class="pg">{inner}' + (f'<div class="pn">{len(P) + 1}</div>' if num else '') + '</div>')
+        P.append((KEY[0], f'<div class="pg">{inner}</div>'))
     def card(kick, title, sub, body):
         page(f'<div class="card"><div class="kick">{kick}</div><h1>{title}</h1><div class="sub">{sub}</div><div class="rule"></div>{body}</div>')
     # week list (needed for contents)
@@ -114,6 +115,7 @@ def build(L):
         weeks.append(s); s += D.timedelta(7)
     FIRSTW = 5  # page number of week 1
     # ---- cover
+    KEY[0] = 'cover'
     page(f'''<div class="cv"><div class="k">SPARMANIK 5.0 · {T("PANDUAN MINGGU DEMI MINGGU", "WEEK-BY-WEEK PLAYBOOK")}</div>
 <h1>Sparmanik <em>5.0</em><br>{T("Panen Okt–Jan", "Oct–Jan Harvest")}</h1>
 <div class="tg">{T("Tanam satu minggu demi satu minggu.", "Grow it one week at a time.")}<br>{T("Baca hanya halaman minggu ini.", "Read only this week’s page.")}</div>
@@ -121,18 +123,8 @@ def build(L):
 <div class="logo"><img src="{LOGO}"></div>
 <div class="pills"><span>{T("Bibit → Tumbuh → Bunga → Besar → Matang", "Seedling → Grow → Flower → Sizing → Ripen")}</span><span>{T("Target 1.8–2.2 kg · brix 15+", "Target 1.8–2.2 kg · brix 15+")}</span></div>
 <div class="ft">Sparmanik Farm · Kab. Simalungun &nbsp;•&nbsp; SPARMANIK 5.0 · {sd(D.date.today())} {D.date.today().year}</div></div>''', num=False)
-    # ---- contents
-    rows = [('★', T('MULAI DI SINI — setiap hari', 'START HERE — every day'), '', 3), ('C', T('Cara kerja tugas ★', 'How to do the ★ jobs'), '', 4)]
-    for i, w in enumerate(weeks):
-        hs = [(w + D.timedelta(k) - H0).days for k in range(7)]
-        ks = [stage(max(h, 0))['k'] if h >= 0 else 'S0' for h in hs]
-        nm = ' → '.join(dict.fromkeys(NM[k] for k in ks))
-        rows.append((str(i + 1), f'{T("Minggu", "Week")} {i + 1} · {nm}', f'{sd(w)} – {sd(w + D.timedelta(6))}', FIRSTW + i))
-    nd = FIRSTW + len(weeks)
-    rows += [('D', T('Stok', 'Stock') + ' ' + NM[k], '', nd + j) for j, k in enumerate(('S1', 'S2', 'S3', 'S4'))] + [('P', T('Catatan panen', 'Harvest log'), '', nd + 4)]
-    toc = ''.join(f'<div><i>{a}</i><span><em>{b}</em><small>{c}</small></span><b>{n}</b></div>' for a, b, c, n in rows)
-    card(T('ALUR MUSIM INI', 'HOW THIS CROP RUNS'), T('Isi buku', 'Contents'), T(f'Semai {fmt(SOW, ID)} · HST 0 = {fmt(H0, ID)}', f'Sown {fmt(SOW, ID)} · HST 0 = {fmt(H0, ID)}'),
-         f'<div class="toc">{toc}</div><div class="call y" style="margin-top:14pt"><b class="t">{T("Cara pakai buku ini", "How to use this book")}</b>{T("Cari minggu hari ini. Baca hanya halaman itu: setiap hari ada satu baris — EC, SOP, siraman, dan tugas. Centang kotak setelah selesai. Bila HST 0 bergeser, Boyd mencetak ulang buku ini.", "Find this week. Read only that page: each day is one line — EC, SOP, watering and the job. Tick the box when done. If HST 0 moves, Boyd reprints this book.")}</div>')
+    KEY[0] = 'contents'; P.append(('contents', ''))
+    KEY[0] = 'start'
     # ---- start here (dark page like 'Make the feed')
     page(f'''<div class="dk"><div class="kick">{T("MULAI DI SINI · SETIAP HARI", "START HERE · EVERY DAY")}</div><h1>{T("Buat pakan & cek", "Make the feed & check")}</h1><div class="rule"></div>
 <div class="eq"><div class="c"><div class="ball" style="background:{ORANGE}">A</div>5 L {T("Stok A", "Stock A")}<small>({T("oranye", "orange")})</small></div><div class="op">+</div>
@@ -151,6 +143,7 @@ def build(L):
 <li>{T("Drum A dan B tidak pernah dicampur.", "Drums A and B are never mixed.")}</li></ol></div>
 <div style="margin-top:10pt;font-weight:700">{T("Ragu? Berhenti dan telepon Boyd.", "Not sure? Stop and call Boyd.")}</div></div>''')
     # ---- how to
+    KEY[0] = 'how'
     HOW = T([
         ('Trichoderma', '<b>1 g per liter = 10 g di ember 10 L</b> air biasa, aduk, diamkan 15–30 menit. Siram polybag dulu, lalu <b>1 gelas (250 ml) per polybag</b> di pangkal batang. <b>1 ember = 40 polybag</b> (400 polybag = 10 ember = 100 g). Aduk tiap 10 polybag, pakai hari itu juga.'),
         ('Silika (Kalsika)', 'Saklar MANUAL. 400 L air → jalan 3 menit → 1 sachet 100 g, aduk sampai bening → jalan 8 menit → tambah sampai 100 L → jalan 3 menit sampai habis → buat tangki pakan biasa. Hari itu siram hanya jam 14 dan 17.'),
@@ -171,6 +164,7 @@ def build(L):
          f'<div class="call r"><b class="t">▲ {T("Jangan pernah", "Never")}</b>{T("Trichoderma lewat tangki atau dripper · semprot daun di matahari terik · MKP dan Calcinit dalam satu tangki semprot · semprot daun HST 45–59.", "Trichoderma through the tank or drippers · leaf sprays in strong sun · MKP and Calcinit in one spray pack · leaf sprays HST 45–59.")}</div>')
     # ---- weeks
     for i, w in enumerate(weeks):
+        KEY[0] = f'week{i + 1}'
         days = [w + D.timedelta(k) for k in range(7)]; hs = [(d - H0).days for d in days]
         ks = [stage(max(h, 0))['k'] if h >= 0 else 'S0' for h in hs]
         nm = ' → '.join(dict.fromkeys(NM[k] for k in ks))
@@ -227,19 +221,62 @@ def build(L):
             out += '</div>'
         return out
     for j, r in enumerate(REC):
+        KEY[0] = 'stock_' + r[0]
         extra = ''
         if j == 0: extra = f'<div class="call y"><b class="t">↑ {T("Cara isi drum", "How to fill a drum")}</b>{T("Isi setengah dengan air hangat → timbang 1 produk, tuang, aduk sampai <b>JERNIH</b> → baru produk berikutnya → tambah air sampai tanda 50 L (atau 25 L) → tulis A/B + tanggal + tahap.", "Half fill with warm water → weigh one product, pour, stir until <b>CLEAR</b> → only then the next → top up to the 50 L (or 25 L) mark → write A/B + date + stage.")}</div>'
         card(T('MALAM GANTI STOK', 'STOCK NIGHT') + f' · {r[0]} · {r[1]}', T('Membuat Stok A & Stok B', 'Making Stock A & Stock B'), T('Drum 50 L = 10 tangki · 25 L = 5 tangki (5 hari). Timbang setiap produk.', '50 L drum = 10 tanks · 25 L = 5 tanks (5 days). Weigh every product.'),
              drums(*r) + extra + f'<div class="call r"><b class="t">▲ {T("Timbang semua produk. Jangan menebak.", "Weigh every product. Do not guess.")}</b>{T("Jangan pernah: produk A ke drum B · asam borat · Fe-EDTA · asam sitrat · SOP atau silika ke dalam drum.", "Never: an A product in drum B · boric acid · Fe-EDTA · citric acid · SOP or silicon into a drum.")}</div>')
     # ---- harvest log
+    KEY[0] = 'log'
     trs = ''.join('<tr>' + '<td></td>' * 8 + '</tr>' for _ in range(24))
     card(T('CATATAN · PANEN', 'RECORD · HARVEST'), T('Catatan panen harian', 'Daily harvest log'), T('Satu baris per hari. Foto halaman ini ke Boyd setiap minggu.', 'One line a day. Photo this page to Boyd every week.'),
          f'<table class="log"><tr><th>{T("Tanggal", "Date")}</th><th>{T("Baris", "Rows")}</th><th>A</th><th>B</th><th>C</th><th>D / {T("buang", "binned")}</th><th>{T("Total kg", "Total kg")}</th><th>Brix</th></tr>{trs}</table>')
-    return P
+    # ---- plan: book stage pages (from the 4.0 book, same language) go in front of the week where that stage starts
+    SECS = [('S0', SOW, T('Tahap bibit', 'Seedling stage'), [4, 5, 'stock_S1']),
+            ('G', H0, T('HST 0 & Tumbuh', 'HST 0 & Grow'), [8, 9, 16, 17, 18, 19, 20, 21]),
+            ('S2', day(25), T('Bunga & buah jadi', 'Flower & set'), ['stock_S2', 22, 24, 25]),
+            ('S3', day(42), T('Pembesaran buah', 'Fruit sizing'), ['stock_S3', 26, 28]),
+            ('S4', day(60), T('Matang & panen', 'Ripen & harvest'), ['stock_S4', 29, 31, 32])]
+    plan = ['cover', 'contents', 'start', 'how']; toc = [('★', T('MULAI DI SINI — setiap hari', 'START HERE — every day'), '', 3), ('C', T('Cara kerja tugas ★', 'How to do the ★ jobs'), '', 4)]
+    done = set()
+    for i, w in enumerate(weeks):
+        for k, start, name, pages in SECS:
+            if k not in done and start <= w + D.timedelta(6):
+                done.add(k); toc.append(('§', f'<span style="color:{SC.get(k, GREEN)}">{name}</span>', T('halaman tahap dari buku 4.0', 'stage pages from the 4.0 book'), len(plan) + 1)); plan += pages
+        hs = [(w + D.timedelta(k) - H0).days for k in range(7)]
+        ks = [stage(max(h, 0))['k'] if h >= 0 else 'S0' for h in hs]
+        toc.append((str(i + 1), f'{T("Minggu", "Week")} {i + 1} · ' + ' → '.join(dict.fromkeys(NM[k] for k in ks)), f'{sd(w)} – {sd(w + D.timedelta(6))}', len(plan) + 1)); plan.append(f'week{i + 1}')
+    toc.append(('R', T('Referensi: grafik harian, gambar masalah, iklim', 'Reference: daily chart, problem pictures, climate'), '', len(plan) + 1)); plan += [11, 12, 13, 47, 48]
+    toc.append(('P', T('Catatan panen', 'Harvest log'), '', len(plan) + 1)); plan.append('log')
+    tl = ''.join(f'<div><i>{a}</i><span><em>{b}</em><small>{c}</small></span><b>{n}</b></div>' for a, b, c, n in toc)
+    chtml = (f'<div class="pg"><div class="card"><div class="kick">{T("ALUR MUSIM INI", "HOW THIS CROP RUNS")}</div><h1>{T("Isi buku", "Contents")}</h1>'
+             f'<div class="sub">{T(f"Semai {fmt(SOW, ID)} · HST 0 = {fmt(H0, ID)}", f"Sown {fmt(SOW, ID)} · HST 0 = {fmt(H0, ID)}")}</div><div class="rule"></div><div class="toc" style="font-size:8.6pt">{tl}</div>'
+             f'<div class="call y" style="margin-top:12pt"><b class="t">{T("Cara pakai buku ini", "How to use this book")}</b>{T("Sebelum tahap baru mulai, baca halaman tahap (dari buku 4.0): kerjakan, pakan & air, yang diawasi. Setiap hari pakai halaman minggu ini: satu baris per hari — EC, SOP, siraman, tugas. Centang kotak setelah selesai.", "Before a new stage starts, read its stage pages (from the 4.0 book): do, feed & water, watch for. Every day use this week’s page: one line a day — EC, SOP, watering, job. Tick the box when done.")}</div></div></div>')
+    P = [(k, chtml if k == 'contents' else h) for k, h in P]
+    return P, plan
 
 if __name__ == '__main__':
-    for L in ('id', 'en'):
-        P = build(L)
-        html = f'<!doctype html><html><head><meta charset="utf-8"><title>Sparmanik 5.0</title>{CSS}</head><body>{"".join(P)}</body></html>'
-        open(os.path.join(ROOT, 'build', f's50_{L}.html'), 'w', encoding='utf-8').write(html)
-    print('Sparmanik 5.0', len(P), 'pages · HST 0 =', H0)
+    import glob, subprocess
+    import pymupdf as fitz
+    chrome = (glob.glob('/opt/pw-browsers/chromium-*/chrome-linux*/chrome') + ['chromium'])[0]
+    NUMF = '/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf'
+    for L, book, name in (('id', 'v38_id.pdf', 'Sparmanik_5.0_Panen_Okt-Jan_ID.pdf'), ('en', 'v38_edited.pdf', 'Sparmanik_5.0_Oct-Jan_Harvest_EN.pdf')):
+        P, plan = build(L)
+        html = f'<!doctype html><html><head><meta charset="utf-8"><title>Sparmanik 5.0</title>{CSS}</head><body>{"".join(h for _, h in P)}</body></html>'
+        hf = os.path.join(ROOT, 'build', f's50_{L}.html'); cf = os.path.join(ROOT, 'build', f's50_{L}_core.pdf')
+        open(hf, 'w', encoding='utf-8').write(html)
+        subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--no-pdf-header-footer', '--print-to-pdf=' + cf, hf], check=True, stderr=subprocess.DEVNULL)
+        core = fitz.open(cf); bk = fitz.open(os.path.join(ROOT, 'build', book)); idx = {k: i for i, (k, _) in enumerate(P)}
+        assert len(core) == len(P), ('an HTML page overflowed', len(core), len(P))
+        out = fitz.open()
+        for it in plan:
+            if isinstance(it, int): out.insert_pdf(bk, from_page=it - 1, to_page=it - 1)
+            else: out.insert_pdf(core, from_page=idx[it], to_page=idx[it])
+        for n, pg in enumerate(out):
+            if n == 0: continue
+            pg.draw_rect(fitz.Rect(240, 806, 355, 832), color=None, fill=(1, 1, 1), overlay=True)
+            t = str(n + 1); w = fitz.Font(fontfile=NUMF).text_length(t, fontsize=8)
+            pg.insert_text((297.5 - w / 2, 822), t, fontsize=8, fontfile=NUMF, fontname='PN', color=(0.42, 0.44, 0.35))
+        out.set_metadata({'title': 'Sparmanik 5.0 — ' + ('Panen Okt–Jan' if L == 'id' else 'Oct to Jan Harvest'), 'author': 'Sparmanik Farm'})
+        out.save(os.path.join(ROOT, 'output', name), garbage=3, deflate=True)
+        print('Sparmanik 5.0', L, len(out), 'pages · HST 0 =', H0)
