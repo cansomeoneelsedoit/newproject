@@ -61,8 +61,11 @@ chart.save(B('output', 'Sparmanik_4.0_Grafik_Nutrisi_Harian_ID.pdf'), garbage=3,
 # ---- crop booklet: Oct to Jan Harvest 2026-27 (dated day cards; HST 0 date set in crop_booklet.py)
 subprocess.run(['python3', B('scripts', 'crop_booklet.py')], check=True)
 subprocess.run(['python3', B('scripts', 'crop_simple.py')], check=True)
-for src, name in (('crop_simple_id', 'Panen_Okt-Jan_2026-27_ID.pdf'), ('crop_simple_en', 'Oct-Jan_Harvest_2026-27_EN.pdf'),
-                  ('crop_cards_id', 'Panen_Okt-Jan_2026-27_Kartu_Harian_ID.pdf'), ('crop_cards_en', 'Oct-Jan_Harvest_2026-27_Daily_Cards_EN.pdf')):
+for src, name in (('crop_cards_id', 'Panen_Okt-Jan_2026-27_Kartu_Harian_ID.pdf'), ('crop_cards_en', 'Oct-Jan_Harvest_2026-27_Daily_Cards_EN.pdf')):
     subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--no-pdf-header-footer',
                     '--print-to-pdf=' + B('output', name), B('build', src + '.html')], check=True, stderr=subprocess.DEVNULL)
+subprocess.run(['python3', B('scripts', 'sparmanik50.py')], check=True)
+for L, name in (('id', 'Sparmanik_5.0_Panen_Okt-Jan_ID.pdf'), ('en', 'Sparmanik_5.0_Oct-Jan_Harvest_EN.pdf')):
+    subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--no-pdf-header-footer',
+                    '--print-to-pdf=' + B('output', name), B('build', f's50_{L}.html')], check=True, stderr=subprocess.DEVNULL)
 print('crop booklet done')

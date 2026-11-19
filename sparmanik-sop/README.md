@@ -21,7 +21,7 @@ style, and stitches them together. To change a rule: edit the line in `edit_v38.
 | Path | What |
 | --- | --- |
 | `output/Sparmanik_4.0_Melon_SOP_Book.pdf` | The current book |
-| `output/Panen_Okt-Jan_2026-27_ID.pdf` / `output/Oct-Jan_Harvest_2026-27_EN.pdf` | **Simple** crop booklet (19 pages): cover, every-day page + 5 rules, how-to for ★ jobs, one page per week with each day's date/HST/EC/jobs and a tick box, drum recipes, harvest log (`scripts/crop_simple.py`) |
+| `output/Sparmanik_5.0_Panen_Okt-Jan_ID.pdf` / `output/Sparmanik_5.0_Oct-Jan_Harvest_EN.pdf` | **Sparmanik 5.0** — the crop booklet in the 4.0 book's look (19 pages): cover, every-day page + 5 rules, how-to for ★ jobs, one page per week with each day's date/HST/EC/jobs and a tick box, drum recipes, harvest log (`scripts/sparmanik50.py`, content from `crop_simple.py`) |
 | `output/Panen_Okt-Jan_2026-27_Kartu_Harian_ID.pdf` / `..._Daily_Cards_EN.pdf` | Detailed version (94 pages): calendar + a dated job card for every day (`scripts/crop_booklet.py`). New HST 0: set `H0` in crop_booklet.py and rebuild |
 | `output/Sparmanik_4.0_Buku_SOP_Melon_ID.pdf` | The same book in Indonesian for staff (same 63 pages, same layout) |
 | `output/Sparmanik_4.0_Grafik_Nutrisi_Harian_ID.pdf` | Indonesian day-by-day feed/water chart (book pages 11–13) |
