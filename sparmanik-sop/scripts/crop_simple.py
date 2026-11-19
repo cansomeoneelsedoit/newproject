@@ -16,12 +16,12 @@ def sjobs(h, ID):
         elif n == 4: J.append(T('Bibit muncul → cahaya penuh, kipas jalan', 'Seedlings up → full light, fans on'))
         elif n == 7: J.append(T('Sisakan 1 bibit terkuat per lubang', 'Keep 1 strongest seedling per hole'))
         return J
-    if h == 0: J.append(T('Trichoderma 1 gelas ★', 'Trichoderma, one cup ★'))
+    if h == 0: J.append(T('Trichoderma ★: 10 g per ember 10 L · 1 gelas 250 ml per polybag', 'Trichoderma ★: 10 g per 10 L bucket · one 250 ml cup per bag'))
     if h == 1: J.append(T('Pakan penuh mulai', 'Full feed starts'))
     if h == 7: J.append(T('Mulai buang tunas samping (ruas 1–8), tiap 2–3 hari', 'Start pinching side shoots (nodes 1–8), every 2–3 days'))
     if h in SIL: J.append(T('Silika ★', 'Silicon ★') + (T(' — TERAKHIR', ' — LAST ONE') if h == 36 else ''))
     if h == 8: J.append(T('Besok timer: 4 × 6 menit', 'Tomorrow timer: 4 × 6 min'))
-    if h in TRI and h: J.append('Trichoderma ★')
+    if h in TRI and h: J.append(T('Trichoderma ★: 10 g per ember 10 L · 1 gelas 250 ml per polybag', 'Trichoderma ★: 10 g per 10 L bucket · one 250 ml cup per bag'))
     if h == 20: J.append(T('Stop buang tunas (sudah ruas 8)', 'Stop pinching shoots (node 8 reached)'))
     if h in TPH: J.append(T('Tri-Pholate setelah jam 16 ★', 'Tri-Pholate after 4 pm ★'))
     if h in CA: J.append(T('Semprot Calcinit ★', 'Calcinit spray ★'))
@@ -88,14 +88,14 @@ def build_simple(L):
 <li>{T('Drum A dan B tidak pernah dicampur.', 'Drums A and B are never mixed.')}</li></ol>
 <div class="box r" style="font-size:12pt"><b>{T('Ragu? Berhenti dan telepon Boyd.', 'Not sure? Stop and call Boyd.')}</b></div>''', FOOT))
     HOW = T([
-        ('Trichoderma', '10 g di ember 10 L air biasa, diamkan 15–30 menit. Siram polybag dulu, lalu 1 gelas (250 ml) di pangkal batang. Jangan lewat tangki.'),
+        ('Trichoderma', '<b>1 g per liter</b> = <b>10 g di ember 10 L</b> air biasa, aduk, diamkan 15–30 menit. Siram polybag dulu, lalu <b>1 gelas (250 ml) per polybag</b> di pangkal batang. <b>1 ember = 40 polybag.</b> Contoh: 400 polybag = 10 ember = 100 g. Aduk tiap 10 polybag, pakai hari itu juga. Jangan lewat tangki atau dripper.'),
         ('Silika (Kalsika)', 'Saklar MANUAL. 400 L air → jalan 3 menit → 1 sachet 100 g, aduk sampai bening → jalan 8 menit → tambah sampai 100 L → jalan 3 menit sampai habis → buat tangki pakan biasa. Hari itu siram hanya jam 14 dan 17.'),
         ('Tri-Pholate', '2 g per tangki semprot 16 L. Daun saja. Setelah jam 16.'),
         ('Semprot Calcinit', '80 g per tangki semprot 16 L. Pagi atau setelah jam 16. Daun saja.'),
         ('Penyerbukan', 'Jam 06–10. Bunga betina (ada bakal buah kecil) di ruas 9–12 → oles serbuk bunga jantan dari tanaman yang sama. Tulis tanggal di label.'),
         ('Sisakan 1 buah + pangkas', 'Simpan SATU buah terbaik per tanaman, buang yang lain. Potong pucuk di atas daun ke-25. Tidak ada buah → jangan pangkas.'),
         ('Panen', 'Jam 06–09:30. Matang = jaring penuh, bawah menguning, harum, lepas dengan putaran pelan. Potong gunting, taruh di teduh, timbang, catat. Buah lain jangan dipotong.')], [
-        ('Trichoderma', '10 g in a 10 L bucket of plain water, stand 15–30 min. Water the bags first, then one cup (250 ml) at the stem base. Never through the tank.'),
+        ('Trichoderma', '<b>1 g per litre</b> = <b>10 g in a 10 L bucket</b> of plain water, stir, stand 15–30 min. Water the bags first, then <b>one cup (250 ml) per bag</b> at the stem base. <b>1 bucket = 40 bags.</b> Example: 400 bags = 10 buckets = 100 g. Stir every 10 bags, use it the same day. Never through the tank or drippers.'),
         ('Silicon (Kalsika)', 'MANUAL switch. 400 L water → run 3 min → one 100 g sachet, stir until clear → run 8 min → top up to 100 L → run 3 min until empty → make the normal feed tank. That day water only at 2 and 5 pm.'),
         ('Tri-Pholate', '2 g per 16 L spray pack. Leaves only. After 4 pm.'),
         ('Calcinit spray', '80 g per 16 L spray pack. Early morning or after 4 pm. Leaves only.'),
